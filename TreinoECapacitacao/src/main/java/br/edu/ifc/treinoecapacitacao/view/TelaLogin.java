@@ -27,7 +27,10 @@ public class TelaLogin {
 
     public Scene criarCena() {
         Label titulo = new Label("Treinamento e Capacitação");
+        titulo.setId("tituloLogin");
+
         Label subtitulo = new Label("Acesso ao sistema");
+        subtitulo.getStyleClass().add("subtitulo");
 
         Label textoLogin = new Label("Login:");
         Label textoSenha = new Label("Senha:");
@@ -42,12 +45,15 @@ public class TelaLogin {
         formulario.setHgap(10);
         formulario.setVgap(10);
         formulario.setAlignment(Pos.CENTER);
+        formulario.getStyleClass().add("formulario");
         formulario.add(textoLogin, 0, 0);
         formulario.add(campoLogin, 1, 0);
         formulario.add(textoSenha, 0, 1);
         formulario.add(campoSenha, 1, 1);
 
         Button botaoEntrar = new Button("Entrar");
+        botaoEntrar.getStyleClass().add("botao-principal");
+
         Button botaoLimpar = new Button("Limpar");
 
         ButtonBar barraBotoes = new ButtonBar();
@@ -72,7 +78,10 @@ public class TelaLogin {
         raiz.setPadding(new Insets(30));
         raiz.getChildren().addAll(titulo, subtitulo, formulario, barraBotoes);
 
-        return new Scene(raiz, 500, 330);
+        Scene scene = new Scene(raiz, 500, 330);
+        scene.getStylesheets().add("/css/style.css");
+
+        return scene;
     }
 
     private void verificarCampos() {

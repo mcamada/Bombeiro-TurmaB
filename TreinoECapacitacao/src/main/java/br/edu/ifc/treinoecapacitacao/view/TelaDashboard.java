@@ -23,7 +23,10 @@ public class TelaDashboard {
 
     public Scene criarCena() {
         Label tituloSistema = new Label("Treinamento e Capacitação");
+        tituloSistema.setId("tituloDashboard");
+
         Label usuarioLogado = new Label("Usuário: Coordenador de Treinamento");
+        usuarioLogado.getStyleClass().add("texto-secundario");
 
         VBox textosCabecalho = new VBox(5);
         textosCabecalho.getChildren().addAll(tituloSistema, usuarioLogado);
@@ -33,9 +36,11 @@ public class TelaDashboard {
         HBox cabecalho = new HBox(30);
         cabecalho.setAlignment(Pos.CENTER_LEFT);
         cabecalho.setPadding(new Insets(15));
+        cabecalho.getStyleClass().add("cabecalho");
         cabecalho.getChildren().addAll(textosCabecalho, botaoSair);
 
         Label tituloMenu = new Label("Menu");
+        tituloMenu.getStyleClass().add("titulo-secao");
         Button botaoInicio = new Button("Início");
         Button botaoTreinamentos = new Button("Treinamentos");
         Button botaoBombeiros = new Button("Bombeiros");
@@ -44,8 +49,17 @@ public class TelaDashboard {
         Button botaoParticipacoes = new Button("Participações");
         Button botaoCertificados = new Button("Certificados");
 
+        botaoInicio.getStyleClass().add("botao-menu");
+        botaoTreinamentos.getStyleClass().add("botao-menu");
+        botaoBombeiros.getStyleClass().add("botao-menu");
+        botaoInstrutores.getStyleClass().add("botao-menu");
+        botaoInstituicoes.getStyleClass().add("botao-menu");
+        botaoParticipacoes.getStyleClass().add("botao-menu");
+        botaoCertificados.getStyleClass().add("botao-menu");
+
         VBox menuLateral = new VBox(10);
         menuLateral.setPadding(new Insets(15));
+        menuLateral.getStyleClass().add("menu-lateral");
         menuLateral.getChildren().addAll(
                 tituloMenu,
                 botaoInicio,
@@ -58,6 +72,7 @@ public class TelaDashboard {
         );
 
         Label tituloResumo = new Label("Visão geral dos treinamentos");
+        tituloResumo.getStyleClass().add("titulo-secao");
 
         VBox cardPlanejados = criarCard("Planejados", "0");
         VBox cardAndamento = criarCard("Em andamento", "0");
@@ -73,9 +88,14 @@ public class TelaDashboard {
         resumo.add(cardParticipantes, 1, 1);
 
         Label tituloAtalhos = new Label("Acessos rápidos");
+        tituloAtalhos.getStyleClass().add("titulo-secao");
         Button botaoCadastrarTreinamento = new Button("Cadastrar treinamento");
         Button botaoConsultarTreinamento = new Button("Consultar treinamentos");
         Button botaoCadastrarBombeiro = new Button("Cadastrar bombeiro");
+
+        botaoCadastrarTreinamento.getStyleClass().add("botao-atalho");
+        botaoConsultarTreinamento.getStyleClass().add("botao-atalho");
+        botaoCadastrarBombeiro.getStyleClass().add("botao-atalho");
 
         HBox atalhos = new HBox(10);
         atalhos.getChildren().addAll(
@@ -85,11 +105,13 @@ public class TelaDashboard {
         );
 
         Label tituloRecentes = new Label("Treinamentos recentes");
+        tituloRecentes.getStyleClass().add("titulo-secao");
         ObservableList<String> treinamentos = FXCollections.observableArrayList(
                 "Nenhum treinamento cadastrado"
         );
         ListView<String> listaTreinamentos = new ListView<String>(treinamentos);
         listaTreinamentos.setPrefHeight(130);
+        listaTreinamentos.getStyleClass().add("lista-treinamentos");
 
         VBox conteudo = new VBox(15);
         conteudo.setPadding(new Insets(20));
@@ -108,16 +130,21 @@ public class TelaDashboard {
         VBox raiz = new VBox();
         raiz.getChildren().addAll(cabecalho, corpo);
 
-        return new Scene(raiz, 950, 620);
+        Scene scene = new Scene(raiz, 950, 620);
+        scene.getStylesheets().add("/css/style.css");
+
+        return scene;
     }
 
     private VBox criarCard(String nome, String quantidade) {
         Label numero = new Label(quantidade);
+        numero.getStyleClass().add("numero-card");
         Label descricao = new Label(nome);
 
         VBox card = new VBox(5);
         card.setAlignment(Pos.CENTER);
         card.setPadding(new Insets(20));
+        card.getStyleClass().add("card");
         card.getChildren().addAll(numero, descricao);
 
         return card;

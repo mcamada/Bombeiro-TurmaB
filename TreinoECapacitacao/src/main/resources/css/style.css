@@ -1,0 +1,69 @@
+.root {
+    -fx-font-family: Arial;
+    -fx-background-color: #f2f2f2;
+}
+
+#tituloLogin,
+#tituloDashboard {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8b1e1e;
+}
+
+.subtitulo,
+.texto-secundario {
+    -fx-text-fill: #555555;
+}
+
+.formulario {
+    -fx-padding: 15px;
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+}
+
+.button {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #222222;
+    -fx-padding: 8px 14px;
+}
+
+.botao-principal,
+.botao-atalho {
+    -fx-background-color: #8b1e1e;
+    -fx-text-fill: white;
+}
+
+.cabecalho {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #cccccc transparent;
+}
+
+.menu-lateral {
+    -fx-background-color: #e5e5e5;
+}
+
+.botao-menu {
+    -fx-pref-width: 155px;
+    -fx-alignment: center-left;
+}
+
+.titulo-secao {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.card {
+    -fx-pref-width: 180px;
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+}
+
+.numero-card {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8b1e1e;
+}
+
+.lista-treinamentos {
+    -fx-border-color: #cccccc;
+}
