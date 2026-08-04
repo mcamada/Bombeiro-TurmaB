@@ -2,6 +2,8 @@ package ibirama.projetoalmoxarifado;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,7 +28,12 @@ public class App extends Application {
      TextField campo = new TextField();
         PasswordField senha = new PasswordField();
         
-        root.getChildren().addAll(Texto1, campo, Texto2, senha);
+        Button btCancelar = new Button ("Cancelar");
+        Button btConfirmar = new Button ("Confirmar");
+        
+        ButtonBar painelBt = new ButtonBar();
+        painelBt.getButtons().addAll(btCancelar,btConfirmar);
+        root.getChildren().addAll(Texto1, campo, Texto2, senha, painelBt);
         Scene scene = new Scene (root, 800, 600);
         stage.setScene(scene);
         stage.show();
