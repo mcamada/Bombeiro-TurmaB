@@ -13,11 +13,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class TelaLogin {
 
+    private Stage stage;
     private TextField campoLogin;
     private PasswordField campoSenha;
+
+    public TelaLogin(Stage stage) {
+        this.stage = stage;
+    }
 
     public Scene criarCena() {
         Label titulo = new Label("Treinamento e Capacitação");
@@ -81,11 +87,9 @@ public class TelaLogin {
             return;
         }
 
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Login");
-        alerta.setHeaderText("Dados recebidos com sucesso.");
-        alerta.setContentText("A autenticação será implementada na próxima etapa.");
-        alerta.show();
+        TelaDashboard telaDashboard = new TelaDashboard(stage);
+        stage.setScene(telaDashboard.criarCena());
+        stage.setTitle("Painel - Treinamento e Capacitação");
     }
 
     private void limparCampos() {

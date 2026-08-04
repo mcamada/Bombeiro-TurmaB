@@ -9,7 +9,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        TelaLogin telaLogin = new TelaLogin();
+        TelaLogin telaLogin = new TelaLogin(stage);
         Scene scene = telaLogin.criarCena();
 
         stage.setTitle("Treinamento e Capacitação");
