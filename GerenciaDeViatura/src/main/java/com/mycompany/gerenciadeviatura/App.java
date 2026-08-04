@@ -13,8 +13,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -27,32 +32,27 @@ public class App extends Application {
     @Override
      public void start(Stage stage) {
         VBox root = new VBox();
+            
+        Font fInput = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20);
+        Font fcampos = Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 20);
+
+                
+        GridPane campos = new GridPane();
+        Label usuario = new Label("GESTÃO DE VIATURA");
+        campos.add(usuario, 0, 0);
+       
+        usuario.setFont(fcampos);
         
-        Menu file = new Menu("Gerencia");
-        Text gerencia = new Text("Gerencia de viaturas");
-        file.getItems().add(gerencia);
+        root.getChildren().add(campos);
         
-        MenuBar meuMenu = new MenuBar();
-        meuMenu.getMenus().addAll(file);
+        Button btCadastrar = new Button("Cadastrar Viatura");
+        Button btConsultar = new Button("Consultar Viatura");
         
-        Group grupoPrincipal = new Group(meuMenu);
-        root.getChildren().add(grupoPrincipal);
+
         
-        TreeItem<String> cursos = new TreeItem<String>("Cursos");
-        TreeItem<String> tecnicos = new TreeItem<String>("Técnicos");
-        TreeItem<String> informatica = new TreeItem<String>("Informática");
-        TreeItem<String> vestuario = new TreeItem<String>("Vestuário");
-        TreeItem<String> adm = new TreeItem<String>("Administração");
-        
-        cursos.getChildren().add(tecnicos);
-        tecnicos.getChildren().addAll(informatica, vestuario, adm);
-        
-        TreeView<String> cursosIFC = new TreeView<String>(cursos);
-        root.getChildren().add(cursosIFC);
-        
-        Spinner<Integer> mes = new Spinner<Integer>(1,12,1);
-        root.getChildren().add(mes);
-        
+        root.getChildren().add(btCadastrar);
+        root.getChildren().add(btConsultar);
+
         root.getChildren().add(new Text("Exemplo de area de botoes"));
         
         Button btVoltar = new Button("Voltar");
