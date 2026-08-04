@@ -18,14 +18,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) { 
-        GridPane root = new GridPane();
-        
-     root.add(new Label("Usuário"), 0, 1);
-     root.add(new Label("Senha"),0, 2);
-        
-        TextField campo = new TextField();
+        VBox root = new VBox();
+ 
+     Label Texto1 = new Label("Usuário");
+     Label Texto2 = new Label("Senha");
+     
+     TextField campo = new TextField();
         PasswordField senha = new PasswordField();
-        root.getChildren().addAll(campo, senha);
+        
+        root.getChildren().addAll(Texto1, campo, Texto2, senha);
         Scene scene = new Scene (root, 800, 600);
         stage.setScene(scene);
         stage.show();
