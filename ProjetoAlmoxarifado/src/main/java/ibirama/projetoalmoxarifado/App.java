@@ -26,7 +26,7 @@ public class App extends Application {
         TextField campo = new TextField();
         PasswordField senha = new PasswordField();
         root.getChildren().addAll(campo, senha);
-        Scene scene = new Scene (root, 640, 480);
+        Scene scene = new Scene (root, 800, 600);
         stage.setScene(scene);
         stage.show();
     }
