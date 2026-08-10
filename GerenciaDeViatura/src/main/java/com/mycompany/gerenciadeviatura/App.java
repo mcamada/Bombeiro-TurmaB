@@ -2,6 +2,7 @@ package com.mycompany.gerenciadeviatura;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -37,11 +38,15 @@ public class App extends Application {
         Font fcampos = Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 20);
 
                 
-        GridPane campos = new GridPane();
-        Label usuario = new Label("GESTÃO DE VIATURA");
-        campos.add(usuario, 0, 0);
-       
+        BorderPane campos = new BorderPane();
+        Label gest = new Label("GESTÃO DE VIATURA");
+        gest.setFont(fcampos);
+        campos.setLeft(gest);
+        Label usuario = new Label("Usuário");
         usuario.setFont(fcampos);
+        campos.setRight(usuario);
+        
+        
         
         root.getChildren().add(campos);
         
@@ -53,16 +58,7 @@ public class App extends Application {
         root.getChildren().add(btCadastrar);
         root.getChildren().add(btConsultar);
 
-        root.getChildren().add(new Text("Exemplo de area de botoes"));
-        
-        Button btVoltar = new Button("Voltar");
-        Button btConfirmar = new Button("Confirmar");
-        Button btExcluir = new Button("Excluir");
-        
-        ButtonBar painelBT = new ButtonBar();
-        painelBT.getButtons().addAll(btVoltar, btConfirmar, btExcluir);
-        
-        root.getChildren().add(painelBT);
+        root.setAlignment(Pos.CENTER);
         
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
