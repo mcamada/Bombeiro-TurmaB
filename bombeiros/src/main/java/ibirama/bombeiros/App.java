@@ -1,7 +1,5 @@
 package ibirama.bombeiros;
 
-
-
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -99,10 +97,6 @@ public class App extends Application {
         contentArea.getChildren().add(formView);
     }
 
-    // =========================================================================
-    // MODELOS E ENUMS
-    // =========================================================================
-
     public enum StatusBombeiro {
         ATIVO("Ativo"),
         AFASTADO("Afastado"),
@@ -198,10 +192,6 @@ public class App extends Application {
         @Override public int hashCode() { return Objects.hash(id); }
     }
 
-    // =========================================================================
-    // SERVIÇO DE DADOS
-    // =========================================================================
-
     public static class BombeiroService {
         private final ObservableList<Bombeiro> bombeiros = FXCollections.observableArrayList();
         private final FilteredList<Bombeiro> filteredBombeiros;
@@ -265,10 +255,6 @@ public class App extends Application {
 
         public void excluir(Bombeiro b) { bombeiros.remove(b); }
     }
-
-    // =========================================================================
-    // COMPONENTES DE INTERFACE (UI)
-    // =========================================================================
 
     public static class SidebarMenu extends VBox {
         private final Map<String, Button> items = new HashMap<>();
