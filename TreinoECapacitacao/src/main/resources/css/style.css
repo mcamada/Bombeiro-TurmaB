@@ -4,7 +4,8 @@
 }
 
 #tituloLogin,
-#tituloDashboard {
+#tituloDashboard,
+#tituloTreinamentos {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-text-fill: #8b1e1e;

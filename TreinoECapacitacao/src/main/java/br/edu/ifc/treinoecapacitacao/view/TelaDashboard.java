@@ -2,6 +2,8 @@ package br.edu.ifc.treinoecapacitacao.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -33,6 +35,15 @@ public class TelaDashboard {
 
         Button botaoSair = new Button("Sair");
 
+        botaoSair.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaLogin telaLogin = new TelaLogin(stage);
+                stage.setScene(telaLogin.criarCena());
+                stage.setTitle("Treinamento e Capacitação");
+            }
+        });
+
         HBox cabecalho = new HBox(30);
         cabecalho.setAlignment(Pos.CENTER_LEFT);
         cabecalho.setPadding(new Insets(15));
@@ -56,6 +67,17 @@ public class TelaDashboard {
         botaoInstituicoes.getStyleClass().add("botao-menu");
         botaoParticipacoes.getStyleClass().add("botao-menu");
         botaoCertificados.getStyleClass().add("botao-menu");
+
+        EventHandler<ActionEvent> abrirTreinamentos = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaTreinamentos telaTreinamentos = new TelaTreinamentos(stage);
+                stage.setScene(telaTreinamentos.criarCena());
+                stage.setTitle("Treinamentos");
+            }
+        };
+
+        botaoTreinamentos.setOnAction(abrirTreinamentos);
 
         VBox menuLateral = new VBox(10);
         menuLateral.setPadding(new Insets(15));
@@ -96,6 +118,9 @@ public class TelaDashboard {
         botaoCadastrarTreinamento.getStyleClass().add("botao-atalho");
         botaoConsultarTreinamento.getStyleClass().add("botao-atalho");
         botaoCadastrarBombeiro.getStyleClass().add("botao-atalho");
+
+        botaoCadastrarTreinamento.setOnAction(abrirTreinamentos);
+        botaoConsultarTreinamento.setOnAction(abrirTreinamentos);
 
         HBox atalhos = new HBox(10);
         atalhos.getChildren().addAll(
