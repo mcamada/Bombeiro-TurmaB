@@ -26,7 +26,7 @@ public class App extends Application {
         Font fCampos = Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 20);
         Font fInput = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20);
         
-        Label titulo = new Label("                                    Login");
+        Label titulo = new Label("Login");
         
         GridPane campos = new GridPane();
         
