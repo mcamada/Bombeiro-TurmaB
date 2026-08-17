@@ -1,10 +1,10 @@
 .root {
-    -fx-background-color: #f2f2f2;
+    -fx-background-color: mediumturquoise;
     -fx-padding: 40px;
 }
 
 #titulo {
-    -fx-background-color: #1565c0;
+    -fx-background-color: lightseagreen;
     -fx-text-fill: white;
     -fx-alignment: center;
     -fx-padding: 15px;
@@ -18,7 +18,7 @@
 .text-field,
 .password-field {
     -fx-background-color: white;
-    -fx-border-color: #999999;
+    -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -31,3 +31,20 @@
     -fx-border-width: 2px;
 }
 
+
+#campoUsuario, #campoSenha {
+    -fx-background-color: aquamarine;  
+    -fx-border-color: black
+}
+
+#usuario, #senha {
+    -fx-font-weight: bold;
+    
+}
+
+#botaoEntrar {
+    -fx-font-size: 16px; 
+    -fx-font-weight: bold;
+    -fx-background-color: lightseagreen;
+    -fx-text-fill: white;
+}
