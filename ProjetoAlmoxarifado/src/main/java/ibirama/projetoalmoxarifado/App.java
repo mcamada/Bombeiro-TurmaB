@@ -49,10 +49,42 @@ public class App extends Application {
               Stage cadastro = new Stage();
               VBox rootCadastro = new VBox();
               
-              rootCadastro.getChildren().add(new Label("Atualizar item"));
-              Scene cenarioCadastro = new Scene (rootCadastro,100,100);
+              rootCadastro.getChildren().add(new Label("Cadastro de item"));
+              Label nomeItem = new Label("Nomme do item");
+              Label categoriaItem = new Label("Categoria do item");
+              Label quantInicial = new Label("Quantidade inicial");
+              Label unidadeMedida = new Label("Unidade de medida");
+              Label localizacaoEstoque = new Label("Localização no estoque");
+              Label nivelMinimoEstoque = new Label("Nível mínimo de estoque");
+              
+              TextField nome = new TextField();
+              TextField categoria = new TextField();
+              TextField QuantidadeI = new TextField();
+              TextField unidadeM = new TextField();
+              TextField LocalizacaoE = new TextField();
+              TextField NivelME = new TextField();
+              
+              Button btCancelar = new Button ("Cancelar");
+              Button btConfirmar = new Button ("Confirmar");
+              ButtonBar painelBt = new ButtonBar();
+              painelBt.getButtons().addAll(btCancelar, btConfirmar);
+              
+              
+              rootCadastro.getChildren().addAll(nomeItem,nome, categoriaItem,categoria,  quantInicial,QuantidadeI, unidadeMedida,unidadeM,  localizacaoEstoque,LocalizacaoE, nivelMinimoEstoque,NivelME, painelBt);
+              Scene cenarioCadastro = new Scene (rootCadastro,800,600);
               cadastro.setScene(cenarioCadastro);
               cadastro.show();
+              
+              Stage consulta = new Stage();
+              VBox rootConsulta = new VBox();
+              
+              rootConsulta.getChildren().add(new Label("Consulta de item"));
+              rootConsulta.getChildren().addAll(nomeItem, nome, categoriaItem, categoria, quantInicial,QuantidadeI, unidadeM, localizacaoEstoque,LocalizacaoE,nivelMinimoEstoque, NivelME, painelBt);
+              
+                event.consume();
+               Scene cenarioConsulta = new Scene (rootConsulta,800,600);
+              consulta.setScene(cenarioConsulta);
+              consulta.show();
             }
         };
         btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
@@ -64,5 +96,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
+        
 }
