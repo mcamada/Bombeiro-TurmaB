@@ -1,15 +1,16 @@
 package com.mycompany.telabombeiro;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -75,6 +76,28 @@ public class App extends Application {
         scene.getStylesheets().add("/css/style.css");
         stage.setTitle("Sistema de Teste do JavaFX");
         stage.setScene(scene);
+        
+        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event){
+                Stage cadastro = new Stage();
+                VBox rootCadastro = new VBox();
+                
+                rootCadastro.getChildren().add(new Label("teste"));
+                Scene cenarioCadastro = new Scene(rootCadastro, 800, 600);
+                
+                cadastro.setScene(cenarioCadastro);
+                
+                cadastro.show();
+            }
+            
+            
+            
+            
+        };
+        botaoEntrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
+        
+        
         stage.show();
     }
 
