@@ -80,15 +80,13 @@ public class App extends Application {
         EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event){
-                Stage cadastro = new Stage();
-                VBox rootCadastro = new VBox();
+                Stage ocorrencias = new Stage();
+                VBox rootTelaOcorrencias = new VBox();
                 
-                rootCadastro.getChildren().add(new Label("teste"));
-                Scene cenarioCadastro = new Scene(rootCadastro, 800, 600);
                 
-                cadastro.setScene(cenarioCadastro);
-                
-                cadastro.show();
+                Scene cenarioCadastro = new Scene(rootTelaOcorrencias, 800, 600);
+                ocorrencias.setScene(cenarioCadastro);
+                ocorrencias.show();
             }
             
             
