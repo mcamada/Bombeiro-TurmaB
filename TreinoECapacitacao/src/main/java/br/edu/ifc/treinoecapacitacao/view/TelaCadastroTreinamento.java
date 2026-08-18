@@ -1,5 +1,8 @@
 package br.edu.ifc.treinoecapacitacao.view;
 
+import br.edu.ifc.treinoecapacitacao.App;
+import br.edu.ifc.treinoecapacitacao.model.Treinamento;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -196,11 +199,34 @@ public class TelaCadastroTreinamento {
             return;
         }
 
+        String tipo = "Interno";
+        String instituicao = "";
+
+        if (tipoExterno.isSelected()) {
+            tipo = "Externo";
+            instituicao = campoInstituicao.getText();
+        }
+
+        Treinamento treinamento = new Treinamento(
+                campoNome.getText(),
+                tipo,
+                campoDescricao.getText(),
+                campoCargaHoraria.getValue(),
+                campoDataInicio.getText(),
+                campoDataFim.getText(),
+                campoInstrutor.getText(),
+                instituicao,
+                campoLocal.getText()
+        );
+
+        App.treinamentos.add(treinamento);
+
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Cadastro");
-        alerta.setHeaderText("Dados do treinamento preenchidos.");
-        alerta.setContentText("O armazenamento dos dados ainda não foi implementado.");
+        alerta.setHeaderText("Treinamento cadastrado.");
         alerta.show();
+
+        limparCampos();
     }
 
     private void limparCampos() {

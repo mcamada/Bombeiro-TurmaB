@@ -1,7 +1,8 @@
 package br.edu.ifc.treinoecapacitacao.view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import br.edu.ifc.treinoecapacitacao.App;
+import br.edu.ifc.treinoecapacitacao.model.Treinamento;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -96,7 +97,7 @@ public class TelaDashboard {
         Label tituloResumo = new Label("Visão geral dos treinamentos");
         tituloResumo.getStyleClass().add("titulo-secao");
 
-        VBox cardPlanejados = criarCard("Planejados", "0");
+        VBox cardPlanejados = criarCard("Planejados", String.valueOf(App.treinamentos.size()));
         VBox cardAndamento = criarCard("Em andamento", "0");
         VBox cardConcluidos = criarCard("Concluídos", "0");
         VBox cardParticipantes = criarCard("Participantes", "0");
@@ -127,7 +128,14 @@ public class TelaDashboard {
                 stage.setTitle("Cadastrar Treinamento");
             }
         });
-        botaoConsultarTreinamento.setOnAction(abrirTreinamentos);
+        botaoConsultarTreinamento.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaConsultaTreinamentos consulta = new TelaConsultaTreinamentos(stage);
+                stage.setScene(consulta.criarCena());
+                stage.setTitle("Consultar Treinamentos");
+            }
+        });
 
         HBox atalhos = new HBox(10);
         atalhos.getChildren().addAll(
@@ -138,10 +146,8 @@ public class TelaDashboard {
 
         Label tituloRecentes = new Label("Treinamentos recentes");
         tituloRecentes.getStyleClass().add("titulo-secao");
-        ObservableList<String> treinamentos = FXCollections.observableArrayList(
-                "Nenhum treinamento cadastrado"
-        );
-        ListView<String> listaTreinamentos = new ListView<String>(treinamentos);
+        ListView<Treinamento> listaTreinamentos
+                = new ListView<Treinamento>(App.treinamentos);
         listaTreinamentos.setPrefHeight(130);
         listaTreinamentos.getStyleClass().add("lista-treinamentos");
 

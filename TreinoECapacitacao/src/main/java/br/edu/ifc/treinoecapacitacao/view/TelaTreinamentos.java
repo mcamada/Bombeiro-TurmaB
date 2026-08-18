@@ -41,6 +41,15 @@ public class TelaTreinamentos {
             }
         });
 
+        botaoConsultar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaConsultaTreinamentos consulta = new TelaConsultaTreinamentos(stage);
+                stage.setScene(consulta.criarCena());
+                stage.setTitle("Consultar Treinamentos");
+            }
+        });
+
         botaoVoltar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
