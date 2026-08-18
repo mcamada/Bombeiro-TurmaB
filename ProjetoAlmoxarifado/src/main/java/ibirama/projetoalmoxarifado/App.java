@@ -50,7 +50,7 @@ public class App extends Application {
               VBox rootCadastro = new VBox();
               
               rootCadastro.getChildren().add(new Label("Cadastro de item"));
-              Label nomeItem = new Label("Nomme do item");
+              Label nomeItem = new Label("Nome do item");
               Label categoriaItem = new Label("Categoria do item");
               Label quantInicial = new Label("Quantidade inicial");
               Label unidadeMedida = new Label("Unidade de medida");
@@ -70,7 +70,7 @@ public class App extends Application {
               painelBt.getButtons().addAll(btCancelar, btConfirmar);
               
               
-              rootCadastro.getChildren().addAll(nomeItem,nome, categoriaItem,categoria,  quantInicial,QuantidadeI, unidadeMedida,unidadeM,  localizacaoEstoque,LocalizacaoE, nivelMinimoEstoque,NivelME, painelBt);
+              rootCadastro.getChildren().addAll(nomeItem,nome, categoriaItem,categoria,  quantInicial,QuantidadeI, unidadeMedida,unidadeM,  localizacaoEstoque,LocalizacaoE, nivelMinimoEstoque,NivelME, btCancelar, btConfirmar);
               Scene cenarioCadastro = new Scene (rootCadastro,800,600);
               cadastro.setScene(cenarioCadastro);
               cadastro.show();
@@ -79,12 +79,23 @@ public class App extends Application {
               VBox rootConsulta = new VBox();
               
               rootConsulta.getChildren().add(new Label("Consulta de item"));
-              rootConsulta.getChildren().addAll(nomeItem, nome, categoriaItem, categoria, quantInicial,QuantidadeI, unidadeM, localizacaoEstoque,LocalizacaoE,nivelMinimoEstoque, NivelME, painelBt);
+              Label quantDisponivel = new Label("Quantidade disponível");
+              TextField quantD = new TextField();
               
-                event.consume();
-               Scene cenarioConsulta = new Scene (rootConsulta,800,600);
+              
+              rootCadastro.getChildren().addAll(nomeItem,nome, categoriaItem,categoria,localizacaoEstoque,LocalizacaoE,quantDisponivel, quantD,  btCancelar, btConfirmar);
+              Scene cenarioConsulta = new Scene (rootConsulta,800,600);
               consulta.setScene(cenarioConsulta);
               consulta.show();
+              
+              Stage atulizacao = new Stage ();
+              VBox rootAtualizacao = new VBox ();
+              
+              Label quantidadeAjusteOuReposicao = new Label ("Quantidade para reposição ou ajuste");
+              Label descricao = new Label ("Descrição");
+              TextField descrição = new TextField();
+              TextField quantAR = new TextField();
+              rootAtualizacao.getChildren().addAll(quantidadeAjusteOuReposicao, quantAR, localizacaoEstoque, LocalizacaoE,nivelMinimoEstoque,NivelME, descricao, descrição );
             }
         };
         btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
@@ -96,5 +107,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+        }
         
-}
