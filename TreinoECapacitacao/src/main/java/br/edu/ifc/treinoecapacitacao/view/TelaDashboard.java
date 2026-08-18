@@ -119,7 +119,14 @@ public class TelaDashboard {
         botaoConsultarTreinamento.getStyleClass().add("botao-atalho");
         botaoCadastrarBombeiro.getStyleClass().add("botao-atalho");
 
-        botaoCadastrarTreinamento.setOnAction(abrirTreinamentos);
+        botaoCadastrarTreinamento.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaCadastroTreinamento cadastro = new TelaCadastroTreinamento(stage);
+                stage.setScene(cadastro.criarCena());
+                stage.setTitle("Cadastrar Treinamento");
+            }
+        });
         botaoConsultarTreinamento.setOnAction(abrirTreinamentos);
 
         HBox atalhos = new HBox(10);

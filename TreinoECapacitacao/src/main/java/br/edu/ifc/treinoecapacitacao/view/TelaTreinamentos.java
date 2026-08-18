@@ -32,6 +32,15 @@ public class TelaTreinamentos {
         botaoCadastrar.getStyleClass().add("botao-principal");
         botaoConsultar.getStyleClass().add("botao-principal");
 
+        botaoCadastrar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaCadastroTreinamento cadastro = new TelaCadastroTreinamento(stage);
+                stage.setScene(cadastro.criarCena());
+                stage.setTitle("Cadastrar Treinamento");
+            }
+        });
+
         botaoVoltar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

@@ -68,3 +68,9 @@
 .lista-treinamentos {
     -fx-border-color: #cccccc;
 }
+
+.text-area,
+.text-field,
+.spinner {
+    -fx-pref-width: 260px;
+}
