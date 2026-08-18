@@ -89,6 +89,8 @@ public class App extends Application {
         );
 
         Button voltar = new Button("← Voltar");
+        
+        voltar.setStyle("-fx-background-color:#d31111;"+ "-fx-background-radius: 8;"+"-fx-font-size:25;"+"-fx-text-fill:white;" + "-fx-font-weigth:bold;");
 
         voltar.setOnAction(e -> {
             mostrarInicio();
@@ -121,11 +123,13 @@ public class App extends Application {
                 createBombeiroCard("#CARLOSEDUARDO","🔥 Carlos Eduardo","Sub tenente","Chega em aproximadamente 45 minutos","Indo ao local","#a85500"
                 )
         );
-        // BOTÃO DE CADASTRO
-        // ainda n faz nada , deixar pra próxima aula , mas ja ta estilizado
         Button cadastrar = new Button(
                 "+ Cadastrar Bombeiro"
         );
+        cadastrar.setOnMouseClicked(e -> {
+            mostrarCadastro(
+            );
+        });
 
         cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;"
         );
@@ -136,6 +140,28 @@ public class App extends Application {
         Scene scene = new Scene(root,1860,1000
         );
         janela.setScene(scene);
+    }
+    private void mostrarCadastro(){
+        VBox root = new VBox();
+
+        root.setStyle("-fx-background-color: #f4f5f7;"
+        );
+        HBox header = createHeader();
+        
+        
+        
+        GridPane Formulario = new GridPane();
+        
+        Label name = new Label();
+        Label id = new Label();
+        Label password = new Label();
+        Label Patente = new Label();
+        root.getChildren().addAll(header,Formulario);
+        Scene scene = new Scene(root,1860,1000
+        );
+        janela.setScene(scene);
+        
+        
     }
     private HBox createHeader() {
 

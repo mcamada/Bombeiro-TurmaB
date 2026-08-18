@@ -15,6 +15,12 @@
             <artifactId>javafx-controls</artifactId>
             <version>13</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>25-ea+21</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
