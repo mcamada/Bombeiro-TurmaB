@@ -93,6 +93,16 @@ public class App extends Application {
                 TextField infMin = new TextField();
 
                 Button btSalve = new Button("Salvar Cadastro");
+                btSalve.setDisable(true);
+
+                btSalve.disableProperty().bind(
+                        infName.textProperty().isEmpty()
+                                .or(infCategoria.textProperty().isEmpty())
+                                .or(infQuant.textProperty().isEmpty())
+                                .or(infUnidMedid.textProperty().isEmpty())
+                                .or(infLocal.textProperty().isEmpty())
+                                .or(infMin.textProperty().isEmpty())
+                );
 
                 cRoot.getChildren().addAll(txCadastro, tName, infName, tCategoria,
                         infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
@@ -101,6 +111,7 @@ public class App extends Application {
                 Scene cadastroCena = new Scene(cRoot, 640, 480);
                 cadastroTela.setTitle("Cadastrar Itens");
                 cadastroTela.setScene(cadastroCena);
+                stage.close();
                 cadastroTela.show();
 
                 btSalve.setOnMouseClicked((new EventHandler<MouseEvent>() {
@@ -118,9 +129,10 @@ public class App extends Application {
 
                         itens.add(novoItem);
 
-                        cadastroTela.close();
                         Alert aviso = new Alert(Alert.AlertType.INFORMATION);
                         aviso.setHeaderText("Item Cadastrado com Sucesso");
+                        cadastroTela.close();
+                        stage.show();
                         aviso.show();
 
                     }
@@ -140,13 +152,12 @@ public class App extends Application {
                 HBox botoes = new HBox();
                 Button btFiltrar = new Button("Filtrar");
                 Button btExcluir = new Button("Excluir");
-                Button btAtualizar = new Button("Atualizar");
                 Button btVoltar = new Button("Voltar");
 
                 //Excluir
                 btExcluir.setDisable(true);
 
-                botoes.getChildren().addAll(btFiltrar, btExcluir, btAtualizar, btVoltar);
+                botoes.getChildren().addAll(btFiltrar, btExcluir, btVoltar);
 
                 btExcluir.setOnMouseClicked(event -> {
 
@@ -237,11 +248,21 @@ public class App extends Application {
 
                 Tabela.getColumns().addAll(caixaExcluir, nome, categoria, quant, unidMedid, local, min);
 
+                Tabela.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2) {
+                        Item itemSelecionado = Tabela.getSelectionModel().getSelectedItem();
+                        if (itemSelecionado == null) {
+                            return;
+                        }
+                    }
+                });
+
                 cRoot.getChildren().addAll(txConsultar, botoes, Tabela);
 
                 Scene consultaCena = new Scene(cRoot, 640, 480);
                 consultaTela.setTitle("Consultar Itens");
                 consultaTela.setScene(consultaCena);
+                stage.close();
                 consultaTela.show();
 
                 //Atualizar Item
@@ -271,6 +292,16 @@ public class App extends Application {
                         TextField infMin = new TextField();
 
                         Button btSalve = new Button("Atualizar Item");
+                        btSalve.setDisable(true);
+
+                        btSalve.disableProperty().bind(
+                                infName.textProperty().isEmpty()
+                                        .or(infCategoria.textProperty().isEmpty())
+                                        .or(infQuant.textProperty().isEmpty())
+                                        .or(infUnidMedid.textProperty().isEmpty())
+                                        .or(infLocal.textProperty().isEmpty())
+                                        .or(infMin.textProperty().isEmpty())
+                        );
 
                         cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria,
                                 infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
@@ -279,6 +310,7 @@ public class App extends Application {
                         Scene cadastroCena = new Scene(cRoot, 640, 480);
                         atualizarTela.setTitle("Atualizar Item");
                         atualizarTela.setScene(cadastroCena);
+                        consultaTela.close();
                         atualizarTela.show();
 
                         btSalve.setOnMouseClicked((new EventHandler<MouseEvent>() {
@@ -287,6 +319,7 @@ public class App extends Application {
                                 atualizarTela.close();
                                 Alert aviso = new Alert(Alert.AlertType.INFORMATION);
                                 aviso.setHeaderText("Item Atualizado com Sucesso");
+                                consultaTela.show();
                                 aviso.show();
 
                             }
@@ -318,7 +351,15 @@ public class App extends Application {
                         TextField infMin = new TextField();
 
                         Button btFiltar = new Button("Filtar Itens");
+                        btFiltar.setDisable(true);
 
+                        btFiltar.disableProperty().bind(
+                                (infCategoria.textProperty().isEmpty())
+                                        .or(infQuant.textProperty().isEmpty())
+                                        .or(infUnidMedid.textProperty().isEmpty())
+                                        .or(infLocal.textProperty().isEmpty())
+                                        .or(infMin.textProperty().isEmpty())
+                        );
                         cRoot.getChildren().addAll(txFiltar, tCategoria,
                                 infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
                                 infLocal, tMin, infMin, btFiltar);
@@ -326,11 +367,13 @@ public class App extends Application {
                         Scene cadastroCena = new Scene(cRoot, 640, 480);
                         filtarTela.setTitle("Filtar Item");
                         filtarTela.setScene(cadastroCena);
+                        consultaTela.close();
                         filtarTela.show();
 
                         btFiltar.setOnMouseClicked((new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
+                                consultaTela.show();
                                 filtarTela.close();
 
                             }
@@ -341,6 +384,7 @@ public class App extends Application {
                 EventHandler<MouseEvent> voltar = new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent t) {
+                        stage.show();
                         consultaTela.close();
                     }
                 };
