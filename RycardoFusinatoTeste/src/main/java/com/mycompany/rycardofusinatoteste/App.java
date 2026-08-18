@@ -1,6 +1,7 @@
 package com.mycompany.rycardofusinatoteste;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -26,38 +27,48 @@ public class App extends Application {
     
         GridPane gpCampos = new GridPane();
 
-        Label lbTipo = new Label("Tipo de ocorrencia");
+       Label lbTipo = new Label("Tipo de ocorrencia :");
         lbTipo.setId("lbTipo");
         lbTipo.getStyleClass().add("rotulo");
 
-        Label lbDataHora = new Label("Data e hora");
+        Label lbDataHora = new Label("Data e hora :");
+        lbDataHora.setId("lbDataHora");
         lbDataHora.getStyleClass().add("rotulo");
         
-        Label lbLocal = new Label("Local");
+        Label lbLocal = new Label("Local :");
+        lbLocal.setId("lbLocal");
         lbLocal.getStyleClass().add("rotulo");
         
-        Label lbDescrição = new Label("Descrissão");
+        Label lbDescrição = new Label("Descrição :");
+        lbDescrição.setId("lbDescrição");
         lbDescrição.getStyleClass().add("rotulo");
         
-        Label lbEquipe = new Label("Equipe Envolvida");
+        Label lbEquipe = new Label("Equipe Envolvida :");
+        lbEquipe.setId("lbEquipe");
         lbEquipe.getStyleClass().add("rotulo");
 
         TextField tfTipo = new TextField();
+        tfTipo.setId("tfTipo");
         tfTipo.getStyleClass().add("campo");
 
         TextField tfDataHora = new TextField();
+        tfDataHora.setId("tfDataHora");
         tfDataHora.getStyleClass().add("campo");
         
         TextField tfLocal = new TextField();
+        tfLocal.setId("tfLocal");
         tfLocal.getStyleClass().add("campo");
         
         TextField tfDescrição = new TextField();
+        tfDescrição.setId("tfDescrição");
         tfDescrição.getStyleClass().add("campo");
         
         TextField tfEquipe = new TextField();
+        tfEquipe.setId("tfEquipe");
         tfEquipe.getStyleClass().add("campo");
         
         Button btCadastrar = new Button("Cadastrar");
+        btCadastrar.setId("btCadastrar");
         btCadastrar.getStyleClass().add("botao");
 
         gpCampos.add(lbTipo, 0, 0);
@@ -71,18 +82,24 @@ public class App extends Application {
         gpCampos.add(tfDescrição, 0, 7);
         gpCampos.add(tfEquipe, 0, 9);
         gpCampos.add(btCadastrar, 0, 11);
+        
+        gpCampos.setAlignment(Pos.CENTER);
 
         root.setCenter(gpCampos);
 
         ButtonBar painelBt = new ButtonBar();
         
         Button btInicio = new Button("Inicio");
+        btInicio.setId("btInicio");
         btInicio.getStyleClass().add("botao");
         
         Button btConsultar = new Button("Consultar");
+        btConsultar.setId("btConsultar");
         btConsultar.getStyleClass().add("botao");
         
         Button btCadastrar2 = new Button("Cadastrar");
+        btCadastrar2.setId("btCadastrar2");
+        btCadastrar2.getStyleClass().add("botao");
 
         painelBt.getButtons().addAll(btInicio, btCadastrar2, btConsultar);
 
