@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,14 +19,19 @@ public class App extends Application {
 
         BorderPane root = new BorderPane();
 
-        VBox menu = new VBox(15);
-        menu.setPrefWidth(250);
+        VBox menu = new VBox(12);
+        menu.setPrefWidth(330);
         menu.setStyle(
                 "-fx-background-color:#5B1A1F; "
-                + "-fx-padding;30;"
+                + "-fx-padding;45;"
         );
         Label titulo = new Label("Sistema de \nOcorrencia");
-        titulo.setStyle("-fx-text-fill:white; -fx-font-size:28px");
+        titulo.setStyle(
+                "-fx-text-fill:white; " + 
+                "-fx-font-size:40px;"
+        );
+                       
+                     
 
         Button btOcorencias = new Button("Ocorrências");
         Button btComunicacao = new Button("Comunicação");
@@ -81,25 +85,49 @@ public class App extends Application {
                         "-fx-background-radius: 30;" +
                         "-fx-padding 40;"
         );
-        Label lblLogin = new Label("SISTEMA DE DESPACHO E COMUNICAÇÃO");
+        Label tituloLogin = new Label("SISTEMA DE DESPACHO E COMUNICAÇÃO");
         
         tituloLogin.setStyle(
         "-fx-text-fill: #5B171F;" +
                 "-fx-font-size: 21px;" +
-                "-fx-"
+                "-fx-font-weight: bold;"
         );
+        Label loginLabel = new Label("Login");
+        
+        loginLabel.setPrefWidth(500);
+        loginLabel.setAlignment(Pos.CENTER);
+        
+        loginLabel.setStyle(
+                "-fx-background-color: #5B171F;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-size: 20px;" +
+                        "-fx-background-radius: 20;" +
+                        "-fx-padding: 8;"
+        );
+        
         TextField txtNome = new TextField();
         txtNome.setPromptText("Nome");
+        txtNome.setPrefHeight(40);
 
         PasswordField txtSenha = new PasswordField();
         txtSenha.setPromptText("Senha");
+        txtSenha.setPrefHeight(40);
 
         CheckBox Lembrar = new CheckBox("Lembrar-me");
 
         Button btEntrar = new Button("Entrar");
-
+        btEntrar.setPrefHeight(300);
+        btEntrar.setPrefHeight(40);
+        
+        btEntrar.setStyle(
+                "-fx-background-color:#C9A5A5" +
+                        "-fx-text-fill: #5B171F;" +
+                        "-fx-font-size: 17px;" +
+                        "-fx-background-radius: 20;"
+        );
+        
         login.getChildren().addAll(
-                lblLogin,
+                tituloLogin,
                 txtNome,
                 txtSenha,
                 Lembrar,
@@ -109,7 +137,26 @@ public class App extends Application {
         root.setLeft(menu);
         root.setCenter(login);
 
-        Scene scene = new Scene(root, 900, 500);
+        root.setStyle(
+                "-fx-background-color: #C9A5A5;"
+        );
+        
+        btEntrar.setOnAction(e ->{
+            TelaOcorrencias tela = new TelaOcorrencias();
+            tela.mostrar(stage);
+        });
+        
+        btComunicacao.setOnAction(e -> {
+            TelaComunicacao tela = new TelaComunicacao();
+            tela.mostrar(stage);
+        });
+        
+        Scene scene = new Scene(root, 1200, 700);
+        
+        stage.setTitle("Sistema de Ocorrencias");
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
     public static void main(String[] args) {
