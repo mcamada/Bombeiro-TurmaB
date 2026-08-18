@@ -1,7 +1,10 @@
 package com.ibirama.gestaodeviaturas;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -11,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -18,6 +22,8 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
+    
+    List<Viatura> viaturas = new ArrayList<>();
 
     @Override
     public void start(Stage stage) {
@@ -40,11 +46,15 @@ public class App extends Application {
             login(stage);
         });
         
-        Label titleHome = new Label("Gestão de Viaturas");
+        Label title = new Label("Gestão de Viaturas");
+        title.setFont(Font.font(30));
         
-        root.getChildren().addAll(buttons, titleHome);
+        root.getChildren().addAll(buttons, title);
         
-        Scene scene = new Scene(root, 480, 480);
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
+        
+        Scene scene = new Scene(root, 480, 160);
         stage.setScene(scene);
     }
     
@@ -52,6 +62,7 @@ public class App extends Application {
         VBox root = new VBox();
         
         Label title = new Label("Cadastrar");
+        title.setFont(Font.font(30));
         
         Label lbLogin = new Label("Login:");
         TextField login = new TextField();
@@ -63,7 +74,7 @@ public class App extends Application {
         ButtonBar buttons = new ButtonBar();
         
         Button registrar = new Button("Regitrar");
-        Button voltar = new Button("Voltar");
+        Button voltar = new Button("<-");
         voltar.setOnAction(event -> {
             firstWindow(stage);
         });
@@ -75,6 +86,9 @@ public class App extends Application {
         
         root.getChildren().addAll(title, lbLogin, login, lbPassword, password, lbPerfil, perfil, buttons);
         
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
+        
         Scene scene = new Scene(root, 480, 480);
         stage.setScene(scene);
     }
@@ -83,6 +97,7 @@ public class App extends Application {
         VBox root = new VBox();
         
         Label title = new Label("Login");
+        title.setFont(Font.font(30));
         
         Label lbLogin = new Label("Login:");
         TextField login = new TextField();
@@ -91,7 +106,7 @@ public class App extends Application {
         
         ButtonBar buttons = new ButtonBar();
         
-        Button voltar = new Button("Voltar");
+        Button voltar = new Button("<-");
         voltar.setOnAction(eh -> {
             firstWindow(stage);
         });
@@ -104,6 +119,9 @@ public class App extends Application {
         
         root.getChildren().addAll(title, lbLogin, login, lbPassword, password, buttons);
         
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
+        
         Scene scene = new Scene(root, 480, 480);
         stage.setScene(scene);
     }
@@ -112,6 +130,9 @@ public class App extends Application {
         VBox root = new VBox();
         
         Label title = new Label("Consulta de Viaturas");
+        title.setFont(Font.font(30));
+        
+        Label lbFilter = new Label("Filtros");
         
         HBox filters = new HBox();
         
@@ -123,17 +144,26 @@ public class App extends Application {
         
         VBox viaturas = new  VBox();
         
-        HBox labels = new HBox();
+        viaturas.getChildren().addAll(labels, );
         
-        Label lbViatura = new Label("Viatura");
-        Label lbTipo = new Label("Tipo");
-        Label lbLocalizacao = new Label("Localizacao");
-        Label lbStatus = new Label("Statu");
+        Button addBt = new Button("+");
+        addBt.setOnAction(eh -> {
+            addViaturaWindow();
+        });
         
-        labels.getChildren().addAll(lbViatura, lbTipo, lbLocalizacao, lbStatus);
+        root.getChildren().addAll(title, lbFilter, filters, viaturas, addBt);
         
-        HBox viaturaBox = new HBox();
-        Button moreInfos = new Button("...");
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
+        
+        Scene scene = new Scene(root, 640, 480);
+        stage.setScene(scene);
+        
+    }
+    
+    public static HBox viaturaCard(Viatura viatura) {
+        HBox card = new HBox();
+        
         Label nomeViatura = new Label("Viatura 1");
         Label localViatura = new Label("Quartel 3");
         Label tipoViatura = new Label("Resgate");
@@ -144,27 +174,16 @@ public class App extends Application {
         });
         Button deleteBt = new Button("Delete");
         
-        viaturaBox.getChildren().addAll(moreInfos, nomeViatura, tipoViatura, localViatura, statusViatura, editBt, deleteBt);
+        card.getChildren().addAll( nomeViatura, tipoViatura, localViatura, statusViatura, editBt, deleteBt);
         
-        
-        viaturas.getChildren().addAll(labels, viaturaBox);
-        
-        Button addBt = new Button("+");
-        addBt.setOnAction(eh -> {
-            addViaturaWindow();
-        });
-        
-        root.getChildren().addAll(title, filters, viaturas, addBt);
-        
-        Scene scene = new Scene(root, 640, 480);
-        stage.setScene(scene);
-        
+        return card;
     }
     
     public static void addViaturaWindow() {
         VBox root = new VBox();
         
         Label title = new Label("Cadastrar Viatura");
+        title.setFont(Font.font(30));
         
         HBox columns = new HBox();
         VBox column1 = new VBox();
@@ -182,15 +201,20 @@ public class App extends Application {
         TextField tipo = new TextField();
         Label lbModelo = new Label("Modelo:");
         TextField modelo = new TextField();
-        Label lbStatus = new Label("Statu:");
+        Label lbStatus = new Label("Status:");
         TextField status = new TextField();
         column2.getChildren().addAll(lbTipo, tipo, lbModelo, modelo, lbStatus, status);
         
         columns.getChildren().addAll(column1, column2);
         
+        columns.setSpacing(15);
+        
         Button update = new Button("Cadastrar");
         
         root.getChildren().addAll(title, columns, update);
+        
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
         
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -201,6 +225,7 @@ public class App extends Application {
         VBox root = new VBox();
         
         Label title = new Label("Atualizar Viatura");
+        title.setFont(Font.font(30));
         
         HBox columns = new HBox();
         VBox column1 = new VBox();
@@ -224,9 +249,14 @@ public class App extends Application {
         
         columns.getChildren().addAll(column1, column2);
         
+        columns.setSpacing(15);
+        
         Button update = new Button("Atualizar");
         
         root.getChildren().addAll(title, columns, update);
+        
+        root.setPadding(new Insets(15));
+        root.setSpacing(20);
         
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -237,4 +267,22 @@ public class App extends Application {
         launch();
     }
 
+}
+
+class Viatura {
+    String prefixo;
+    String placa;
+    String fabricacao;
+    String modelo;
+    String tipo;
+    String status;
+
+    public Viatura(String prefixo, String placa, String fabricacao, String modelo, String tipo, String status) {
+        this.prefixo = prefixo;
+        this.placa = placa;
+        this.fabricacao = fabricacao;
+        this.modelo = modelo;
+        this.tipo = tipo;
+        this.status = status;
+    }
 }
