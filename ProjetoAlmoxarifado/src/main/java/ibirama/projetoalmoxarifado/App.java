@@ -95,7 +95,7 @@ public class App extends Application {
               Label descricao = new Label ("Descrição");
               TextField descrição = new TextField();
               TextField quantAR = new TextField();
-              rootAtualizacao.getChildren().addAll(quantidadeAjusteOuReposicao, quantAR, localizacaoEstoque, LocalizacaoE,nivelMinimoEstoque,NivelME, descricao, descrição );
+              rootAtualizacao.getChildren().addAll(quantidadeAjusteOuReposicao, quantAR, localizacaoEstoque, LocalizacaoE,nivelMinimoEstoque,NivelME, descricao, descrição,painelBt );
             }
         };
         btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
