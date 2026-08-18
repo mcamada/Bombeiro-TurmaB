@@ -2,8 +2,6 @@ package com.ibirama.gestaodeviaturas;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -99,7 +97,7 @@ public class App extends Application {
         });
         Button loginBt = new Button("Login");
         loginBt.setOnAction(eh -> {
-            firstWindow(stage);
+            dashboard(stage);
         });
         
         buttons.getButtons().addAll(voltar, loginBt);
@@ -117,11 +115,11 @@ public class App extends Application {
         
         HBox filters = new HBox();
         
-        TextField tipo = new TextField("Tipo");
-        TextField status = new TextField("status");
-        TextField localizacao = new TextField("localizacao");
+        TextField tipo = new TextField();
+        TextField status = new TextField();
+        TextField localizacao = new TextField();
         
-        filters.getChildren().addAll(tipo, status, localizacao);
+        filters.getChildren().addAll(new Label("Tipo: "), tipo, new Label("Status: "), status, new Label("Localização: "), localizacao);
         
         VBox viaturas = new  VBox();
         
@@ -134,13 +132,105 @@ public class App extends Application {
         
         labels.getChildren().addAll(lbViatura, lbTipo, lbLocalizacao, lbStatus);
         
-        HBox ViaturaBox = new HBox();
+        HBox viaturaBox = new HBox();
         Button moreInfos = new Button("...");
         Label nomeViatura = new Label("Viatura 1");
+        Label localViatura = new Label("Quartel 3");
+        Label tipoViatura = new Label("Resgate");
+        Label statusViatura = new Label("disponível");
+        Button editBt = new Button("Edit");
+        editBt.setOnAction(eh -> {
+            editWindow();
+        });
+        Button deleteBt = new Button("Delete");
+        
+        viaturaBox.getChildren().addAll(moreInfos, nomeViatura, tipoViatura, localViatura, statusViatura, editBt, deleteBt);
         
         
-        viaturas.getChildren().addAll(labels);
+        viaturas.getChildren().addAll(labels, viaturaBox);
         
+        Button addBt = new Button("+");
+        addBt.setOnAction(eh -> {
+            addViaturaWindow();
+        });
+        
+        root.getChildren().addAll(title, filters, viaturas, addBt);
+        
+        Scene scene = new Scene(root, 640, 480);
+        stage.setScene(scene);
+        
+    }
+    
+    public static void addViaturaWindow() {
+        VBox root = new VBox();
+        
+        Label title = new Label("Cadastrar Viatura");
+        
+        HBox columns = new HBox();
+        VBox column1 = new VBox();
+        VBox column2 = new VBox();
+        
+        Label lbPrefixo = new Label("Prefixo:");
+        TextField prefixo = new TextField();
+        Label lbPlaca = new Label("Placa:");
+        TextField placa = new TextField();
+        Label lbFabricacao = new Label("Fabricacao:");
+        TextField fabricacao = new TextField();
+        column1.getChildren().addAll(lbPrefixo, prefixo, lbPlaca, placa, lbFabricacao, fabricacao);
+        
+        Label lbTipo = new Label("Tipo:");
+        TextField tipo = new TextField();
+        Label lbModelo = new Label("Modelo:");
+        TextField modelo = new TextField();
+        Label lbStatus = new Label("Statu:");
+        TextField status = new TextField();
+        column2.getChildren().addAll(lbTipo, tipo, lbModelo, modelo, lbStatus, status);
+        
+        columns.getChildren().addAll(column1, column2);
+        
+        Button update = new Button("Cadastrar");
+        
+        root.getChildren().addAll(title, columns, update);
+        
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    
+    public static void editWindow() {
+        VBox root = new VBox();
+        
+        Label title = new Label("Atualizar Viatura");
+        
+        HBox columns = new HBox();
+        VBox column1 = new VBox();
+        VBox column2 = new VBox();
+        
+        Label lbPrefixo = new Label("Prefixo:");
+        TextField prefixo = new TextField();
+        Label lbPlaca = new Label("Placa:");
+        TextField placa = new TextField();
+        Label lbFabricacao = new Label("Fabricacao:");
+        TextField fabricacao = new TextField();
+        column1.getChildren().addAll(lbPrefixo, prefixo, lbPlaca, placa, lbFabricacao, fabricacao);
+        
+        Label lbTipo = new Label("Tipo:");
+        TextField tipo = new TextField();
+        Label lbModelo = new Label("Modelo:");
+        TextField modelo = new TextField();
+        Label lbStatus = new Label("Statu:");
+        TextField status = new TextField();
+        column2.getChildren().addAll(lbTipo, tipo, lbModelo, modelo, lbStatus, status);
+        
+        columns.getChildren().addAll(column1, column2);
+        
+        Button update = new Button("Atualizar");
+        
+        root.getChildren().addAll(title, columns, update);
+        
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     public static void main(String[] args) {
