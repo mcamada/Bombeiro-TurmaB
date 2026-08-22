@@ -1,5 +1,7 @@
 package br.edu.ifc.treinoecapacitacao.view;
 
+import br.edu.ifc.treinoecapacitacao.App;
+import br.edu.ifc.treinoecapacitacao.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,89 +23,69 @@ public class TelaLogin {
     private TextField campoLogin;
     private PasswordField campoSenha;
 
-    public TelaLogin(Stage stage) {
-        this.stage = stage;
-    }
+    public TelaLogin(Stage stage) { this.stage = stage; }
 
     public Scene criarCena() {
         Label titulo = new Label("Treinamento e Capacitação");
         titulo.setId("tituloLogin");
-
         Label subtitulo = new Label("Acesso ao sistema");
         subtitulo.getStyleClass().add("subtitulo");
 
-        Label textoLogin = new Label("Login:");
-        Label textoSenha = new Label("Senha:");
-
         campoLogin = new TextField();
         campoLogin.setPromptText("Digite seu login");
-
         campoSenha = new PasswordField();
         campoSenha.setPromptText("Digite sua senha");
 
         GridPane formulario = new GridPane();
-        formulario.setHgap(10);
-        formulario.setVgap(10);
-        formulario.setAlignment(Pos.CENTER);
+        formulario.setHgap(10); formulario.setVgap(10); formulario.setAlignment(Pos.CENTER);
         formulario.getStyleClass().add("formulario");
-        formulario.add(textoLogin, 0, 0);
-        formulario.add(campoLogin, 1, 0);
-        formulario.add(textoSenha, 0, 1);
-        formulario.add(campoSenha, 1, 1);
+        formulario.add(new Label("Login:"), 0, 0); formulario.add(campoLogin, 1, 0);
+        formulario.add(new Label("Senha:"), 0, 1); formulario.add(campoSenha, 1, 1);
 
         Button botaoEntrar = new Button("Entrar");
         botaoEntrar.getStyleClass().add("botao-principal");
-
         Button botaoLimpar = new Button("Limpar");
-
-        ButtonBar barraBotoes = new ButtonBar();
-        barraBotoes.getButtons().addAll(botaoEntrar, botaoLimpar);
+        ButtonBar barra = new ButtonBar();
+        barra.getButtons().addAll(botaoEntrar, botaoLimpar);
 
         botaoEntrar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                verificarCampos();
-            }
+            @Override public void handle(ActionEvent event) { entrar(); }
         });
-
         botaoLimpar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                limparCampos();
-            }
+            @Override public void handle(ActionEvent event) { campoLogin.clear(); campoSenha.clear(); }
         });
 
         VBox raiz = new VBox(15);
-        raiz.setAlignment(Pos.CENTER);
-        raiz.setPadding(new Insets(30));
-        raiz.getChildren().addAll(titulo, subtitulo, formulario, barraBotoes);
-
+        raiz.setAlignment(Pos.CENTER); raiz.setPadding(new Insets(30));
+        raiz.getChildren().addAll(titulo, subtitulo, formulario, barra);
         Scene scene = new Scene(raiz, 500, 330);
         scene.getStylesheets().add("/css/style.css");
-
         return scene;
     }
 
-    private void verificarCampos() {
-        String login = campoLogin.getText();
-        String senha = campoSenha.getText();
-
-        if (login.isBlank() || senha.isBlank()) {
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setTitle("Campos obrigatórios");
-            alerta.setHeaderText("Preencha o login e a senha.");
-            alerta.show();
+    private void entrar() {
+        if (campoLogin.getText().isBlank() || campoSenha.getText().isBlank()) {
+            new Alert(Alert.AlertType.WARNING, "Preencha o login e a senha.").show();
             return;
         }
 
-        TelaDashboard telaDashboard = new TelaDashboard(stage);
-        stage.setScene(telaDashboard.criarCena());
-        stage.setTitle("Painel - Treinamento e Capacitação");
-    }
+        Usuario encontrado = null;
+        for (Usuario usuario : App.usuarios) {
+            if (usuario.getLogin().equals(campoLogin.getText())
+                    && usuario.getSenha().equals(campoSenha.getText())) {
+                encontrado = usuario;
+            }
+        }
 
-    private void limparCampos() {
-        campoLogin.clear();
-        campoSenha.clear();
-        campoLogin.requestFocus();
+        if (encontrado == null) {
+            new Alert(Alert.AlertType.ERROR, "Login ou senha inválidos.").show();
+            return;
+        }
+
+        App.usuarioLogado = encontrado;
+        App.historico.add("Login realizado por " + encontrado.getLogin());
+        TelaDashboard tela = new TelaDashboard(stage);
+        stage.setScene(tela.criarCena());
+        stage.setTitle("Painel - Treinamento e Capacitação");
     }
 }

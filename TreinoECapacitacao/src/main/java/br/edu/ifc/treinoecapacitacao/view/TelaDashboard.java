@@ -2,7 +2,6 @@ package br.edu.ifc.treinoecapacitacao.view;
 
 import br.edu.ifc.treinoecapacitacao.App;
 import br.edu.ifc.treinoecapacitacao.model.Treinamento;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,174 +16,85 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TelaDashboard {
-
     private Stage stage;
-
-    public TelaDashboard(Stage stage) {
-        this.stage = stage;
-    }
+    public TelaDashboard(Stage stage) { this.stage = stage; }
 
     public Scene criarCena() {
         Label tituloSistema = new Label("Treinamento e Capacitação");
         tituloSistema.setId("tituloDashboard");
-
-        Label usuarioLogado = new Label("Usuário: Coordenador de Treinamento");
+        String usuario = App.usuarioLogado == null ? "Usuário" : App.usuarioLogado.getLogin() + " - " + App.usuarioLogado.getPerfil();
+        Label usuarioLogado = new Label("Usuário: " + usuario);
         usuarioLogado.getStyleClass().add("texto-secundario");
-
-        VBox textosCabecalho = new VBox(5);
-        textosCabecalho.getChildren().addAll(tituloSistema, usuarioLogado);
+        VBox textos = new VBox(5); textos.getChildren().addAll(tituloSistema, usuarioLogado);
 
         Button botaoSair = new Button("Sair");
-
         botaoSair.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaLogin telaLogin = new TelaLogin(stage);
-                stage.setScene(telaLogin.criarCena());
+            @Override public void handle(ActionEvent event) {
+                App.usuarioLogado = null;
+                stage.setScene(new TelaLogin(stage).criarCena());
                 stage.setTitle("Treinamento e Capacitação");
             }
         });
+        HBox cabecalho = new HBox(30); cabecalho.setAlignment(Pos.CENTER_LEFT);
+        cabecalho.setPadding(new Insets(15)); cabecalho.getStyleClass().add("cabecalho");
+        cabecalho.getChildren().addAll(textos, botaoSair);
 
-        HBox cabecalho = new HBox(30);
-        cabecalho.setAlignment(Pos.CENTER_LEFT);
-        cabecalho.setPadding(new Insets(15));
-        cabecalho.getStyleClass().add("cabecalho");
-        cabecalho.getChildren().addAll(textosCabecalho, botaoSair);
+        VBox menu = new VBox(10); menu.setPadding(new Insets(15)); menu.getStyleClass().add("menu-lateral");
+        Label tituloMenu = new Label("Menu"); tituloMenu.getStyleClass().add("titulo-secao");
+        Button inicio = botaoMenu("Início");
+        Button treinamentos = botaoMenu("Treinamentos");
+        Button bombeiros = botaoMenu("Bombeiros");
+        Button instrutores = botaoMenu("Instrutores");
+        Button instituicoes = botaoMenu("Instituições");
+        Button participacoes = botaoMenu("Participações");
+        Button certificados = botaoMenu("Certificados");
+        Button historico = botaoMenu("Histórico");
+        menu.getChildren().addAll(tituloMenu, inicio, treinamentos, bombeiros, instrutores,
+                instituicoes, participacoes, certificados, historico);
 
-        Label tituloMenu = new Label("Menu");
-        tituloMenu.getStyleClass().add("titulo-secao");
-        Button botaoInicio = new Button("Início");
-        Button botaoTreinamentos = new Button("Treinamentos");
-        Button botaoBombeiros = new Button("Bombeiros");
-        Button botaoInstrutores = new Button("Instrutores");
-        Button botaoInstituicoes = new Button("Instituições");
-        Button botaoParticipacoes = new Button("Participações");
-        Button botaoCertificados = new Button("Certificados");
+        treinamentos.setOnAction(e -> abrir(new TelaTreinamentos(stage).criarCena(), "Treinamentos"));
+        bombeiros.setOnAction(e -> abrir(new TelaBombeiros(stage).criarCena(), "Bombeiros"));
+        instrutores.setOnAction(e -> abrir(new TelaInstrutores(stage).criarCena(), "Instrutores"));
+        instituicoes.setOnAction(e -> abrir(new TelaInstituicoes(stage).criarCena(), "Instituições"));
+        participacoes.setOnAction(e -> abrir(new TelaParticipacoes(stage).criarCena(), "Participações"));
+        certificados.setOnAction(e -> abrir(new TelaCertificados(stage).criarCena(), "Certificados"));
+        historico.setOnAction(e -> abrir(new TelaHistorico(stage).criarCena(), "Histórico"));
 
-        botaoInicio.getStyleClass().add("botao-menu");
-        botaoTreinamentos.getStyleClass().add("botao-menu");
-        botaoBombeiros.getStyleClass().add("botao-menu");
-        botaoInstrutores.getStyleClass().add("botao-menu");
-        botaoInstituicoes.getStyleClass().add("botao-menu");
-        botaoParticipacoes.getStyleClass().add("botao-menu");
-        botaoCertificados.getStyleClass().add("botao-menu");
+        Label tituloResumo = new Label("Visão geral dos treinamentos"); tituloResumo.getStyleClass().add("titulo-secao");
+        int planejados=0, andamento=0, concluidos=0;
+        for (Treinamento t : App.treinamentos) {
+            if (t.isAtivo() && t.getStatus().equals("Planejado")) planejados++;
+            if (t.isAtivo() && t.getStatus().equals("Em andamento")) andamento++;
+            if (t.isAtivo() && t.getStatus().equals("Concluído")) concluidos++;
+        }
+        GridPane resumo = new GridPane(); resumo.setHgap(15); resumo.setVgap(15);
+        resumo.add(criarCard("Planejados", String.valueOf(planejados)), 0, 0);
+        resumo.add(criarCard("Em andamento", String.valueOf(andamento)), 1, 0);
+        resumo.add(criarCard("Concluídos", String.valueOf(concluidos)), 0, 1);
+        resumo.add(criarCard("Participações", String.valueOf(App.participacoes.size())), 1, 1);
 
-        EventHandler<ActionEvent> abrirTreinamentos = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaTreinamentos telaTreinamentos = new TelaTreinamentos(stage);
-                stage.setScene(telaTreinamentos.criarCena());
-                stage.setTitle("Treinamentos");
-            }
-        };
+        Label tituloAtalhos = new Label("Acessos rápidos"); tituloAtalhos.getStyleClass().add("titulo-secao");
+        Button cadastrarTreinamento = new Button("Cadastrar treinamento"); cadastrarTreinamento.getStyleClass().add("botao-atalho");
+        Button consultar = new Button("Consultar treinamentos"); consultar.getStyleClass().add("botao-atalho");
+        Button cadastrarBombeiro = new Button("Bombeiros"); cadastrarBombeiro.getStyleClass().add("botao-atalho");
+        cadastrarTreinamento.setOnAction(e -> abrir(new TelaCadastroTreinamento(stage).criarCena(), "Cadastrar Treinamento"));
+        consultar.setOnAction(e -> abrir(new TelaConsultaTreinamentos(stage).criarCena(), "Consultar Treinamentos"));
+        cadastrarBombeiro.setOnAction(e -> abrir(new TelaBombeiros(stage).criarCena(), "Bombeiros"));
+        HBox atalhos = new HBox(10, cadastrarTreinamento, consultar, cadastrarBombeiro);
 
-        botaoTreinamentos.setOnAction(abrirTreinamentos);
-
-        VBox menuLateral = new VBox(10);
-        menuLateral.setPadding(new Insets(15));
-        menuLateral.getStyleClass().add("menu-lateral");
-        menuLateral.getChildren().addAll(
-                tituloMenu,
-                botaoInicio,
-                botaoTreinamentos,
-                botaoBombeiros,
-                botaoInstrutores,
-                botaoInstituicoes,
-                botaoParticipacoes,
-                botaoCertificados
-        );
-
-        Label tituloResumo = new Label("Visão geral dos treinamentos");
-        tituloResumo.getStyleClass().add("titulo-secao");
-
-        VBox cardPlanejados = criarCard("Planejados", String.valueOf(App.treinamentos.size()));
-        VBox cardAndamento = criarCard("Em andamento", "0");
-        VBox cardConcluidos = criarCard("Concluídos", "0");
-        VBox cardParticipantes = criarCard("Participantes", "0");
-
-        GridPane resumo = new GridPane();
-        resumo.setHgap(15);
-        resumo.setVgap(15);
-        resumo.add(cardPlanejados, 0, 0);
-        resumo.add(cardAndamento, 1, 0);
-        resumo.add(cardConcluidos, 0, 1);
-        resumo.add(cardParticipantes, 1, 1);
-
-        Label tituloAtalhos = new Label("Acessos rápidos");
-        tituloAtalhos.getStyleClass().add("titulo-secao");
-        Button botaoCadastrarTreinamento = new Button("Cadastrar treinamento");
-        Button botaoConsultarTreinamento = new Button("Consultar treinamentos");
-        Button botaoCadastrarBombeiro = new Button("Cadastrar bombeiro");
-
-        botaoCadastrarTreinamento.getStyleClass().add("botao-atalho");
-        botaoConsultarTreinamento.getStyleClass().add("botao-atalho");
-        botaoCadastrarBombeiro.getStyleClass().add("botao-atalho");
-
-        botaoCadastrarTreinamento.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaCadastroTreinamento cadastro = new TelaCadastroTreinamento(stage);
-                stage.setScene(cadastro.criarCena());
-                stage.setTitle("Cadastrar Treinamento");
-            }
-        });
-        botaoConsultarTreinamento.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaConsultaTreinamentos consulta = new TelaConsultaTreinamentos(stage);
-                stage.setScene(consulta.criarCena());
-                stage.setTitle("Consultar Treinamentos");
-            }
-        });
-
-        HBox atalhos = new HBox(10);
-        atalhos.getChildren().addAll(
-                botaoCadastrarTreinamento,
-                botaoConsultarTreinamento,
-                botaoCadastrarBombeiro
-        );
-
-        Label tituloRecentes = new Label("Treinamentos recentes");
-        tituloRecentes.getStyleClass().add("titulo-secao");
-        ListView<Treinamento> listaTreinamentos
-                = new ListView<Treinamento>(App.treinamentos);
-        listaTreinamentos.setPrefHeight(130);
-        listaTreinamentos.getStyleClass().add("lista-treinamentos");
-
-        VBox conteudo = new VBox(15);
-        conteudo.setPadding(new Insets(20));
-        conteudo.getChildren().addAll(
-                tituloResumo,
-                resumo,
-                tituloAtalhos,
-                atalhos,
-                tituloRecentes,
-                listaTreinamentos
-        );
-
-        HBox corpo = new HBox(20);
-        corpo.getChildren().addAll(menuLateral, conteudo);
-
-        VBox raiz = new VBox();
-        raiz.getChildren().addAll(cabecalho, corpo);
-
-        Scene scene = new Scene(raiz, 950, 620);
-        scene.getStylesheets().add("/css/style.css");
-
+        Label recentes = new Label("Treinamentos recentes"); recentes.getStyleClass().add("titulo-secao");
+        ListView<Treinamento> lista = new ListView<Treinamento>(App.treinamentos); lista.setPrefHeight(130); lista.getStyleClass().add("lista-treinamentos");
+        VBox conteudo = new VBox(15, tituloResumo, resumo, tituloAtalhos, atalhos, recentes, lista); conteudo.setPadding(new Insets(20));
+        HBox corpo = new HBox(20, menu, conteudo);
+        VBox raiz = new VBox(cabecalho, corpo);
+        Scene scene = new Scene(raiz, 950, 620); scene.getStylesheets().add("/css/style.css");
         return scene;
     }
 
+    private Button botaoMenu(String texto) { Button b = new Button(texto); b.getStyleClass().add("botao-menu"); return b; }
+    private void abrir(Scene scene, String titulo) { stage.setScene(scene); stage.setTitle(titulo); }
     private VBox criarCard(String nome, String quantidade) {
-        Label numero = new Label(quantidade);
-        numero.getStyleClass().add("numero-card");
-        Label descricao = new Label(nome);
-
-        VBox card = new VBox(5);
-        card.setAlignment(Pos.CENTER);
-        card.setPadding(new Insets(20));
-        card.getStyleClass().add("card");
-        card.getChildren().addAll(numero, descricao);
-
-        return card;
+        Label numero = new Label(quantidade); numero.getStyleClass().add("numero-card");
+        VBox card = new VBox(5, numero, new Label(nome)); card.setAlignment(Pos.CENTER); card.setPadding(new Insets(20)); card.getStyleClass().add("card"); return card;
     }
 }

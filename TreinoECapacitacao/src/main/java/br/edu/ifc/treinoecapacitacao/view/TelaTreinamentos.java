@@ -1,7 +1,5 @@
 package br.edu.ifc.treinoecapacitacao.view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,68 +9,23 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TelaTreinamentos {
-
     private Stage stage;
-
-    public TelaTreinamentos(Stage stage) {
-        this.stage = stage;
-    }
-
+    public TelaTreinamentos(Stage stage) { this.stage = stage; }
     public Scene criarCena() {
-        Label titulo = new Label("Treinamentos");
-        titulo.setId("tituloTreinamentos");
-
-        Label descricao = new Label("Gerenciamento de treinamentos e capacitações");
-        descricao.getStyleClass().add("texto-secundario");
-
-        Button botaoCadastrar = new Button("Cadastrar treinamento");
-        Button botaoConsultar = new Button("Consultar treinamentos");
-        Button botaoVoltar = new Button("Voltar");
-
-        botaoCadastrar.getStyleClass().add("botao-principal");
-        botaoConsultar.getStyleClass().add("botao-principal");
-
-        botaoCadastrar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaCadastroTreinamento cadastro = new TelaCadastroTreinamento(stage);
-                stage.setScene(cadastro.criarCena());
-                stage.setTitle("Cadastrar Treinamento");
-            }
-        });
-
-        botaoConsultar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaConsultaTreinamentos consulta = new TelaConsultaTreinamentos(stage);
-                stage.setScene(consulta.criarCena());
-                stage.setTitle("Consultar Treinamentos");
-            }
-        });
-
-        botaoVoltar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TelaDashboard dashboard = new TelaDashboard(stage);
-                stage.setScene(dashboard.criarCena());
-                stage.setTitle("Painel - Treinamento e Capacitação");
-            }
-        });
-
-        VBox raiz = new VBox(15);
-        raiz.setAlignment(Pos.CENTER);
-        raiz.setPadding(new Insets(30));
-        raiz.getChildren().addAll(
-                titulo,
-                descricao,
-                botaoCadastrar,
-                botaoConsultar,
-                botaoVoltar
-        );
-
-        Scene scene = new Scene(raiz, 600, 420);
-        scene.getStylesheets().add("/css/style.css");
-
-        return scene;
+        Label titulo = new Label("Treinamentos"); titulo.setId("tituloTreinamentos");
+        Button cadastrar = new Button("Cadastrar treinamento"); cadastrar.getStyleClass().add("botao-principal");
+        Button consultar = new Button("Consultar treinamentos"); consultar.getStyleClass().add("botao-principal");
+        Button participacoes = new Button("Participações");
+        Button certificados = new Button("Certificados");
+        Button voltar = new Button("Voltar");
+        cadastrar.setOnAction(e -> abrir(new TelaCadastroTreinamento(stage).criarCena(), "Cadastrar Treinamento"));
+        consultar.setOnAction(e -> abrir(new TelaConsultaTreinamentos(stage).criarCena(), "Consultar Treinamentos"));
+        participacoes.setOnAction(e -> abrir(new TelaParticipacoes(stage).criarCena(), "Participações"));
+        certificados.setOnAction(e -> abrir(new TelaCertificados(stage).criarCena(), "Certificados"));
+        voltar.setOnAction(e -> abrir(new TelaDashboard(stage).criarCena(), "Painel - Treinamento e Capacitação"));
+        VBox raiz = new VBox(15, titulo, new Label("Gerenciamento de treinamentos e capacitações"), cadastrar, consultar, participacoes, certificados, voltar);
+        raiz.setAlignment(Pos.CENTER); raiz.setPadding(new Insets(30));
+        Scene scene = new Scene(raiz, 600, 450); scene.getStylesheets().add("/css/style.css"); return scene;
     }
+    private void abrir(Scene s, String titulo) { stage.setScene(s); stage.setTitle(titulo); }
 }
