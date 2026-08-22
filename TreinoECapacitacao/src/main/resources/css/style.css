@@ -1,76 +1,238 @@
 .root {
-    -fx-font-family: Arial;
-    -fx-background-color: #f2f2f2;
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-background-color: #f4f5f7;
+    -fx-text-fill: #252525;
 }
 
+/* TITULOS */
 #tituloLogin,
 #tituloDashboard,
 #tituloTreinamentos {
-    -fx-font-size: 22px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #8b1e1e;
+    -fx-text-fill: #8f1d1d;
 }
 
-.subtitulo,
+#tituloLogin {
+    -fx-font-size: 27px;
+}
+
+.subtitulo {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+}
+
 .texto-secundario {
-    -fx-text-fill: #555555;
-}
-
-.formulario {
-    -fx-padding: 15px;
-    -fx-background-color: white;
-    -fx-border-color: #cccccc;
-}
-
-.button {
-    -fx-background-color: #dddddd;
-    -fx-text-fill: #222222;
-    -fx-padding: 8px 14px;
-}
-
-.botao-principal,
-.botao-atalho {
-    -fx-background-color: #8b1e1e;
-    -fx-text-fill: white;
-}
-
-.cabecalho {
-    -fx-background-color: white;
-    -fx-border-color: transparent transparent #cccccc transparent;
-}
-
-.menu-lateral {
-    -fx-background-color: #e5e5e5;
-}
-
-.botao-menu {
-    -fx-pref-width: 155px;
-    -fx-alignment: center-left;
+    -fx-text-fill: #6b6b6b;
 }
 
 .titulo-secao {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
+    -fx-text-fill: #333333;
 }
 
-.card {
-    -fx-pref-width: 180px;
+/* FORMULARIOS */
+.formulario {
+    -fx-padding: 18px;
     -fx-background-color: white;
-    -fx-border-color: #cccccc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #d7d7d7;
+    -fx-border-radius: 8px;
+}
+
+.text-field,
+.password-field,
+.text-area,
+.spinner {
+    -fx-pref-width: 270px;
+    -fx-background-color: white;
+    -fx-border-color: #c9c9c9;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.text-field,
+.password-field {
+    -fx-pref-height: 34px;
+    -fx-padding: 5px 9px;
+}
+
+.text-area {
+    -fx-padding: 4px;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused,
+.spinner:focused {
+    -fx-border-color: #9f2929;
+}
+
+.radio-button {
+    -fx-text-fill: #333333;
+    -fx-padding: 3px 4px;
+}
+
+.radio-button .radio {
+    -fx-border-color: #aaaaaa;
+    -fx-border-radius: 10px;
+    -fx-background-color: white;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #8f1d1d;
+}
+
+/* BOTOES */
+.button {
+    -fx-background-color: #e8e8e8;
+    -fx-text-fill: #252525;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 14px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #d0d0d0;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #dddddd;
+}
+
+.button:pressed {
+    -fx-background-color: #cfcfcf;
+}
+
+.botao-principal,
+.botao-atalho {
+    -fx-background-color: #8f1d1d;
+    -fx-border-color: #8f1d1d;
+    -fx-text-fill: white;
+}
+
+.botao-principal:hover,
+.botao-atalho:hover {
+    -fx-background-color: #761717;
+    -fx-border-color: #761717;
+}
+
+.botao-principal:pressed,
+.botao-atalho:pressed {
+    -fx-background-color: #611313;
+}
+
+.botao-atalho {
+    -fx-padding: 10px 16px;
+}
+
+/* CABECALHO */
+.cabecalho {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #dedede transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+/* MENU LATERAL */
+.menu-lateral {
+    -fx-background-color: #292929;
+    -fx-pref-width: 190px;
+    -fx-min-width: 190px;
+}
+
+.menu-lateral .titulo-secao {
+    -fx-text-fill: white;
+    -fx-padding: 2px 6px 8px 6px;
+}
+
+.botao-menu {
+    -fx-pref-width: 160px;
+    -fx-min-width: 160px;
+    -fx-alignment: center-left;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #eeeeee;
+    -fx-padding: 9px 12px;
+}
+
+.botao-menu:hover {
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: white;
+}
+
+.botao-menu:pressed {
+    -fx-background-color: #8f1d1d;
+}
+
+/* CARDS DO DASHBOARD */
+.card {
+    -fx-pref-width: 190px;
+    -fx-min-width: 190px;
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 8px;
 }
 
 .numero-card {
-    -fx-font-size: 24px;
+    -fx-font-size: 27px;
     -fx-font-weight: bold;
-    -fx-text-fill: #8b1e1e;
+    -fx-text-fill: #8f1d1d;
 }
 
+/* LISTAS */
+.list-view,
 .lista-treinamentos {
-    -fx-border-color: #cccccc;
+    -fx-background-color: white;
+    -fx-border-color: #d5d5d5;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 2px;
 }
 
-.text-area,
-.text-field,
-.spinner {
-    -fx-pref-width: 260px;
+.list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #303030;
+    -fx-padding: 8px 10px;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #f1e6e6;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #8f1d1d;
+    -fx-text-fill: white;
+}
+
+/* SPINNER */
+.spinner .text-field {
+    -fx-border-color: transparent;
+    -fx-background-radius: 5px 0 0 5px;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #e8e8e8;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #d7d7d7;
+}
+
+/* BARRA DE ROLAGEM */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #bdbdbd;
+    -fx-background-radius: 6px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #9c9c9c;
 }
