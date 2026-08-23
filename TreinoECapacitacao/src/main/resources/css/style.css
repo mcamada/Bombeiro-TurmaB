@@ -1,238 +1,379 @@
+/*
+ * Visual inspirado no protótipo do Figma.
+ * Mantém o JavaFX simples: fundo claro, superfícies brancas,
+ * navegação escura e vermelho como cor principal.
+ */
+
 .root {
-    -fx-font-family: "Arial";
+    -fx-font-family: "Segoe UI";
     -fx-font-size: 13px;
-    -fx-background-color: #f4f5f7;
-    -fx-text-fill: #252525;
+    -fx-background-color: #f5f6f8;
+    -fx-text-fill: #1c2028;
 }
 
-/* TITULOS */
+/* =========================================================
+   TÍTULOS E TEXTOS
+   ========================================================= */
+
 #tituloLogin,
 #tituloDashboard,
 #tituloTreinamentos {
-    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #8f1d1d;
+    -fx-text-fill: #1c2028;
 }
 
 #tituloLogin {
-    -fx-font-size: 27px;
+    -fx-font-size: 28px;
+}
+
+#tituloDashboard {
+    -fx-font-size: 23px;
+}
+
+#tituloTreinamentos {
+    -fx-font-size: 24px;
 }
 
 .subtitulo {
     -fx-font-size: 14px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #667085;
 }
 
 .texto-secundario {
-    -fx-text-fill: #6b6b6b;
+    -fx-font-size: 12px;
+    -fx-text-fill: #667085;
 }
 
 .titulo-secao {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333;
+    -fx-text-fill: #1c2028;
 }
 
-/* FORMULARIOS */
+.label {
+    -fx-text-fill: #344054;
+}
+
+/* =========================================================
+   FORMULÁRIOS / PAINÉIS
+   ========================================================= */
+
 .formulario {
-    -fx-padding: 18px;
-    -fx-background-color: white;
-    -fx-background-radius: 8px;
-    -fx-border-color: #d7d7d7;
-    -fx-border-radius: 8px;
+    -fx-padding: 22px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e4e7ec;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.05), 10, 0, 0, 2);
+}
+
+.formulario .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #344054;
 }
 
 .text-field,
 .password-field,
 .text-area,
 .spinner {
-    -fx-pref-width: 270px;
-    -fx-background-color: white;
-    -fx-border-color: #c9c9c9;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+    -fx-pref-width: 290px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d5dd;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
 }
 
 .text-field,
 .password-field {
-    -fx-pref-height: 34px;
-    -fx-padding: 5px 9px;
+    -fx-pref-height: 40px;
+    -fx-padding: 7px 11px;
+    -fx-text-fill: #1c2028;
+    -fx-prompt-text-fill: #98a2b3;
 }
 
 .text-area {
-    -fx-padding: 4px;
+    -fx-padding: 6px;
+    -fx-text-fill: #1c2028;
+    -fx-prompt-text-fill: #98a2b3;
+}
+
+.text-area .content {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
 }
 
 .text-field:focused,
 .password-field:focused,
 .text-area:focused,
 .spinner:focused {
-    -fx-border-color: #9f2929;
+    -fx-border-color: #a62b2b;
+    -fx-effect: dropshadow(gaussian, rgba(166,43,43,0.13), 5, 0, 0, 0);
 }
 
 .radio-button {
-    -fx-text-fill: #333333;
-    -fx-padding: 3px 4px;
+    -fx-text-fill: #344054;
+    -fx-padding: 4px 6px 4px 0;
 }
 
 .radio-button .radio {
-    -fx-border-color: #aaaaaa;
-    -fx-border-radius: 10px;
-    -fx-background-color: white;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d5dd;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #a62b2b;
 }
 
 .radio-button:selected .dot {
-    -fx-background-color: #8f1d1d;
+    -fx-background-color: #a62b2b;
 }
 
-/* BOTOES */
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
 .button {
-    -fx-background-color: #e8e8e8;
-    -fx-text-fill: #252525;
+    -fx-min-height: 38px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #344054;
     -fx-font-weight: bold;
-    -fx-padding: 8px 14px;
-    -fx-background-radius: 6px;
-    -fx-border-radius: 6px;
-    -fx-border-color: #d0d0d0;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #d0d5dd;
+    -fx-border-width: 1px;
     -fx-cursor: hand;
 }
 
 .button:hover {
-    -fx-background-color: #dddddd;
+    -fx-background-color: #f9fafb;
+    -fx-border-color: #b8bec8;
 }
 
 .button:pressed {
-    -fx-background-color: #cfcfcf;
+    -fx-background-color: #f2f4f7;
 }
 
 .botao-principal,
 .botao-atalho {
-    -fx-background-color: #8f1d1d;
-    -fx-border-color: #8f1d1d;
-    -fx-text-fill: white;
+    -fx-background-color: #a62b2b;
+    -fx-border-color: #a62b2b;
+    -fx-text-fill: #ffffff;
 }
 
 .botao-principal:hover,
 .botao-atalho:hover {
-    -fx-background-color: #761717;
-    -fx-border-color: #761717;
+    -fx-background-color: #8f2323;
+    -fx-border-color: #8f2323;
 }
 
 .botao-principal:pressed,
 .botao-atalho:pressed {
-    -fx-background-color: #611313;
+    -fx-background-color: #751d1d;
+    -fx-border-color: #751d1d;
 }
 
 .botao-atalho {
-    -fx-padding: 10px 16px;
+    -fx-padding: 10px 18px;
 }
 
-/* CABECALHO */
+/* =========================================================
+   CABEÇALHO DO DASHBOARD
+   ========================================================= */
+
 .cabecalho {
-    -fx-background-color: white;
-    -fx-border-color: transparent transparent #dedede transparent;
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #e4e7ec transparent;
     -fx-border-width: 0 0 1px 0;
+    -fx-padding: 18px 22px;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.04), 7, 0, 0, 1);
 }
 
-/* MENU LATERAL */
+.cabecalho .button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e4e7ec;
+    -fx-text-fill: #475467;
+}
+
+.cabecalho .button:hover {
+    -fx-background-color: #f9fafb;
+}
+
+/* =========================================================
+   MENU LATERAL
+   ========================================================= */
+
 .menu-lateral {
-    -fx-background-color: #292929;
-    -fx-pref-width: 190px;
-    -fx-min-width: 190px;
+    -fx-background-color: #17191d;
+    -fx-pref-width: 220px;
+    -fx-min-width: 220px;
+    -fx-padding: 24px 14px;
+    -fx-spacing: 7px;
 }
 
 .menu-lateral .titulo-secao {
-    -fx-text-fill: white;
-    -fx-padding: 2px 6px 8px 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 0 10px 12px 10px;
 }
 
 .botao-menu {
-    -fx-pref-width: 160px;
-    -fx-min-width: 160px;
+    -fx-pref-width: 192px;
+    -fx-min-width: 192px;
+    -fx-min-height: 40px;
     -fx-alignment: center-left;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-text-fill: #eeeeee;
-    -fx-padding: 9px 12px;
-}
-
-.botao-menu:hover {
-    -fx-background-color: #3c3c3c;
-    -fx-text-fill: white;
-}
-
-.botao-menu:pressed {
-    -fx-background-color: #8f1d1d;
-}
-
-/* CARDS DO DASHBOARD */
-.card {
-    -fx-pref-width: 190px;
-    -fx-min-width: 190px;
-    -fx-background-color: white;
+    -fx-text-fill: #c6cbd4;
+    -fx-font-weight: normal;
+    -fx-padding: 9px 14px;
     -fx-background-radius: 8px;
-    -fx-border-color: #dddddd;
     -fx-border-radius: 8px;
 }
 
-.numero-card {
-    -fx-font-size: 27px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #8f1d1d;
+.botao-menu:hover {
+    -fx-background-color: #24272d;
+    -fx-text-fill: #ffffff;
 }
 
-/* LISTAS */
+.botao-menu:focused,
+.botao-menu:pressed {
+    -fx-background-color: #2a2d33;
+    -fx-border-color: transparent transparent transparent #c74444;
+    -fx-border-width: 0 0 0 3px;
+    -fx-text-fill: #ffffff;
+}
+
+/* =========================================================
+   CARDS DO DASHBOARD
+   ========================================================= */
+
+.card {
+    -fx-pref-width: 205px;
+    -fx-min-width: 205px;
+    -fx-min-height: 108px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e4e7ec;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.04), 8, 0, 0, 2);
+}
+
+.card .label {
+    -fx-text-fill: #667085;
+}
+
+.card .numero-card {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1c2028;
+}
+
+/* =========================================================
+   LISTAS
+   ========================================================= */
+
 .list-view,
 .lista-treinamentos {
-    -fx-background-color: white;
-    -fx-border-color: #d5d5d5;
-    -fx-border-radius: 6px;
-    -fx-background-radius: 6px;
-    -fx-padding: 2px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e4e7ec;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.035), 6, 0, 0, 1);
+}
+
+.list-view .viewport {
+    -fx-background-color: transparent;
 }
 
 .list-cell {
-    -fx-background-color: white;
-    -fx-text-fill: #303030;
-    -fx-padding: 8px 10px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #344054;
+    -fx-padding: 10px 12px;
+    -fx-border-color: transparent transparent #f0f1f3 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.list-cell:empty {
+    -fx-border-width: 0;
 }
 
 .list-cell:filled:hover {
-    -fx-background-color: #f1e6e6;
+    -fx-background-color: #f9fafb;
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #8f1d1d;
-    -fx-text-fill: white;
+    -fx-background-color: #fbeaea;
+    -fx-text-fill: #8f2323;
+    -fx-font-weight: bold;
 }
 
-/* SPINNER */
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
 .spinner .text-field {
     -fx-border-color: transparent;
-    -fx-background-radius: 5px 0 0 5px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px 0 0 8px;
 }
 
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
-    -fx-background-color: #e8e8e8;
+    -fx-background-color: #f2f4f7;
+    -fx-border-color: transparent;
 }
 
 .spinner .increment-arrow-button:hover,
 .spinner .decrement-arrow-button:hover {
-    -fx-background-color: #d7d7d7;
+    -fx-background-color: #e4e7ec;
 }
 
-/* BARRA DE ROLAGEM */
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: #667085;
+}
+
+/* =========================================================
+   BARRAS DE ROLAGEM
+   ========================================================= */
+
 .scroll-bar:vertical,
 .scroll-bar:horizontal {
     -fx-background-color: transparent;
 }
 
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
 .scroll-bar .thumb {
-    -fx-background-color: #bdbdbd;
+    -fx-background-color: #d0d5dd;
     -fx-background-radius: 6px;
 }
 
 .scroll-bar .thumb:hover {
-    -fx-background-color: #9c9c9c;
+    -fx-background-color: #98a2b3;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 2px;
+}
+
+/* =========================================================
+   FOCO / ACESSIBILIDADE
+   ========================================================= */
+
+.button:focused {
+    -fx-effect: dropshadow(gaussian, rgba(166,43,43,0.16), 5, 0, 0, 0);
 }
