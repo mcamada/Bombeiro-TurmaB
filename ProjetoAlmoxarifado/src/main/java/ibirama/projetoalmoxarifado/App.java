@@ -123,24 +123,26 @@ public class App extends Application {
                             @Override
                             public void handle(MouseEvent event) {
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                alert.setHeaderText("Todos os dados preenchidos");
+                                alert.setHeaderText("Tem certeza que gostaria de excluir?");
                                 alert.show();
 
                                 event.consume();
                                 rootExclusao.getChildren().addAll(excluirItem, exclusaoItem);
 
-                                btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
-                                Scene scene = new Scene(root, 800, 600);
-                                stage.setScene(scene);
-                                stage.show();
                             }
                         };
                     }
 
                 };
+
+                btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
+                Scene scene = new Scene(root, 800, 600);
+                stage.setScene(scene);
+                stage.show();
             }
         };
-    } 
+
+    }
 
     public static void main(String[] args) {
         launch();
