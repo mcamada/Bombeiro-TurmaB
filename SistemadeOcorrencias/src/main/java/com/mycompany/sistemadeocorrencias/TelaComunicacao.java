@@ -5,9 +5,11 @@
 package com.mycompany.sistemadeocorrencias;
 
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,10 +23,7 @@ public class TelaComunicacao {
     public void mostrar(Stage stage) {
         VBox principal = new VBox(20);
 
-        principal.setStyle(
-                "-fx-background-color: #C9A6A6;"
-                + "-fx-padding: 40;"
-        );
+        principal.setStyle( "-fx-background-color: #C9A6A6;"+ "-fx-padding: 40;");
 
         HBox topo = new HBox();
 
@@ -74,7 +73,7 @@ public class TelaComunicacao {
         
         botoes.getChildren().addAll( btLimpar, btSalvar);
         
-        formulario.getchildren().addAll(
+        formulario.getChildren().addAll(
         tituloForm,
         Tipo, txTipo,
         Data, txData,
@@ -91,8 +90,37 @@ public class TelaComunicacao {
         historico.setStyle("-fx-backgroud-color: #5B171F;" + "=fx-backgroud-radius:30;"+ "-fx-padding: 30;");
         Label tituloHistorico = new Label("Historico de Comunicação");
         
-        tituloHistorico.setStyle("-fx-text-fill: White;" + "-fx-font-size: 27px;" + "-fx-weight");
+        tituloHistorico.setStyle("-fx-text-fill: White;" + "-fx-font-size: 27px;" + "-fx-weight: bold");
         
+        
+        TextField pesquisar = new TextField();
+        pesquisar.setPromptText("Pesquisar...");
+        
+        Label cabecalho = new Label("ID Tipo Remetente Destinatário Data/Hora");
+        
+        cabecalho.setMaxWidth(
+                Double.MAX_VALUE
+        );
+        cabecalho.setStyle(
+                "-fx-background-color:#F4E9DD;" + "-fx-text-fill:#5B171F;" + "-fx-padding:10;" + "-fx-bacjkground-radius:20;" + "-fx-font-weight:bold;");
+        
+        historico.getChildren().addAll(
+                tituloHistorico,
+                pesquisar,
+                cabecalho
+        );
+
+        HBox conteudo = new HBox(25);
+
+        conteudo.getChildren().addAll(formulario, historico);
+                
+        BordePane root.setTop(topo);
+        root.setCenter(conteudo);
+        Scene scene = new Scene(root, 1200, 700);
+
+        stage.setTitle("Comunicacao");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
