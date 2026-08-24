@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
@@ -73,15 +74,11 @@ public class App extends Application {
     private void mostrarOcorrencia(String nomeOcorrencia) {
 
         VBox root = new VBox();
-
         root.setStyle("-fx-background-color: #f4f5f7;");
 
         HBox header = createHeader();
-
         VBox content = new VBox(20);
-
         content.setPadding(new Insets(25));
-
         Button voltar = new Button("← Voltar");
         
         voltar.setStyle("-fx-background-color:#d31111;"+ "-fx-background-radius: 8;"+"-fx-font-size:25;"+"-fx-text-fill:white;" + "-fx-font-weigth:bold;");
@@ -101,9 +98,7 @@ public class App extends Application {
 
         HBox tituloBox = new HBox(titulo);
 
-        tituloBox.setAlignment(
-                Pos.CENTER
-        );
+        tituloBox.setAlignment(Pos.CENTER);
 
         VBox bombeiros = new VBox(15);
         bombeiros.getChildren().addAll(
@@ -136,7 +131,13 @@ public class App extends Application {
         root.setStyle("-fx-background-color: #f4f5f7;");
         HBox header = createHeader();
         
+          Button voltar = new Button("← Voltar");
         
+        voltar.setStyle("-fx-background-color:#d31111;"+ "-fx-background-radius: 8;"+"-fx-font-size:25;"+"-fx-text-fill:white;" + "-fx-font-weigth:bold;");
+
+        voltar.setOnAction(e -> {
+            mostrarOcorrencia(STYLESHEET_CASPIAN);
+        });
         
         GridPane Formulario = new GridPane();
         Formulario.setAlignment(Pos.CENTER);
@@ -182,10 +183,21 @@ public class App extends Application {
         );
         Formulario.add(TXpatente, 1, 3);
         
-        root.getChildren().addAll(header,Formulario);
-      
-        Scene scene = new Scene(root,1860,1000
+        ButtonBar BTcadastrar = new ButtonBar();
+        
+        Button cadastrar = new Button(
+                "+ Cadastrar Bombeiro"
         );
+        BTcadastrar.getButtons().addAll(cadastrar);
+        cadastrar.setOnMouseClicked(e -> {
+            mostrarCadastro(
+            );
+        });
+
+        cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
+        root.getChildren().addAll(header,voltar,Formulario,BTcadastrar);
+      
+        Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
         
         
@@ -194,15 +206,10 @@ public class App extends Application {
 
         HBox header = new HBox(15);
 
-        header.setStyle("-fx-background-color: #d31111;"+ "-fx-padding: 20 30;"
-        );
-
-        header.setAlignment(
-                Pos.CENTER_LEFT
-        );
+        header.setStyle("-fx-background-color: #d31111;"+ "-fx-padding: 20 30;");
+        header.setAlignment(Pos.CENTER_LEFT);
 
         Label logo = new Label("🔥");
-
         logo.setFont(
                 Font.font(
                         "System",
@@ -212,61 +219,47 @@ public class App extends Application {
 
         VBox titleBox = new VBox();
 
-        Label title = new Label(
-                "Corpo de bombeiros"
-        );
+        Label title = new Label("Corpo de bombeiros");
 
-        title.setTextFill(
-                Color.WHITE
-        );
+        title.setTextFill(Color.WHITE);
 
         title.setFont(
                 Font.font("System",FontWeight.BOLD,28
                 )
         );
 
-        Label subtitle = new Label("Sistema de gestão de emergências"
-        );
-
-        subtitle.setTextFill(Color.WHITE
-        );
+        Label subtitle = new Label("Sistema de gestão de emergências");
+        subtitle.setTextFill(Color.WHITE);
 
         subtitle.setFont(Font.font("System",16
                 )
         );
 
-        titleBox.getChildren().addAll(title,subtitle
-        );
+        titleBox.getChildren().addAll(title,subtitle);
 
-        header.getChildren().addAll(logo,titleBox
-        );
+        header.getChildren().addAll(logo,titleBox);
 
         return header;
     }
     private VBox createStatCard(String tituloTexto,String valorTexto,String iconeTexto) {
 
         VBox card = new VBox(10);
-
         card.setStyle("-fx-background-color: white;"+ "-fx-background-radius: 8;"+ "-fx-padding: 15;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);"
         );
 
-        Label titulo = new Label(
-                tituloTexto
-        );
+        Label titulo = new Label(tituloTexto);
+        
         titulo.setTextFill(
                 Color.web("#555555")
         );
-        Label valor = new Label(
-                valorTexto
-        );
+        
+        Label valor = new Label(valorTexto);
         valor.setFont(
                 Font.font("System",FontWeight.BOLD,36
                 )
         );
 
-        Label icone = new Label(iconeTexto
-        );
-
+        Label icone = new Label(iconeTexto);
         icone.setFont(
                 Font.font("System",24
                 )
@@ -274,20 +267,14 @@ public class App extends Application {
 
         Region espaco = new Region();
 
-        HBox.setHgrow(espaco,Priority.ALWAYS
-        );
+        HBox.setHgrow(espaco,Priority.ALWAYS);
 
         HBox linha = new HBox();
 
-        linha.setAlignment(
-                Pos.CENTER_LEFT
-        );
+        linha.setAlignment(Pos.CENTER_LEFT);
 
-        linha.getChildren().addAll(valor,espaco,icone
-        );
-
-        card.getChildren().addAll(titulo,linha
-        );
+        linha.getChildren().addAll(valor,espaco,icone);
+        card.getChildren().addAll(titulo,linha);
         return card;
     }
     private VBox createEmergencyCard(String idTexto,String tituloTexto,String enderecoTexto,String tempoTexto,String statusTexto,String statusCor) {
@@ -295,46 +282,32 @@ public class App extends Application {
 
         card.setStyle("-fx-background-color: white;"+ "-fx-background-radius: 8;"+ "-fx-padding: 15 20;"+ "-fx-cursor: hand;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);"
         );
-
-        Label id = new Label( idTexto
-        );
-        id.setTextFill(Color.web("#777777")
-        );
-        Label titulo = new Label(tituloTexto
-        );
+        Label id = new Label( idTexto);
+        id.setTextFill(Color.web("#777777"));
+        Label titulo = new Label(tituloTexto);
         titulo.setFont(
                 Font.font("System",FontWeight.BOLD,18
                 )
         );
 
-        Label endereco = new Label(enderecoTexto
-        );
+        Label endereco = new Label(enderecoTexto);
 
-        Label tempo = new Label(tempoTexto
-        );
-
-        tempo.setTextFill(Color.GRAY
-        );
-
-        Label status = new Label(statusTexto
-        );
-
-        status.setTextFill(Color.WHITE
-        );
-
+        Label tempo = new Label(tempoTexto);
+        tempo.setTextFill(Color.GRAY);
+        
+        
+        Label status = new Label(statusTexto);
+        status.setTextFill(Color.WHITE);
         status.setStyle("-fx-background-color: " + statusCor + ";"+ "-fx-padding: 5 12;"+ "-fx-background-radius: 10;"
         );
 
         BorderPane linhaTitulo = new BorderPane();
+        
+        
+        linhaTitulo.setLeft(titulo);
+        linhaTitulo.setRight(status);
 
-        linhaTitulo.setLeft(titulo
-        );
-
-        linhaTitulo.setRight(status
-        );
-
-        card.getChildren().addAll(id,linhaTitulo,endereco,tempo
-        );
+        card.getChildren().addAll(id,linhaTitulo,endereco,tempo);
 
         card.setOnMouseClicked(e -> {
             mostrarOcorrencia(tituloTexto
@@ -373,15 +346,12 @@ public class App extends Application {
         );
 
         VBox dados = new VBox(3, usuario, nome, patente, tempo);
-
         BorderPane linha = new BorderPane();
 
         linha.setLeft(dados);
-
         linha.setRight(status);
-
+        
         BorderPane.setAlignment(status, Pos.CENTER);
-
         card.getChildren().add(linha);
 
         return card;
