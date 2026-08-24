@@ -21,6 +21,12 @@
             <version>25-ea+21</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>cn.sliew</groupId>
+            <artifactId>carp-server</artifactId>
+            <version>0.0.14</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

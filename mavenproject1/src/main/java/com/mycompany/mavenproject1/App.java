@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
@@ -18,11 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         janela = primaryStage;
-
         mostrarInicio();
-
         janela.setTitle("Corpo de Bombeiros");
         janela.show();
     }
@@ -41,27 +39,19 @@ public class App extends Application {
         HBox statsRow = new HBox(20);
 
         statsRow.getChildren().addAll(
-                createStatCard("Chamadas Ativas","2", "🔥"
-                ),
-                createStatCard("Equipes Disponíveis","67", "👥"
-                ),
-                createStatCard("Viaturas em uso","3", "🚚"
-                ),
-                createStatCard("Emergências hoje","8", "⚠️"
-                )
+                createStatCard("Chamadas Ativas","2", "🔥"),
+                createStatCard("Equipes Disponíveis","6", "👥"),
+                createStatCard("Viaturas em uso","3", "🚚"),
+                createStatCard("Emergências hoje","8", "⚠️")
         );
 
         VBox emergenciesList = new VBox(15);
 
         emergenciesList.getChildren().addAll(
-                createEmergencyCard("#1334-987","🔥 Incêndio Residencial","Avenida principal R.15","Há 1 minuto","Ativa","#dc3545"
-                ),
-                createEmergencyCard("#1238-147","🔥 Resgate de Pessoas","Rua 15, 607","Há 19 minutos","Ativa","#dc3545"
-                ),
-                createEmergencyCard("#6767-244","🔥 Afogamento de Cachorro","Rua 25, 3190","Há 30 minutos","Em Atendimento","#fd7e14"
-                ),
-                createEmergencyCard("#0703-010","🔥 Resgate em Altura","Banco Central","Há 4 horas","Em Atendimento","#fd7e14"
-                )
+                createEmergencyCard("#1334-987","🔥 Incêndio Residencial","Avenida principal R.15","Há 1 minuto","Ativa","#dc3545"),
+                createEmergencyCard("#1238-147","🔥 Resgate de Pessoas","Rua 15, 607","Há 19 minutos","Ativa","#dc3545"),
+                createEmergencyCard("#6767-244","🔥 Afogamento de Cachorro","Rua 25, 3190","Há 30 minutos","Em Atendimento","#fd7e14"),
+                createEmergencyCard("#0703-010","🔥 Resgate em Altura","Banco Central","Há 4 horas","Em Atendimento","#fd7e14")
         );
 
         content.getChildren().addAll(statsRow,emergenciesList);
@@ -102,14 +92,10 @@ public class App extends Application {
 
         VBox bombeiros = new VBox(15);
         bombeiros.getChildren().addAll(
-                createBombeiroCard("#JOAOSANTOS","🔥 João Santos","Cabo","Chegou há 1 minuto","No local","#ff0000"
-                ),
-                createBombeiroCard("#PEDROALBERTO","🔥 Pedro Alberto","Sargento","Chegou há 6 minutos","No local","#ff0000"
-                ),
-                createBombeiroCard("#HENRIQUEDEFERRAZ","🔥 Henrique De Ferraz","Cabo","Chega em aproximadamente 8 minutos","Indo ao local","#a85500"
-                ),
-                createBombeiroCard("#CARLOSEDUARDO","🔥 Carlos Eduardo","Sub tenente","Chega em aproximadamente 45 minutos","Indo ao local","#a85500"
-                )
+                createBombeiroCard("#JOAOSANTOS","🔥 João Santos","Cabo","Chegou há 1 minuto","No local","#ff0000"),
+                createBombeiroCard("#PEDROALBERTO","🔥 Pedro Alberto","Sargento","Chegou há 6 minutos","No local","#ff0000"),
+                createBombeiroCard("#HENRIQUEDEFERRAZ","🔥 Henrique De Ferraz","Cabo","Chega em aproximadamente 8 minutos","Indo ao local","#a85500"),
+                createBombeiroCard("#CARLOSEDUARDO","🔥 Carlos Eduardo","Sub tenente","Chega em aproximadamente 45 minutos","Indo ao local","#a85500")
         );
         Button cadastrar = new Button(
                 "+ Cadastrar Bombeiro"
@@ -133,10 +119,9 @@ public class App extends Application {
         
           Button voltar = new Button("← Voltar");
         
-        voltar.setStyle("-fx-background-color:#d31111;"+ "-fx-background-radius: 8;"+"-fx-font-size:25;"+"-fx-text-fill:white;" + "-fx-font-weigth:bold;");
-
+        voltar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
         voltar.setOnAction(e -> {
-            mostrarOcorrencia(STYLESHEET_CASPIAN);
+            mostrarOcorrencia("Ocorrencia");
         });
         
         GridPane Formulario = new GridPane();
@@ -189,9 +174,42 @@ public class App extends Application {
                 "+ Cadastrar Bombeiro"
         );
         BTcadastrar.getButtons().addAll(cadastrar);
+        
         cadastrar.setOnMouseClicked(e -> {
-            mostrarCadastro(
-            );
+            
+            if (TXpatente.getText().trim().isEmpty()){
+                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Erro");
+            alert.setContentText("patente vazia");
+            alert.showAndWait();  
+            }else if (TXpassword.getText().trim().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Erro");
+            alert.setContentText("patente vazia");
+            alert.showAndWait();  
+            }else if (TXid.getText().trim().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Erro");
+            alert.setContentText("identificação vazia");
+            alert.showAndWait();  
+            }else if (TXname.getText().trim().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Erro");
+            alert.setContentText("nome vazio");
+            alert.showAndWait();  
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("O " +TXname.getText().trim() +" foi cadastrado com sucesso");
+            alert.setContentText("Pode sair da tela");
+            alert.showAndWait();  
+            }
+            
+                
         });
 
         cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
@@ -217,12 +235,10 @@ public class App extends Application {
                 )
         );
 
-        VBox titleBox = new VBox();
+        VBox root = new VBox();
 
         Label title = new Label("Corpo de bombeiros");
-
         title.setTextFill(Color.WHITE);
-
         title.setFont(
                 Font.font("System",FontWeight.BOLD,28
                 )
@@ -234,10 +250,8 @@ public class App extends Application {
         subtitle.setFont(Font.font("System",16
                 )
         );
-
-        titleBox.getChildren().addAll(title,subtitle);
-
-        header.getChildren().addAll(logo,titleBox);
+        root.getChildren().addAll(title,subtitle);
+        header.getChildren().addAll(logo,root);
 
         return header;
     }
@@ -248,10 +262,7 @@ public class App extends Application {
         );
 
         Label titulo = new Label(tituloTexto);
-        
-        titulo.setTextFill(
-                Color.web("#555555")
-        );
+        titulo.setTextFill(Color.web("#555555"));
         
         Label valor = new Label(valorTexto);
         valor.setFont(
