@@ -89,11 +89,13 @@ public class App extends Application {
 
                 VBox rootTelaOcorrencias = new VBox();
                 rootTelaOcorrencias.setAlignment(Pos.TOP_CENTER);
-
+                
+                
                 Label tituloOcorrencias = new Label("Ocorrências");
-                titulo.setId("titulo");
+                tituloOcorrencias.setId("tituloOcorrencias");
                 tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
 
+                //sub+titulos = subtitulos
                 Label local = new Label("Local");
                 local.setId("local");
 
@@ -111,6 +113,25 @@ public class App extends Application {
 
                 Label descricao = new Label("Descrição");
                 descricao.setId("descricao");
+                
+                //coisas
+                Label localCoisa = new Label("Casa do Zanella");
+                local.setId("local");
+
+                Label dataCoisa = new Label("20/10/1981");
+                data.setId("data");
+
+                Label horaCoisa = new Label("23:99");
+                hora.setId("hora");
+
+                Label equipeCoisa = new Label("Bazanella");
+                equipe.setId("equipe");
+
+                Label tipoCoisa = new Label("Muito tempo na hora H");
+                tipo.setId("tipo");
+
+                Label descricaoCoisa = new Label("Tempo muito passado");
+                descricao.setId("descricao");
 
                 GridPane telaOcorrencias = new GridPane();
                 telaOcorrencias.setHgap(12);
@@ -124,6 +145,13 @@ public class App extends Application {
                 telaOcorrencias.add(tipo, 4, 0);
                 telaOcorrencias.add(descricao, 5, 0);
 
+                telaOcorrencias.add(localCoisa, 0, 1);
+                telaOcorrencias.add(dataCoisa, 1, 1);
+                telaOcorrencias.add(horaCoisa, 2, 1);
+                telaOcorrencias.add(equipeCoisa, 3, 1);
+                telaOcorrencias.add(tipoCoisa, 4, 1);
+                telaOcorrencias.add(descricaoCoisa, 5, 1);
+                
                 rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
                 rootTelaOcorrencias.getChildren().add(telaOcorrencias);
 
