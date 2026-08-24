@@ -22,3 +22,375 @@
     -fx-padding: 8px 25px;
     -fx-background-radius: 5px;
 }
+/* =========================================================
+   CORES PRINCIPAIS
+   ========================================================= */
+
+.root {
+    -fx-background-color: #0751AE;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+   ========================================================= */
+
+.top-bar {
+    -fx-background-color: #506EF6;
+
+    -fx-padding: 0 48px 0 52px;
+
+    -fx-pref-height: 102px;
+}
+
+
+/* =========================================================
+   TÍTULO DA BARRA
+   ========================================================= */
+
+.titulo-barra {
+    -fx-text-fill: white;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 30px;
+
+    -fx-font-weight: bold;
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+.botao-menu {
+    -fx-background-color: #31B1F1;
+
+    -fx-text-fill: #111111;
+
+    -fx-background-radius: 17px;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 20px;
+
+    -fx-font-weight: bold;
+
+    -fx-padding: 8px 22px;
+
+    -fx-cursor: hand;
+}
+
+
+/* Hover */
+
+.botao-menu:hover {
+    -fx-opacity: 0.85;
+}
+
+
+/* Quando o botão é pressionado */
+
+.botao-menu:pressed {
+    -fx-opacity: 0.7;
+}
+
+
+/* =========================================================
+   BOTÃO CONSULTAR
+   ========================================================= */
+
+.botao-consultar {
+    -fx-background-color: white;
+
+    -fx-text-fill: #111111;
+
+    -fx-background-radius: 17px;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 20px;
+
+    -fx-font-weight: bold;
+
+    -fx-padding: 8px 15px;
+
+    -fx-cursor: hand;
+}
+
+
+.botao-consultar:hover {
+    -fx-background-color: #eeeeee;
+}
+
+
+.botao-consultar:pressed {
+    -fx-background-color: #dddddd;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+.conteudo-principal {
+
+    -fx-padding: 44px 0 0 0;
+}
+
+
+/* =========================================================
+   TÍTULO PRINCIPAL
+   ========================================================= */
+
+.titulo-principal {
+
+    -fx-text-fill: white;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 36px;
+
+    -fx-font-weight: bold;
+}
+
+
+/* =========================================================
+   CONTAINER DA BUSCA
+   ========================================================= */
+
+.busca-container {
+
+    -fx-pref-width: 740px;
+
+    -fx-max-width: 740px;
+}
+
+
+/* =========================================================
+   CAMPO DE BUSCA
+   ========================================================= */
+
+.campo-busca {
+
+    -fx-pref-height: 48px;
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 24px;
+
+    -fx-border-color: #A020F0;
+
+    -fx-border-width: 2px;
+
+    -fx-border-radius: 0px;
+
+    -fx-padding: 0 50px 0 40px;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 14px;
+}
+
+
+.campo-busca:focused {
+
+    -fx-border-color: #A020F0;
+
+    -fx-background-color: white;
+}
+
+
+/* =========================================================
+   LISTA DE OCORRÊNCIAS
+   ========================================================= */
+
+.lista-ocorrencias {
+
+    -fx-padding: 0 0 50px 0;
+
+    -fx-max-width: 635px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card-ocorrencia {
+
+    -fx-background-color: #506EF6;
+
+    -fx-background-radius: 15px;
+
+    -fx-padding: 11px 26px 10px 26px;
+
+    -fx-pref-height: 113px;
+
+    -fx-max-width: 635px;
+}
+
+
+/* =========================================================
+   TÍTULO DO CARD
+   ========================================================= */
+
+.card-titulo {
+
+    -fx-text-fill: white;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 16px;
+
+    -fx-font-weight: bold;
+}
+
+
+/* =========================================================
+   TEXTOS DO CARD
+   ========================================================= */
+
+.card-label {
+
+    -fx-text-fill: white;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 13px;
+}
+
+
+/* =========================================================
+   SCROLL PANE
+   ========================================================= */
+
+.scroll-pane {
+
+    -fx-background-color: transparent;
+
+    -fx-border-color: transparent;
+
+    -fx-background: transparent;
+
+    -fx-pref-width: 680px;
+
+    -fx-max-width: 680px;
+
+    -fx-pref-height: 400px;
+}
+
+
+/* Remove fundo interno */
+
+.scroll-pane > .viewport {
+
+    -fx-background-color: transparent;
+}
+
+
+/* =========================================================
+   BARRA DE ROLAGEM
+   ========================================================= */
+
+.scroll-pane .scroll-bar:vertical {
+
+    -fx-background-color: transparent;
+
+    -fx-pref-width: 18px;
+}
+
+
+/* Fundo da barra */
+
+.scroll-pane .scroll-bar:vertical .track {
+
+    -fx-background-color: transparent;
+
+    -fx-background-radius: 10px;
+}
+
+
+/* Botão da barra */
+
+.scroll-pane .scroll-bar:vertical .thumb {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 10px;
+}
+
+
+/* Hover */
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+
+    -fx-background-color: #eeeeee;
+}
+
+
+/* Remove setas */
+
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color: transparent;
+
+    -fx-padding: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media screen and (max-width: 1000px) {
+
+    .top-bar {
+
+        -fx-padding: 0 25px 0 25px;
+    }
+
+    .titulo-barra {
+
+        -fx-font-size: 24px;
+    }
+
+    .botao-menu {
+
+        -fx-font-size: 16px;
+
+        -fx-padding: 7px 15px;
+    }
+
+    .botao-consultar {
+
+        -fx-font-size: 16px;
+
+        -fx-padding: 7px 15px;
+    }
+
+    .busca-container {
+
+        -fx-pref-width: 80%;
+
+        -fx-max-width: 80%;
+    }
+
+    .scroll-pane {
+
+        -fx-pref-width: 80%;
+
+        -fx-max-width: 80%;
+    }
+
+    .lista-ocorrencias {
+
+        -fx-max-width: 100%;
+    }
+
+    .card-ocorrencia {
+
+        -fx-max-width: 100%;
+    }
+}
