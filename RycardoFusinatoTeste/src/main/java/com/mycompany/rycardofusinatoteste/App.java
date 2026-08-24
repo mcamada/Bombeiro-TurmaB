@@ -1,18 +1,38 @@
 package com.mycompany.rycardofusinatoteste;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -113,6 +133,248 @@ public class App extends Application {
         stage.setScene(scene);
         scene.getStylesheets().add("/css/style.css");
         stage.setTitle("Sistema de Teste do JavaFx");
+        
+        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>(){
+        @Override
+        public void handle(MouseEvent event) {
+        Stage cadastro = new Stage();
+        cadastro.initModality(Modality.APPLICATION_MODAL);
+        VBox rootCadastro = new VBox();
+        rootCadastro.getChildren().add(new Label("Teste"));
+        Scene cenarioCadastro = new Scene(rootCadastro,100,100);
+
+        cadastro.setScene(cenarioCadastro);
+        
+
+
+        BorderPane topBar = new BorderPane();
+        topBar.getStyleClass().add("top-bar");
+
+        Label tituloBarra = new Label("Consultar Ocorrências");
+        tituloBarra.getStyleClass().add("titulo-barra");
+
+        HBox menu = new HBox(30);
+        menu.setAlignment(Pos.CENTER_RIGHT);
+
+        Button btnInicio = criarBotao("Início");
+        Button btnCadastrar = criarBotao("Cadastrar");
+        Button btnConsultar = criarBotao("Consultar");
+
+        btnConsultar.getStyleClass().add("botao-consultar");
+
+        menu.getChildren().addAll(
+                btnInicio,
+                btnCadastrar,
+                btnConsultar
+        );
+
+        topBar.setLeft(tituloBarra);
+        topBar.setRight(menu);
+
+        // ==============================
+        // TÍTULO PRINCIPAL
+        // ==============================
+
+        Label titulo = new Label("Consulta de Ocorrência");
+        titulo.getStyleClass().add("titulo-principal");
+
+        // ==============================
+        // CAMPO DE BUSCA
+        // ==============================
+
+        TextField campoBusca = new TextField();
+        campoBusca.setPromptText("Buscar Ocorrências");
+        campoBusca.getStyleClass().add("campo-busca");
+
+        // Ícone da lupa
+        Circle circulo = new Circle(9);
+        circulo.setFill(Color.TRANSPARENT);
+        circulo.setStroke(Color.GRAY);
+        circulo.setStrokeWidth(1.5);
+
+        Line haste = new Line(6, 6, 14, 14);
+        haste.setStroke(Color.GRAY);
+        haste.setStrokeWidth(1.5);
+
+        StackPane lupa = new StackPane();
+        lupa.getChildren().addAll(circulo, haste);
+
+        StackPane.setAlignment(lupa, Pos.CENTER_RIGHT);
+        StackPane.setMargin(lupa, new Insets(0, 32, 0, 0));
+
+        StackPane campoBuscaContainer = new StackPane();
+
+        campoBuscaContainer.getChildren().addAll(
+                campoBusca,
+                lupa
+        );
+
+        campoBuscaContainer.getStyleClass().add("busca-container");
+
+        // ==============================
+        // LISTA DE OCORRÊNCIAS
+        // ==============================
+
+        VBox listaOcorrencias = new VBox(13);
+        listaOcorrencias.getStyleClass().add("lista-ocorrencias");
+
+        listaOcorrencias.getChildren().addAll(
+
+                criarCard(
+                        "Ocorrência",
+                        "12/08/2026",
+                        "Furto",
+                        "Em andamento",
+                        "Centro"
+                ),
+
+                criarCard(
+                        "Ocorrência",
+                        "10/08/2026",
+                        "Roubo",
+                        "Concluído",
+                        "Jardim América"
+                ),
+
+                criarCard(
+                        "Ocorrência",
+                        "08/08/2026",
+                        "Acidente",
+                        "Em análise",
+                        "Vila Nova"
+                )
+        );
+
+        // ==============================
+        // SCROLL
+        // ==============================
+
+        ScrollPane scrollPane = new ScrollPane(listaOcorrencias);
+
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(
+                ScrollPane.ScrollBarPolicy.NEVER
+        );
+        scrollPane.setVbarPolicy(
+                ScrollPane.ScrollBarPolicy.AS_NEEDED
+        );
+
+        scrollPane.getStyleClass().add("scroll-pane");
+
+        // ==============================
+        // CONTEÚDO
+        // ==============================
+
+        VBox conteudo = new VBox(14);
+
+        conteudo.setAlignment(Pos.TOP_CENTER);
+        conteudo.getStyleClass().add("conteudo-principal");
+
+        conteudo.getChildren().addAll(
+                titulo,
+                campoBuscaContainer,
+                scrollPane
+        );
+
+        // ==============================
+        // ROOT
+        // ==============================
+
+        BorderPane root = new BorderPane();
+
+        root.setTop(topBar);
+        root.setCenter(conteudo);
+
+        root.getStyleClass().add("root");
+
+        // ==============================
+        // CENA
+        // ==============================
+
+        Scene scene = new Scene(root, 1207, 688);
+
+        // Carrega o CSS
+        scene.getStylesheets().add(
+                getClass()
+                        .getResource("/application/style.css")
+                        .toExternalForm()
+        );
+
+        stage.setTitle("Consultar Ocorrências");
+        stage.setScene(scene);
+
+        stage.setMinWidth(900);
+        stage.setMinHeight(600);
+
+        stage.show();
+    }
+
+    // =============================================================
+    // BOTÃO
+    // =============================================================
+
+    private Button criarBotao(String texto) {
+
+        Button button = new Button(texto);
+
+        button.getStyleClass().add("botao-menu");
+
+        return button;
+    }
+
+    // =============================================================
+    // CARD
+    // =============================================================
+
+    private VBox criarCard(
+            String titulo,
+            String data,
+            String tipo,
+            String status,
+            String local
+    ) {
+
+        VBox card = new VBox(2);
+
+        card.getStyleClass().add("card-ocorrencia");
+
+        Label lblTitulo = new Label(titulo);
+        lblTitulo.getStyleClass().add("card-titulo");
+
+        Label lblData = criarLabel("Data: " + data);
+        Label lblTipo = criarLabel("Tipo: " + tipo);
+        Label lblStatus = criarLabel("Status: " + status);
+        Label lblLocal = criarLabel("Local: " + local);
+
+        card.getChildren().addAll(
+                lblTitulo,
+                lblData,
+                lblTipo,
+                lblStatus,
+                lblLocal
+        );
+
+        return card;
+    }
+
+    // =============================================================
+    // LABEL DO CARD
+    // =============================================================
+
+    private Label criarLabel(String texto) {
+
+        Label label = new Label(texto);
+
+        label.getStyleClass().add("card-label");
+
+        return label;
+    }
+        
+        cadastro.showAndWait();
+    
+    };
+        btCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);  
+        
         stage.show();
     }
 
