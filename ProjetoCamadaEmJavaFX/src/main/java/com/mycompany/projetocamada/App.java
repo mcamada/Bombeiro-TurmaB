@@ -56,6 +56,19 @@ public class App extends Application {
 
     private void mostrarCadastroBombeiroLugar(Stage primaryStage) {
         VBox root = criarTelaDeLugar("Cadastro Bombeiro", "/imagens/BannerCadastro.png");
+        Label labelUsuario = new Label("Usuário:");
+        TextField fieldUsuario = new TextField();
+         Label labelCPF  = new Label("CPF:");
+        TextField fieldCPF = new TextField();
+         Label labelDataNasc = new Label("Data de Nascimento:");
+        TextField fieldDataNasc = new TextField();
+         Label labelMatricula= new Label("Matrícula:");
+        TextField fieldMatricula= new TextField();
+         Label labelPatente = new Label("Patente:");
+        TextField fieldPatente = new TextField();
+         Label labelEspecialidade = new Label("Especialidade:");
+        TextField fieldEspecialidade = new TextField();
+   
         Button proximo = new Button("Entrar");
         proximo.setOnAction(event -> mostrarConsultaBombeirosLugar(primaryStage));
         root.getChildren().add(proximo);
@@ -68,7 +81,7 @@ public class App extends Application {
     private void mostrarConsultaBombeirosLugar(Stage primaryStage) {
         VBox root = criarTelaDeLugar("Consulta Bombeiros", "/imagens/fotinhacamada.jpg");
         Button voltar = new Button("Consultar os Bombeiros");
-        voltar.setOnAction(event -> mostrarTelaLogin(primaryStage));
+        voltar.setOnAction(event -> mostrarListarBombeirosLugar(primaryStage));
         root.getChildren().add(voltar);
 
         primaryStage.setTitle("Consulta Bombeiros");
