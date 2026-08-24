@@ -127,7 +127,7 @@ public class App extends Application {
                                 alert.show();
 
                                 event.consume();
-                                rootExclusao.getChildren().addAll(excluirItem, exclusaoItem);
+                                rootExclusao.getChildren().addAll(excluirItem, exclusaoItem, btCancelar, btConfirmar);
 
                             }
                         };
