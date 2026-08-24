@@ -157,16 +157,16 @@ public class App extends Application {
         stage.setScene(scene);
     }
     
-    public void atualizarListaViaturas(VBox viaturasBox, Stage stage, TextField type, TextField stats, TextField local) {
+    public void atualizarListaViaturas(VBox viaturasBox, Stage stage, Tipo type, Status stats, TextField local) {
         viaturasBox.getChildren().clear();
         List<Viatura> filterViaturas = viaturas;
         
-        if(!type.getText().isBlank()) {
-           filterViaturas = filterViaturas.stream().filter(v -> v.type.toString().toLowerCase().contains(type.getText().toLowerCase())).collect(Collectors.toList());
+        if(type != null) {
+           filterViaturas = filterViaturas.stream().filter(v -> v.type.toString().toLowerCase().contains(type.toString().toLowerCase())).collect(Collectors.toList());
         }
         
-        if(!stats.getText().isBlank()) {
-           filterViaturas = filterViaturas.stream().filter(v -> v.stats.toString().toLowerCase().contains(stats.getText().toLowerCase())).collect(Collectors.toList());
+        if(stats != null) {
+           filterViaturas = filterViaturas.stream().filter(v -> v.stats.toString().toLowerCase().contains(stats.toString().toLowerCase())).collect(Collectors.toList());
         }
         
         if(!local.getText().isBlank()) {
@@ -188,33 +188,35 @@ public class App extends Application {
         
         HBox filters = new HBox();
         
-        TextField type = new TextField();
-        TextField stats = new TextField();
+        ComboBox<Tipo> tipo = new ComboBox<>();
+        tipo.getItems().setAll(Tipo.values());
+        ComboBox<Status> status = new ComboBox<>();
+        status.getItems().addAll(Status.values());
         TextField local = new TextField();
         
-        filters.getChildren().addAll(new Label("Tipo: "), type, new Label("Status: "), stats, new Label("Localização: "), local);
+        filters.getChildren().addAll(new Label("Tipo: "), tipo, new Label("Status: "), status, new Label("Localização: "), local);
         filters.setSpacing(20);
         
         VBox viaturasBox = new  VBox();
         viaturasBox.setSpacing(20);
         
-        atualizarListaViaturas(viaturasBox, stage, type, stats, local);
+        atualizarListaViaturas(viaturasBox, stage, tipo.getValue(), status.getValue(), local);
         
         Button addBt = new Button("+");
         addBt.setOnAction(eh -> {
             addViaturaWindow(stage);
         });
         
-        type.setOnKeyReleased(eh -> {
-            atualizarListaViaturas(viaturasBox, stage, type, stats, local);
+        tipo.getSelectionModel().selectedItemProperty().addListener((observable, valorAntigo, valorNovo) -> {
+            atualizarListaViaturas(viaturasBox, stage, valorNovo, status.getValue(), local);
         });
         
-        stats.setOnKeyReleased(eh -> {
-            atualizarListaViaturas(viaturasBox, stage, type, stats, local);
+        status.getSelectionModel().selectedItemProperty().addListener((observable, valorAntigo, valorNovo) -> {
+            atualizarListaViaturas(viaturasBox, stage, tipo.getValue(), valorNovo, local);
         });
         
         local.setOnKeyReleased(eh -> {
-            atualizarListaViaturas(viaturasBox, stage, type, stats, local);
+            atualizarListaViaturas(viaturasBox, stage, tipo.getValue(), status.getValue(), local);
         });
         
         root.getChildren().addAll(title, lbFilter, filters, viaturasBox, addBt);
