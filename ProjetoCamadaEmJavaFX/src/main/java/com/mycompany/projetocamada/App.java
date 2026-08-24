@@ -55,7 +55,7 @@ public class App extends Application {
     }
 
     private void mostrarCadastroBombeiroLugar(Stage primaryStage) {
-        VBox root = criarTelaDeLugar("Cadastro Bombeiro", "/imagens/BannerCadastro.png");
+        VBox root = criarTelaDeLugar("Cadastro Bombeiro", "/imagens/SegundaTela.png");
         Label labelUsuario = new Label("Usuário:");
         TextField fieldUsuario = new TextField();
          Label labelCPF  = new Label("CPF:");
@@ -79,7 +79,7 @@ public class App extends Application {
     }
 
     private void mostrarConsultaBombeirosLugar(Stage primaryStage) {
-        VBox root = criarTelaDeLugar("Consulta Bombeiros", "/imagens/fotinhacamada.jpg");
+        VBox root = criarTelaDeLugar("Consulta Bombeiros", "/imagens/TerceiraTela.png");
         Button voltar = new Button("Consultar os Bombeiros");
         voltar.setOnAction(event -> mostrarListarBombeirosLugar(primaryStage));
         root.getChildren().add(voltar);
@@ -89,7 +89,7 @@ public class App extends Application {
         primaryStage.show();
     }
      private void mostrarListarBombeirosLugar(Stage primaryStage) {
-        VBox root = criarTelaDeLugar("Lista Bombeiros", "/imagens/fotinhacamada.jpg");
+        VBox root = criarTelaDeLugar("Lista Bombeiros", "/imagens/QuartaTela.png");
         Button voltar = new Button("Bombeiros Disponíveis");
         voltar.setOnAction(event -> mostrarTelaLogin(primaryStage));
         root.getChildren().add(voltar);
