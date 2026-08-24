@@ -1,5 +1,6 @@
 package com.ibirama.gestaodeviaturas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -274,7 +276,7 @@ public class App extends Application {
         Label lbPlaca = new Label("Placa:");
         TextField placa = new TextField();
         Label lbFabricacao = new Label("Fabricacao:");
-        TextField fabricacao = new TextField();
+        DatePicker fabricacao = new DatePicker();
         Label lbLocal = new Label("Local:");
         TextField local = new TextField();
         column1.getChildren().addAll(lbPrefixo, prefixo, lbPlaca, placa, lbFabricacao, fabricacao, lbLocal, local);
@@ -295,11 +297,11 @@ public class App extends Application {
         
         Button cadastrarBt = new Button("Cadastrar");
         cadastrarBt.setOnAction(eh -> {
-            if(prefixo.getValue() == null || placa.getText().isBlank() || fabricacao.getText().isBlank() || local.getText().isBlank() || tipo.getValue() == null || modelo.getText().isBlank() || status.getValue() == null) {
+            if(prefixo.getValue() == null || placa.getText().isBlank() || fabricacao.getValue() == null || local.getText().isBlank() || tipo.getValue() == null || modelo.getText().isBlank() || status.getValue() == null) {
                 Alert a = new Alert(Alert.AlertType.WARNING, "Algum campo não preenchido", ButtonType.OK);
                 a.showAndWait();
             } else {
-                viaturas.add(new Viatura(prefixo.getValue(), placa.getText(), fabricacao.getText(), local.getText(), modelo.getText(), tipo.getValue(), status.getValue()));
+                viaturas.add(new Viatura(prefixo.getValue(), placa.getText(), fabricacao.getValue(), local.getText(), modelo.getText(), tipo.getValue(), status.getValue()));
                 dashboard(dashboardStage);
                 stage.close();
             }
@@ -331,7 +333,8 @@ public class App extends Application {
         Label lbPlaca = new Label("Placa:");
         TextField placa = new TextField(viatura.placa);
         Label lbFabricacao = new Label("Fabricacao:");
-        TextField fabricacao = new TextField(viatura.fabrication);
+        DatePicker fabricacao = new DatePicker();
+        fabricacao.setValue(viatura.fabrication);
         Label lbLocal = new Label("Local:");
         TextField local = new TextField(viatura.local);
         column1.getChildren().addAll(lbPrefixo, prefixo, lbPlaca, placa, lbFabricacao, fabricacao, lbLocal, local);
@@ -354,13 +357,13 @@ public class App extends Application {
         
         Button update = new Button("Atualizar");
         update.setOnAction(eh -> {
-            if(prefixo.getValue() == null || placa.getText().isBlank() || fabricacao.getText().isBlank() || local.getText().isBlank() || tipo.getValue() == null || modelo.getText().isBlank() || status.getValue() == null) {
+            if(prefixo.getValue() == null || placa.getText().isBlank() || fabricacao.getValue() == null || local.getText().isBlank() || tipo.getValue() == null || modelo.getText().isBlank() || status.getValue() == null) {
                 Alert a = new Alert(Alert.AlertType.WARNING, "Algum campo não preenchido", ButtonType.OK);
                 a.showAndWait();
             } else {
                 viatura.prefix = prefixo.getValue();
                 viatura.placa = placa.getText();
-                viatura.fabrication = fabricacao.getText();
+                viatura.fabrication = fabricacao.getValue();
                 viatura.local = local.getText();
                 viatura.type = tipo.getValue();
                 viatura.model = modelo.getText();
@@ -388,13 +391,13 @@ public class App extends Application {
 class Viatura {
     Prefixo prefix;
     String placa;
-    String fabrication;
+    LocalDate fabrication;
     String model;
     Tipo type;
     Status stats;
     String local;
 
-    public Viatura(Prefixo prefix, String placa, String fabrication, String local, String model, Tipo type, Status stats) {
+    public Viatura(Prefixo prefix, String placa, LocalDate fabrication, String local, String model, Tipo type, Status stats) {
         this.prefix = prefix;
         this.placa = placa;
         this.fabrication = fabrication;
