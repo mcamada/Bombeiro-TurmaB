@@ -19,7 +19,7 @@ public class App extends Application {
     public void start(Stage stage) {
 
         bombeiros.add(new Bombeiro("Marcos Yuzure de Oliveira Camada", "12345678900",
-                "BM001", Patente.SARGENTO, Especialidade.INCENDIO,
+                "BM001", Patente.SOLDADO, Especialidade.INCENDIO,
                 "99999-1111", Status.ATIVO));
 
         bombeiros.add(new Bombeiro("Jefferson Vansuita", "98765432100",
