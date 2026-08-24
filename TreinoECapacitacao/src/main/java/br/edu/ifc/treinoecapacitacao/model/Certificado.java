@@ -1,6 +1,7 @@
 package br.edu.ifc.treinoecapacitacao.model;
 
 public class Certificado {
+
     private Participacao participacao;
     private String dataEmissao;
     private int cargaHoraria;
@@ -11,14 +12,23 @@ public class Certificado {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Participacao getParticipacao() { return participacao; }
-    public String getDataEmissao() { return dataEmissao; }
-    public int getCargaHoraria() { return cargaHoraria; }
+    public Participacao getParticipacao() {
+        return participacao;
+    }
+
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
 
     @Override
     public String toString() {
-        return participacao.getBombeiro().getNome() + " - "
-                + participacao.getTreinamento().getNome() + " - "
-                + dataEmissao + " - " + cargaHoraria + "h";
+        String bombeiro = participacao.getBombeiro().getNome();
+        String treinamento = participacao.getTreinamento().getNome();
+
+        return bombeiro + " - " + treinamento + " - " + dataEmissao + " - " + cargaHoraria + "h";
     }
 }

@@ -1,6 +1,7 @@
 package br.edu.ifc.treinoecapacitacao.model;
 
 public class Bombeiro {
+
     private String nome;
     private String cpf;
     private String matricula;
@@ -10,8 +11,16 @@ public class Bombeiro {
     private String contato;
     private String status;
 
-    public Bombeiro(String nome, String cpf, String matricula, String dataNascimento,
-            String patente, String especialidade, String contato, String status) {
+    public Bombeiro(
+            String nome,
+            String cpf,
+            String matricula,
+            String dataNascimento,
+            String patente,
+            String especialidade,
+            String contato,
+            String status
+    ) {
         this.nome = nome;
         this.cpf = cpf;
         this.matricula = matricula;
@@ -22,15 +31,41 @@ public class Bombeiro {
         this.status = status;
     }
 
-    public String getNome() { return nome; }
-    public String getCpf() { return cpf; }
-    public String getMatricula() { return matricula; }
-    public String getDataNascimento() { return dataNascimento; }
-    public String getPatente() { return patente; }
-    public String getEspecialidade() { return especialidade; }
-    public String getContato() { return contato; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {

@@ -6,35 +6,145 @@ import br.edu.ifc.treinoecapacitacao.model.Participacao;
 import br.edu.ifc.treinoecapacitacao.model.Treinamento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TelaDetalhesTreinamento {
-    private Stage stage; private Treinamento treinamento;
-    public TelaDetalhesTreinamento(Stage stage, Treinamento treinamento) { this.stage=stage; this.treinamento=treinamento; }
+
+    private Stage stage;
+    private Treinamento treinamento;
+
+    public TelaDetalhesTreinamento(Stage stage, Treinamento treinamento) {
+        this.stage = stage;
+        this.treinamento = treinamento;
+    }
+
     public Scene criarCena() {
-        Label titulo = new Label("Detalhes do treinamento"); titulo.setId("tituloTreinamentos");
-        VBox info = new VBox(6,
-            new Label("Nome: " + treinamento.getNome()), new Label("Tipo: " + treinamento.getTipo()),
-            new Label("Descrição: " + treinamento.getDescricao()), new Label("Carga horária: " + treinamento.getCargaHoraria() + "h"),
-            new Label("Período: " + treinamento.getDataInicio() + " até " + treinamento.getDataFim()),
-            new Label("Instrutor: " + treinamento.getInstrutor()), new Label("Instituição: " + treinamento.getInstituicao()),
-            new Label("Local: " + treinamento.getLocal()), new Label("Status: " + treinamento.getStatus()),
-            new Label("Ativo: " + (treinamento.isAtivo() ? "Sim" : "Não")));
-        info.getStyleClass().add("formulario");
-        ObservableList<String> partes = FXCollections.observableArrayList();
-        for (Participacao p : App.participacoes) if (p.getTreinamento() == treinamento) partes.add(p.toString());
-        ObservableList<String> certs = FXCollections.observableArrayList();
-        for (Certificado c : App.certificados) if (c.getParticipacao().getTreinamento() == treinamento) certs.add(c.toString());
-        ListView<String> listaP = new ListView<String>(partes); listaP.setPrefHeight(120);
-        ListView<String> listaC = new ListView<String>(certs); listaC.setPrefHeight(100);
-        Button editar = new Button("Editar"); Button voltar = new Button("Voltar");
-        editar.setOnAction(e -> { stage.setScene(new TelaEditarTreinamento(stage, treinamento).criarCena()); stage.setTitle("Editar Treinamento"); });
-        voltar.setOnAction(e -> { stage.setScene(new TelaConsultaTreinamentos(stage).criarCena()); stage.setTitle("Consultar Treinamentos"); });
-        VBox raiz = new VBox(12, titulo, info, new Label("Participantes"), listaP, new Label("Certificados"), listaC, new HBox(10, editar, voltar));
-        raiz.setPadding(new Insets(20)); Scene scene = new Scene(raiz, 750, 650); scene.getStylesheets().add("/css/style.css"); return scene;
+        Label titulo = new Label("Detalhes do treinamento");
+        titulo.setId("tituloTreinamentos");
+
+        Label nome = new Label("Nome: " + treinamento.getNome());
+        Label tipo = new Label("Tipo: " + treinamento.getTipo());
+        Label descricao = new Label("Descrição: " + treinamento.getDescricao());
+        Label carga = new Label("Carga horária: " + treinamento.getCargaHoraria() + "h");
+        Label periodo = new Label(
+                "Período: "
+                + treinamento.getDataInicio()
+                + " até "
+                + treinamento.getDataFim()
+        );
+        Label instrutor = new Label("Instrutor: " + treinamento.getInstrutor());
+        Label instituicao = new Label("Instituição: " + treinamento.getInstituicao());
+        Label local = new Label("Local: " + treinamento.getLocal());
+        Label status = new Label("Status: " + treinamento.getStatus());
+
+        String textoAtivo = "Não";
+
+        if (treinamento.isAtivo()) {
+            textoAtivo = "Sim";
+        }
+
+        Label ativo = new Label("Ativo: " + textoAtivo);
+
+        VBox informacoes = new VBox(7);
+        informacoes.getStyleClass().add("formulario");
+        informacoes.getChildren().addAll(
+                nome,
+                tipo,
+                descricao,
+                carga,
+                periodo,
+                instrutor,
+                instituicao,
+                local,
+                status,
+                ativo
+        );
+
+        ObservableList<String> participantes = FXCollections.observableArrayList();
+
+        for (Participacao participacao : App.participacoes) {
+            if (participacao.getTreinamento() == treinamento) {
+                participantes.add(participacao.toString());
+            }
+        }
+
+        ObservableList<String> certificados = FXCollections.observableArrayList();
+
+        for (Certificado certificado : App.certificados) {
+            Treinamento treinamentoCertificado = certificado
+                    .getParticipacao()
+                    .getTreinamento();
+
+            if (treinamentoCertificado == treinamento) {
+                certificados.add(certificado.toString());
+            }
+        }
+
+        ListView<String> listaParticipantes = new ListView<String>(participantes);
+        listaParticipantes.setPrefHeight(120);
+
+        ListView<String> listaCertificados = new ListView<String>(certificados);
+        listaCertificados.setPrefHeight(100);
+
+        Button editar = new Button("Editar");
+        editar.getStyleClass().add("botao-principal");
+
+        Button voltar = new Button("Voltar");
+
+        HBox botoes = new HBox(10);
+        botoes.getChildren().addAll(editar, voltar);
+
+        VBox painel = new VBox(12);
+        painel.getStyleClass().add("painel-pagina");
+        painel.getChildren().addAll(
+                informacoes,
+                new Label("Participantes"),
+                listaParticipantes,
+                new Label("Certificados"),
+                listaCertificados,
+                botoes
+        );
+
+        VBox raiz = new VBox(12);
+        raiz.getStyleClass().add("pagina");
+        raiz.setPadding(new Insets(24));
+        raiz.getChildren().addAll(titulo, painel);
+
+        editar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaEditarTreinamento tela = new TelaEditarTreinamento(
+                        stage,
+                        treinamento
+                );
+
+                stage.setScene(tela.criarCena());
+                stage.setTitle("Editar Treinamento");
+            }
+        });
+
+        voltar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TelaConsultaTreinamentos tela = new TelaConsultaTreinamentos(stage);
+
+                stage.setScene(tela.criarCena());
+                stage.setTitle("Consultar Treinamentos");
+            }
+        });
+
+        Scene scene = new Scene(raiz, 780, 700);
+        scene.getStylesheets().add("/css/style.css");
+
+        return scene;
     }
 }

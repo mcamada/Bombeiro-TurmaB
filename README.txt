@@ -1,34 +1,22 @@
 SISTEMA DE TREINAMENTO E CAPACITAÇÃO
 
 Implementado:
-- Login com usuários coordenador, instrutor e supervisor.
-- Dashboard com indicadores e menu principal.
-- Navegação entre todas as áreas do sistema.
-- Cadastro de treinamentos internos e externos.
-- Consulta de treinamentos com filtros básicos.
-- Tela de detalhes do treinamento.
-- Edição de treinamento e alteração de status.
-- Inativação de treinamento.
+- Login com os usuários coordenador, instrutor e supervisor.
+- Senha de teste 123 para os três usuários.
+- Dashboard com indicadores e acessos rápidos.
+- Cadastro, consulta, detalhes, edição e inativação de treinamentos.
 - Cadastro e listagem de bombeiros.
 - Cadastro e listagem de instrutores.
 - Cadastro e listagem de instituições.
-- Associação de bombeiros aos treinamentos.
-- Status, frequência e nota da participação.
-- Bloqueio básico de bombeiro não ativo em participação.
-- Emissão de certificado para participação concluída.
-- Lista de certificados emitidos.
-- Histórico simples das operações realizadas.
-- Armazenamento temporário em memória enquanto o programa está aberto.
-- CSS básico já existente mantido sem alterações.
-
-Usuários de teste:
-- coordenador / 123
-- instrutor / 123
-- supervisor / 123
+- Registro e atualização de participações.
+- Emissão e listagem de certificados.
+- Histórico das operações realizadas.
+- Dados armazenados em memória enquanto o programa está aberto.
+- CSS inspirado no protótipo criado no Figma.
 
 Não implementado:
-- Banco de dados ou salvamento permanente em arquivo.
-- Controle completo de permissões para cada perfil.
-- Validação completa de formatos de CPF, CNPJ e datas.
-- Exclusão física de registros.
-- Geração de arquivo PDF do certificado.
+- Banco de dados.
+- Persistência permanente dos registros.
+- Permissões completas por perfil.
+- Validações avançadas de CPF, CNPJ e datas.
+- Geração do certificado em PDF.

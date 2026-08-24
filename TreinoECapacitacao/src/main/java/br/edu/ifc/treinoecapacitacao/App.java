@@ -42,9 +42,13 @@ public class App extends Application {
 
     private void carregarUsuarios() {
         if (usuarios.isEmpty()) {
-            usuarios.add(new Usuario("coordenador", "123", "Coordenador"));
-            usuarios.add(new Usuario("instrutor", "123", "Instrutor"));
-            usuarios.add(new Usuario("supervisor", "123", "Supervisor"));
+            Usuario coordenador = new Usuario("coordenador", "123", "Coordenador");
+            Usuario instrutor = new Usuario("instrutor", "123", "Instrutor");
+            Usuario supervisor = new Usuario("supervisor", "123", "Supervisor");
+
+            usuarios.add(coordenador);
+            usuarios.add(instrutor);
+            usuarios.add(supervisor);
         }
     }
 
