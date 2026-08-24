@@ -1,0 +1,45 @@
+/* Estilos do Projeto Bombeiro — paleta da arte: papel #F4F4F4, vinho #6A1313 */
+
+.rotulo {
+    -fx-text-fill: #3a3a3a;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.campo {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #d0d0d0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-pref-width: 320px;
+    -fx-pref-height: 36px;
+    -fx-font-size: 13px;
+    -fx-padding: 0 10 0 10;
+    -fx-text-fill: #222222;
+    -fx-prompt-text-fill: #999999;
+}
+
+.campo:focused {
+    -fx-border-color: #6A1313;
+    -fx-border-width: 1.5;
+}
+
+.botao-vermelho {
+    -fx-background-color: #6A1313;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-pref-width: 320px;
+    -fx-pref-height: 40px;
+}
+
+.botao-vermelho:hover {
+    -fx-background-color: #8a1a1a;
+}
+
+.botao-vermelho:pressed {
+    -fx-background-color: #4e0d0d;
+}
