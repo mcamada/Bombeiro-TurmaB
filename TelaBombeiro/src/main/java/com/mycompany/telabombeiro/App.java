@@ -80,55 +80,64 @@ public class App extends Application {
         stage.setScene(scene);
 
         //Segunda Tela
-        
         EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Stage ocorrencias = new Stage();
-                
+
                 Font fonteTituloTelaOcorrencias = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
 
-                
                 VBox rootTelaOcorrencias = new VBox();
                 rootTelaOcorrencias.setAlignment(Pos.TOP_CENTER);
-                
+
                 Label tituloOcorrencias = new Label("Ocorrências");
                 titulo.setId("titulo");
                 tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
-                
+
                 Label local = new Label("Local");
+                local.setId("local");
+
                 Label data = new Label("Data");
+                data.setId("data");
+
                 Label hora = new Label("Hora");
+                hora.setId("hora");
+
                 Label equipe = new Label("Equipe");
+                equipe.setId("equipe");
+
                 Label tipo = new Label("Tipo");
+                tipo.setId("tipo");
+
                 Label descricao = new Label("Descrição");
-                
-                
-                
+                descricao.setId("descricao");
+
                 GridPane telaOcorrencias = new GridPane();
                 telaOcorrencias.setHgap(12);
                 telaOcorrencias.setVgap(15);
                 telaOcorrencias.setAlignment(Pos.CENTER);
-                
+
                 telaOcorrencias.add(local, 0, 0);
                 telaOcorrencias.add(data, 1, 0);
                 telaOcorrencias.add(hora, 2, 0);
                 telaOcorrencias.add(equipe, 3, 0);
                 telaOcorrencias.add(tipo, 4, 0);
                 telaOcorrencias.add(descricao, 5, 0);
-                
 
                 rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
                 rootTelaOcorrencias.getChildren().add(telaOcorrencias);
-                
-                Scene cenarioCadastro = new Scene(rootTelaOcorrencias, 800, 600);
-                ocorrencias.setScene(cenarioCadastro);
+
+                Scene Ocorrencias = new Scene(rootTelaOcorrencias, 800, 600);
+
+                Ocorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+
+                ocorrencias.setTitle("Ocorrências");
+                ocorrencias.setScene(Ocorrencias);
                 ocorrencias.show();
             }
         };
-        
+
         //Resto
-        
         botaoEntrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
 
         stage.show();
