@@ -18,17 +18,17 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-        bombeiros.add(new Bombeiro("Carlos Eduardo", "12345678900",
+        bombeiros.add(new Bombeiro("Marcos Yuzure de Oliveira Camada", "12345678900",
                 "BM001", Patente.SARGENTO, Especialidade.INCENDIO,
                 "99999-1111", Status.ATIVO));
 
-        bombeiros.add(new Bombeiro("Ana Paula", "98765432100",
-                "BM002", Patente.CABO, Especialidade.RESGATE,
-                "99999-2222", Status.ATIVO));
+        bombeiros.add(new Bombeiro("Jefferson Vansuita", "98765432100",
+                "BM002", Patente.CORONEL, Especialidade.RESGATE,
+                "99999-2222", Status.AFASTADO));
 
-        bombeiros.add(new Bombeiro("João Pedro", "45678912300",
-                "BM003", Patente.SOLDADO, Especialidade.APH,
-                "99999-3333", Status.AFASTADO));
+        bombeiros.add(new Bombeiro("João Guilherme Burg", "45678912300",
+                "BM003", Patente.TENENTE, Especialidade.OPERACOES_AEREAS,
+                "99999-3333", Status.ATIVO));
 
         BorderPane principal = new BorderPane();
 
