@@ -38,8 +38,7 @@
 }
 
 #usuario, #senha {
-    -fx-font-weight: bold;
-    
+    -fx-font-weight: bold; 
 }
 /*
 pq nao funciona
@@ -50,4 +49,15 @@ pq nao funciona
     -fx-font-weight: bold;
     -fx-background-color: lightseagreen;
     -fx-text-fill: white;
+}
+
+
+/*
+segunda página
+*/
+
+
+#local, #data, #hora, #tipo, #equipe, #descricao {
+    
+    -fx-font-weight: bold;
 }
