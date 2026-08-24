@@ -167,14 +167,15 @@ public class App extends Application {
         TXpatente.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-border-width:2px;"+"-fx-border-color:grey;"+"-fx-border-radius:8"
         );
         Formulario.add(TXpatente, 1, 3);
-        
-        ButtonBar BTcadastrar = new ButtonBar();
+ 
+        StackPane sla = new StackPane();
         
         Button cadastrar = new Button(
                 "+ Cadastrar Bombeiro"
         );
-        BTcadastrar.getButtons().addAll(cadastrar);
-        
+
+        sla.getChildren().addAll(cadastrar);
+        sla.setAlignment(Pos.CENTER);
         cadastrar.setOnMouseClicked(e -> {
             
             if (TXpatente.getText().trim().isEmpty()){
@@ -213,7 +214,7 @@ public class App extends Application {
         });
 
         cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
-        root.getChildren().addAll(header,voltar,Formulario,BTcadastrar);
+        root.getChildren().addAll(header,voltar,Formulario,sla);
       
         Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
