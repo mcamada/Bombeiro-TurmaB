@@ -49,6 +49,7 @@ public class App extends Application {
         campoSenha.setPromptText("Digite sua senha");
         campoSenha.setPrefWidth(280);
 
+        //GridPane
         GridPane campos = new GridPane();
         campos.setAlignment(Pos.CENTER);
         campos.setHgap(12);
@@ -95,8 +96,30 @@ public class App extends Application {
                 titulo.setId("titulo");
                 tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
                 
+                Label local = new Label("Local");
+                Label data = new Label("Data");
+                Label hora = new Label("Hora");
+                Label equipe = new Label("Equipe");
+                Label tipo = new Label("Tipo");
+                Label descricao = new Label("Descrição");
+                
+                
+                
+                GridPane telaOcorrencias = new GridPane();
+                telaOcorrencias.setHgap(12);
+                telaOcorrencias.setVgap(15);
+                telaOcorrencias.setAlignment(Pos.CENTER);
+                
+                telaOcorrencias.add(local, 0, 0);
+                telaOcorrencias.add(data, 1, 0);
+                telaOcorrencias.add(hora, 2, 0);
+                telaOcorrencias.add(equipe, 3, 0);
+                telaOcorrencias.add(tipo, 4, 0);
+                telaOcorrencias.add(descricao, 5, 0);
+                
 
                 rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
+                rootTelaOcorrencias.getChildren().add(telaOcorrencias);
                 
                 Scene cenarioCadastro = new Scene(rootTelaOcorrencias, 800, 600);
                 ocorrencias.setScene(cenarioCadastro);
