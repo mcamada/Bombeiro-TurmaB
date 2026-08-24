@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -62,14 +63,10 @@ public class App extends Application {
                 )
         );
 
-        content.getChildren().addAll(statsRow,emergenciesList
-        );
+        content.getChildren().addAll(statsRow,emergenciesList);
+        root.getChildren().addAll(header,content);
 
-        root.getChildren().addAll(header,content
-        );
-
-        Scene scene = new Scene(root,1860,1000
-        );
+        Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
     }
 
@@ -77,16 +74,13 @@ public class App extends Application {
 
         VBox root = new VBox();
 
-        root.setStyle("-fx-background-color: #f4f5f7;"
-        );
+        root.setStyle("-fx-background-color: #f4f5f7;");
 
         HBox header = createHeader();
 
         VBox content = new VBox(20);
 
-        content.setPadding(
-                new Insets(25)
-        );
+        content.setPadding(new Insets(25));
 
         Button voltar = new Button("← Voltar");
         
@@ -96,8 +90,7 @@ public class App extends Application {
             mostrarInicio();
         });
 
-        Label titulo = new Label(nomeOcorrencia.replace("🔥 ", "").toUpperCase()
-        );
+        Label titulo = new Label(nomeOcorrencia.replace("🔥 ", "").toUpperCase());
 
         titulo.setFont(
                 Font.font("System",FontWeight.BOLD,32
@@ -131,32 +124,66 @@ public class App extends Application {
             );
         });
 
-        cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;"
-        );
-        content.getChildren().addAll(voltar,tituloBox,bombeiros,cadastrar
-        );
-        root.getChildren().addAll(header,content
-        );
-        Scene scene = new Scene(root,1860,1000
-        );
+        cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
+        content.getChildren().addAll(voltar,tituloBox,bombeiros,cadastrar);
+        root.getChildren().addAll(header,content);
+        Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
     }
     private void mostrarCadastro(){
         VBox root = new VBox();
 
-        root.setStyle("-fx-background-color: #f4f5f7;"
-        );
+        root.setStyle("-fx-background-color: #f4f5f7;");
         HBox header = createHeader();
         
         
         
         GridPane Formulario = new GridPane();
+        Formulario.setAlignment(Pos.CENTER);
+        Formulario.setVgap(15);
+        Formulario.setHgap(10);
         
-        Label name = new Label();
-        Label id = new Label();
-        Label password = new Label();
-        Label Patente = new Label();
+        
+        Label name = new Label("Nome:");
+        Formulario.add(name, 0, 0);
+        name.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;");
+        TextArea TXname =  new TextArea();
+        TXname.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-border-width:2px;"+"-fx-border-color:grey;"+"-fx-border-radius:8"
+        );
+        Formulario.add(TXname, 1, 0);
+        
+        
+        Label id = new Label("Identificação:");
+        id.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;"
+        );
+        Formulario.add(id, 0, 1);
+        TextArea TXid =  new TextArea();
+        TXid.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-border-width:2px;"+"-fx-border-color:grey;"+"-fx-border-radius:8"
+        );
+        Formulario.add(TXid, 1, 1);
+        
+        
+        Label password = new Label("Senha:");
+        password.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;"
+        );
+        Formulario.add(password, 0, 2);
+        TextArea TXpassword =  new TextArea();
+        TXpassword.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-border-width:2px;"+"-fx-border-color:grey;"+"-fx-border-radius:8"
+        );
+        Formulario.add(TXpassword, 1, 2);
+        
+        
+        Label patente = new Label("Patente");
+        patente.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;"
+        );
+        Formulario.add(patente, 0, 3);
+        TextArea TXpatente =  new TextArea();
+        TXpatente.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-border-width:2px;"+"-fx-border-color:grey;"+"-fx-border-radius:8"
+        );
+        Formulario.add(TXpatente, 1, 3);
+        
         root.getChildren().addAll(header,Formulario);
+      
         Scene scene = new Scene(root,1860,1000
         );
         janela.setScene(scene);
@@ -324,35 +351,24 @@ public class App extends Application {
         card.setStyle("-fx-background-color: white;"+ "-fx-background-radius: 8;"+ "-fx-padding: 12 15;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);"
         );
 
-        Label usuario = new Label(usuarioTexto
-        );
-
+        Label usuario = new Label(usuarioTexto);
         usuario.setFont(
                 Font.font("System",11
                 )
         );
-        Label nome = new Label(nomeTexto
-        );
+        Label nome = new Label(nomeTexto);
         nome.setFont(
                 Font.font("System",FontWeight.BOLD,16
                 )
         );
 
-        Label patente = new Label(patenteTexto
-        );
+        Label patente = new Label(patenteTexto);
+        Label tempo = new Label(tempoTexto);
+        tempo.setTextFill(Color.GRAY);
 
-        Label tempo = new Label(tempoTexto
-        );
-
-        tempo.setTextFill(Color.GRAY
-        );
-
-        Label status = new Label(statusTexto
-        );
-
-        status.setTextFill(Color.WHITE
-        );
-
+        Label status = new Label(statusTexto);
+        
+        status.setTextFill(Color.WHITE);
         status.setStyle("-fx-background-color: " + statusCor + ";"+ "-fx-padding: 5 15;"+ "-fx-background-radius: 10;"
         );
 
@@ -364,12 +380,9 @@ public class App extends Application {
 
         linha.setRight(status);
 
-        BorderPane.setAlignment(status, Pos.CENTER
-        );
+        BorderPane.setAlignment(status, Pos.CENTER);
 
-        card.getChildren().add(
-                linha
-        );
+        card.getChildren().add(linha);
 
         return card;
     }
