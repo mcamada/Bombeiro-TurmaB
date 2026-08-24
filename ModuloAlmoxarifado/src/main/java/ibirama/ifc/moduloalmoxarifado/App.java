@@ -184,84 +184,11 @@ public class App extends Application {
                 Button btVoltarConst = new Button("Voltar");
 
                 botoes.getChildren().addAll(btFiltrar, btExcluir, btVoltarConst);
-/*
+                /*
                 =======================================================================
                 Terminar
                 =======================================================================
-                */
-                //Atualizar Item
-                EventHandler<itens> atualizar = new EventHandler<itens>() {
-                    @Override
-                    public void handle(itens itemSelecionado) {
-                        Stage atualizarTela = new Stage();
-                        VBox cRoot = new VBox();
-                        Label txAtualizar = new Label("Atualizar Item");
-
-                        Label tName = new Label("Nome do Item");
-                        TextField infName = new TextField();
-
-                        Label tCategoria = new Label("Categoria");
-                        TextField infCategoria = new TextField();
-
-                        Label tQuant = new Label("Quantidade Inicial");
-                        TextField infQuant = new TextField();
-
-                        Label tUnidMedid = new Label("Unidade de Medida");
-                        TextField infUnidMedid = new TextField();
-
-                        Label tLocal = new Label("Local no Estoque");
-                        TextField infLocal = new TextField();
-
-                        Label tMin = new Label("Nivel Minimo de Estoque");
-                        TextField infMin = new TextField();
-
-                        infName.setText(itemSelecionado.nome);
-                        
-                        infCategoria.setText(itemSelecionado.categoria);
-                        
-                        infQuant.setText(String.valueOf(itemSelecionado.quantidade));
-                        
-                        infUnidMedid.setText(itemSelecionado.unidade);
-                        
-                        infLocal.setText(itemSelecionado.local);
-                        
-                        infMin.setText(String.valueOf(itemSelecionado.nivelMinimo));
-
-                        Button btSalve = new Button("Atualizar Item");
-                        btSalve.setDisable(true);
-
-                        btSalve.disableProperty().bind(
-                                infName.textProperty().isEmpty()
-                                        .or(infCategoria.textProperty().isEmpty())
-                                        .or(infQuant.textProperty().isEmpty())
-                                        .or(infUnidMedid.textProperty().isEmpty())
-                                        .or(infLocal.textProperty().isEmpty())
-                                        .or(infMin.textProperty().isEmpty())
-                        );
-
-                        cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria,
-                                infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
-                                infLocal, tMin, infMin, btSalve);
-
-                        Scene cadastroCena = new Scene(cRoot, 640, 480);
-                        atualizarTela.setTitle("Atualizar Item");
-                        atualizarTela.setScene(cadastroCena);
-                        consultaTela.close();
-                        atualizarTela.show();
-
-                        btSalve.setOnMouseClicked((new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent event) {
-                                atualizarTela.close();
-                                Alert aviso = new Alert(Alert.AlertType.INFORMATION);
-                                aviso.setHeaderText("Item Atualizado com Sucesso");
-                                consultaTela.show();
-                                aviso.show();
-
-                            }
-                        }));
-                    }
-                };
+                 */
 
                 //Excluir
                 btExcluir.setDisable(true);
@@ -356,15 +283,17 @@ public class App extends Application {
 
                 Tabela.setOnMouseClicked(event -> {
                     if (event.getClickCount() == 2) {
-                        Item itemSelecionado = Tabela.getSelectionModel().getSelectedItem();
+                        Item itemSelecionado
+                                = Tabela.getSelectionModel().getSelectedItem();
                         if (itemSelecionado == null) {
                             return;
                         }
-                        atualizar.handle(itemSelecionado);
+                        atualizarItem(itemSelecionado, Tabela, consultaTela);
                     }
                 });
 
-                cRoot.getChildren().addAll(txConsultar, botoes, Tabela);
+                cRoot.getChildren()
+                        .addAll(txConsultar, botoes, Tabela);
 
                 Scene consultaCena = new Scene(cRoot, 640, 480);
                 consultaTela.setTitle("Consultar Itens");
@@ -399,8 +328,9 @@ public class App extends Application {
                         listCategoria.setItems(categorias);
 
                         Button btFiltar = new Button("Filtar Itens");
+                        Button btLimparFiltro = new Button("Limpar Filtro");
 
-                        cRoot.getChildren().addAll(txFiltar, tCategoria, listCategoria, btFiltar, btVoltarConst);
+                        cRoot.getChildren().addAll(txFiltar, tCategoria, listCategoria, btFiltar, btLimparFiltro, btVoltarConst);
 
                         Scene cadastroCena = new Scene(cRoot, 640, 480);
                         filtarTela.setTitle("Filtar Item");
@@ -430,6 +360,16 @@ public class App extends Application {
                             consultaTela.show();
                             filtarTela.close();
                         });
+
+                        btLimparFiltro.setOnMouseClicked(event -> {
+                            itensFiltrados.clear();
+                            for (Item item : itens) {
+                                itensFiltrados.add(item);
+                            }
+                            consultaTela.show();
+                            filtarTela.close();
+                        });
+
                     }
                 };
 
@@ -441,6 +381,72 @@ public class App extends Application {
         cadastrarItem.setOnMouseClicked(cadastrar);
         consultarItens.setOnMouseClicked(consultar);
 
+    }
+
+    //Atualizar Item
+    private void atualizarItem(Item itemSelecionado, TableView<Item> tabela, Stage consultaTela) {
+        Stage atualizarTela = new Stage();
+        VBox cRoot = new VBox();
+        Label txAtualizar = new Label("Atualizar Item");
+
+        Label tName = new Label("Nome do Item");
+        TextField infName = new TextField();
+
+        Label tCategoria = new Label("Categoria");
+        TextField infCategoria = new TextField();
+
+        Label tQuant = new Label("Quantidade Inicial");
+        TextField infQuant = new TextField();
+
+        Label tUnidMedid = new Label("Unidade de Medida");
+        TextField infUnidMedid = new TextField();
+
+        Label tLocal = new Label("Local no Estoque");
+        TextField infLocal = new TextField();
+
+        Label tMin = new Label("Nivel Minimo de Estoque");
+        TextField infMin = new TextField();
+
+        infName.setText(itemSelecionado.nome);
+        infCategoria.setText(itemSelecionado.categoria);
+        infQuant.setText(String.valueOf(itemSelecionado.quantidade));
+        infUnidMedid.setText(itemSelecionado.unidade);
+        infLocal.setText(itemSelecionado.local);
+        infMin.setText(String.valueOf(itemSelecionado.nivelMinimo));
+
+        Button btSalve = new Button("Atualizar Item");
+        btSalve.setDisable(true);
+
+        btSalve.disableProperty().bind(
+                infName.textProperty().isEmpty()
+                        .or(infCategoria.textProperty().isEmpty())
+                        .or(infQuant.textProperty().isEmpty())
+                        .or(infUnidMedid.textProperty().isEmpty())
+                        .or(infLocal.textProperty().isEmpty())
+                        .or(infMin.textProperty().isEmpty())
+        );
+
+        cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria,
+                infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
+                infLocal, tMin, infMin, btSalve);
+
+        Scene cadastroCena = new Scene(cRoot, 640, 480);
+        atualizarTela.setTitle("Atualizar Item");
+        atualizarTela.setScene(cadastroCena);
+        consultaTela.close();
+        atualizarTela.show();
+
+        btSalve.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                atualizarTela.close();
+                Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                aviso.setHeaderText("Item Atualizado com Sucesso");
+                consultaTela.show();
+                aviso.show();
+
+            }
+        }));
     }
 
     public static void main(String[] args) {
