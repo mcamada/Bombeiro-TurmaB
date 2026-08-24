@@ -53,8 +53,15 @@
 segunda página
 */
 
+#tituloOcorrencias{
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 15px;
+    -fx-background-radius: 8px;
+}
 
 #local, #data, #hora, #tipo, #equipe, #descricao {
-    
     -fx-font-weight: bold;
+    -fx-font-size: xx-large;
 }
