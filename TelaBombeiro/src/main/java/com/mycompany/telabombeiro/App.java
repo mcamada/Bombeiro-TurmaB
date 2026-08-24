@@ -14,16 +14,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Font fonteTitulo = Font.font("Verdana",FontWeight.BOLD, FontPosture.REGULAR, 30);
+        Font fonteTitulo = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
         Font fonteCampos = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 18);
         Font fonteEntrada = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16);
-        
+
         Label titulo = new Label("Login");
         titulo.setId("titulo");
         titulo.setFont(fonteTitulo);
@@ -66,7 +67,7 @@ public class App extends Application {
 
         root.getChildren().add(titulo);
         root.getChildren().add(campos);
-        
+
         //BOTÃO
         Button botaoEntrar = new Button("Entrar");
         root.getChildren().add(botaoEntrar);
@@ -76,26 +77,37 @@ public class App extends Application {
         scene.getStylesheets().add("/css/style.css");
         stage.setTitle("Sistema de Teste do JavaFX");
         stage.setScene(scene);
+
+        //Segunda Tela
         
         EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event){
+            public void handle(MouseEvent event) {
                 Stage ocorrencias = new Stage();
-                VBox rootTelaOcorrencias = new VBox();
                 
+                Font fonteTituloTelaOcorrencias = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
+
+                
+                VBox rootTelaOcorrencias = new VBox();
+                rootTelaOcorrencias.setAlignment(Pos.TOP_CENTER);
+                
+                Label tituloOcorrencias = new Label("Ocorrências");
+                titulo.setId("titulo");
+                tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
+                
+
+                rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
                 
                 Scene cenarioCadastro = new Scene(rootTelaOcorrencias, 800, 600);
                 ocorrencias.setScene(cenarioCadastro);
                 ocorrencias.show();
             }
-            
-            
-            
-            
         };
+        
+        //Resto
+        
         botaoEntrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
-        
-        
+
         stage.show();
     }
 
