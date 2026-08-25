@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * @author aluno
  */
 public class TelaOcorrencias {
-
+    
     public void mostrar(Stage stage) {
 
         VBox root = new VBox(20);
@@ -92,6 +92,8 @@ public class TelaOcorrencias {
         formulario.getChildren().addAll(tituloForm,Tipo,txtTipo,Data,txtData,Hora,txtHora,Local,txtLocal,Descricao,txtDescricao,Status,txtStatus,Sinistro,txtSinistro,Prioridade,txtPrioridade,botoes);
 
         VBox lista = new VBox(15);
+        lista.setPrefWidth(700);
+        lista.setPrefHeight(570);
 
         lista.setStyle("-fx-background-color: #5A1720;"+ "-fx-background-radius: 30;"+ "fx-padding:30;");
 
@@ -103,19 +105,29 @@ public class TelaOcorrencias {
         pesquisar.setPromptText("Pesquisar...");
 
         Label cabecalho = new Label("ID Tipo Prioridade Status Data/Hora");
+        
+        btLimpar.setOnAction(e -> {
+            txtTipo.clear();
+            txtHora.clear();
+            txtData.clear();
+            txtLocal.clear();
+            txtDescricao.clear();
+            txtStatus.clear();
+            txtSinistro.clear();
+            txtPrioridade.clear();
+        });
 
         cabecalho.setStyle( "-fx-background-color: #F4E9DD;"+ "-fx-text-fill: #5A1720;"+ "-fx-background-radius: 20;");
         lista.getChildren().addAll(tituloLista,pesquisar,cabecalho);
         HBox conteudo = new HBox (25);
         
         conteudo.getChildren().addAll(formulario,lista);
-        root.getChildren().addAll(topo,conteudo);
-        
+        root.getChildren().addAll(topo, conteudo);
+
         Scene scene = new Scene(root, 1200, 700);
         stage.setScene(scene);
         stage.setTitle("Ocorrencias");
         stage.show();
-        
+
     }
-    
 }

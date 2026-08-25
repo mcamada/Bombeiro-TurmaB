@@ -21,17 +21,9 @@ public class App extends Application {
 
         VBox menu = new VBox(12);
         menu.setPrefWidth(330);
-        menu.setStyle(
-                "-fx-background-color:#5B1A1F; "
-                + "-fx-padding;45;"
-        );
+        menu.setStyle( "-fx-background-color:#5B1A1F; "+ "-fx-padding;45;");
         Label titulo = new Label("Sistema de \nOcorrencia");
-        titulo.setStyle(
-                "-fx-text-fill:white; " + 
-                "-fx-font-size:40px;"
-        );
-                       
-                     
+        titulo.setStyle("-fx-text-fill:white; " + "-fx-font-size:40px;");
 
         Button btOcorencias = new Button("Ocorrências");
         Button btComunicacao = new Button("Comunicação");
@@ -39,37 +31,47 @@ public class App extends Application {
         Button btViaturas = new Button("Viatura");
         Button btLocalizacao = new Button("Localização");
         Button btEquipe = new Button("Equipe");
+        
+        btOcorencias.setOnAction(e -> {
+            TelaOcorrencias tela = new TelaOcorrencias();
+            tela.mostrar(stage);
+        });
 
-        Button[] botoes = {
-            btOcorencias,
-            btComunicacao,
-            btDespachos,
-            btViaturas,
-            btLocalizacao,
-            btEquipe
-        };
+        btComunicacao.setOnAction(e -> {
+            TelaComunicacao tela = new TelaComunicacao();
+            tela.mostrar(stage);
+        });
+
+        btDespachos.setOnAction(e -> {
+            TelaDespachos tela = new TelaDespachos();
+            tela.mostrar(stage);
+        });
+
+        btViaturas.setOnAction(e -> {
+            TelaViatura tela = new TelaViatura();
+            tela.mostrar(stage);
+        });
+
+        btLocalizacao.setOnAction(e -> {
+            TelaLocalizacao tela = new TelaLocalizacao();
+            tela.mostrar(stage);
+        });
+
+        btEquipe.setOnAction(e -> {
+            TelaEquipe tela = new TelaEquipe();
+            tela.mostrar(stage);
+        });
+
+
+        Button[] botoes = {btOcorencias,btComunicacao,btDespachos,btViaturas,btLocalizacao,btEquipe};
 
         for (Button botao : botoes) {
             botao.setPrefWidth(270);
             botao.setPrefHeight(45);
 
-            botao.setStyle(
-                    "-fx-background-color:F4E9DD;"
-                    + "-fx-text-fill: #5B171F;"
-                    + "-fx-font-size: 17px;"
-                    + "-fx-font-weight: bold;"
-                    + "-fx-background-radius: 20;"
-            );
+            botao.setStyle("-fx-background-color:F4E9DD;"+ "-fx-text-fill: #5B171F;"+ "-fx-font-size: 17px;"+ "-fx-font-weight: bold;"+ "-fx-background-radius: 20;");
 }
-            menu.getChildren().addAll(
-                    titulo,
-                    btOcorencias,
-                    btComunicacao,
-                    btDespachos,
-                    btViaturas,
-                    btLocalizacao,
-                    btEquipe
-            );
+            menu.getChildren().addAll(titulo,btOcorencias,btComunicacao,btDespachos,btViaturas,btLocalizacao,btEquipe);
 
 
         VBox login = new VBox(18);
@@ -77,33 +79,17 @@ public class App extends Application {
         login.setAlignment(Pos.CENTER);
         login.setMaxWidth(650);
         
-        login.setStyle(
-                "-fx-background-color: #FE9DD;" +
-                "-fx-border-color: #5B171F;" +
-               "-fx-border-width: 9;" +
-                        "-fx-border-radius: 30;" +
-                        "-fx-background-radius: 30;" +
-                        "-fx-padding 40;"
-        );
+        login.setStyle( "-fx-background-color: #FE9DD;" + "-fx-border-color: #5B171F;" +"-fx-border-width: 9;" + "-fx-border-radius: 30;" +"-fx-background-radius: 30;" +"-fx-padding 40;");
+                                       
         Label tituloLogin = new Label("SISTEMA DE DESPACHO E COMUNICAÇÃO");
         
-        tituloLogin.setStyle(
-        "-fx-text-fill: #5B171F;" +
-                "-fx-font-size: 21px;" +
-                "-fx-font-weight: bold;"
-        );
+        tituloLogin.setStyle("-fx-text-fill: #5B171F;" +"-fx-font-size: 21px;" +"-fx-font-weight: bold;");
         Label loginLabel = new Label("Login");
         
         loginLabel.setPrefWidth(500);
         loginLabel.setAlignment(Pos.CENTER);
         
-        loginLabel.setStyle(
-                "-fx-background-color: #5B171F;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-size: 20px;" +
-                        "-fx-background-radius: 20;" +
-                        "-fx-padding: 8;"
-        );
+        loginLabel.setStyle("-fx-background-color: #5B171F;" +"-fx-text-fill: white;" + "-fx-font-size: 20px;" +"-fx-background-radius: 20;" +"-fx-padding: 8;");
         
         TextField txtNome = new TextField();
         txtNome.setPromptText("Nome");
@@ -119,27 +105,14 @@ public class App extends Application {
         btEntrar.setPrefHeight(300);
         btEntrar.setPrefHeight(40);
         
-        btEntrar.setStyle(
-                "-fx-background-color:#C9A5A5" +
-                        "-fx-text-fill: #5B171F;" +
-                        "-fx-font-size: 17px;" +
-                        "-fx-background-radius: 20;"
-        );
+        btEntrar.setStyle("-fx-background-color:#C9A5A5" +"-fx-text-fill: #5B171F;" +"-fx-font-size: 17px;" +"-fx-background-radius: 20;");
         
-        login.getChildren().addAll(
-                tituloLogin,
-                txtNome,
-                txtSenha,
-                Lembrar,
-                btEntrar
-        );
+        login.getChildren().addAll(tituloLogin,txtNome,txtSenha,Lembrar,btEntrar);
 
         root.setLeft(menu);
         root.setCenter(login);
 
-        root.setStyle(
-                "-fx-background-color: #C9A5A5;"
-        );
+        root.setStyle("-fx-background-color: #C9A5A5;");
         
         btEntrar.setOnAction(e ->{
             TelaOcorrencias tela = new TelaOcorrencias();
