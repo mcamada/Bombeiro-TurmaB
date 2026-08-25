@@ -8,10 +8,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -73,29 +75,24 @@ public class App extends Application {
                 TextField statusInicialText = new TextField();
 
                 Label tVC = new Label("Cadastrar Viatura");
-                
-                
-                
+
                 Label identificacaoLabel = new Label("Identificação");
                 identificacaoLabel.setTextFill(Color.WHITE);
-                
+
                 Label tipoLabel = new Label("Tipo");
                 tipoLabel.setTextFill(Color.WHITE);
-                
+
                 Label placaLabel = new Label("Placa");
                 placaLabel.setTextFill(Color.WHITE);
-                
+
                 Label anodefabricacaoLabel = new Label("Ano de Fabricação");
                 anodefabricacaoLabel.setTextFill(Color.WHITE);
-                
+
                 Label modeloLabel = new Label("Modelo");
                 modeloLabel.setTextFill(Color.WHITE);
-                
+
                 Label statusInicialLabel = new Label("Status Iniciais");
                 statusInicialLabel.setTextFill(Color.WHITE);
-                
-                
-                
 
                 boot.add(identificacaoLabel, 0, 0);
                 boot.add(identificacaoText, 0, 1);
@@ -115,8 +112,6 @@ public class App extends Application {
                 boot.add(statusInicialLabel, 5, 4);
                 boot.add(statusInicialText, 5, 7);
 
-                
-                
                 VBox botos = new VBox();
 
                 Button ctConfirmar = new Button("Confirmar");
@@ -125,17 +120,34 @@ public class App extends Application {
                 botos.getChildren().addAll(ctConfirmar, ctCancelar);
 
                 boot.add(botos, 0, 8, 6, 1);
+
+                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                        aviso.setHeaderText("Cancelado com sucesso");
+                        aviso.show();
+
+                        tCadas.close();
+
+                    }
+
+                };
                 
-                EventHandler<MouseEvent> cCanelar = new EventHandler<MouseEvent>() {
-                     @Override
-                        public void handle(MouseEvent event) {
-                            tCadas.close();
-                            
-                        }
+                EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        tCadas.close();
+                        Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
+                        aviso.setHeaderText("Viatura atribuida com sucesso");
+                        aviso.show();
 
-                 };
-                 ctCancelar.setOnMouseClicked(cCanelar);
+                    }
 
+                };
+
+                ctCancelar.setOnMouseClicked(cCancelar);
+                ctConfirmar.setOnMouseClicked(cConfirmar);
 
                 Scene scene = new Scene(boot, 800, 600);
                 tCadas.setScene(scene);
@@ -148,22 +160,21 @@ public class App extends Application {
 
         btCadastrar.setOnMouseClicked(cadastrAr);
 
-        EventHandler<MouseEvent> consultarViatura = new EventHandler<MouseEvent>() {
+        EventHandler<MouseEvent> consultarViatura;
+        consultarViatura = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
                 Stage tCadas = new Stage();
-                GridPane voot = new GridPane();
+                GridPane goot = new GridPane();
 
                 TextField disponibilidadeTextF = new TextField();
                 TextField localizacaoTextF = new TextField();
                 TextField tipoTextF = new TextField();
                 TextField statusTextF = new TextField();
-                
-                
+
                 Label tVC = new Label("Consultar Viatura");
 
-                
                 Label disponibilidadeLabel = new Label("Disponibilidade");
                 disponibilidadeLabel.setTextFill(Color.WHITE);
                 Label localizacaoLabel = new Label("Localização");
@@ -172,45 +183,80 @@ public class App extends Application {
                 tipoLabel.setTextFill(Color.WHITE);
                 Label statusLabel = new Label("Status");
                 statusLabel.setTextFill(Color.WHITE);
+
+                goot.add(disponibilidadeLabel, 0, 0);
+                goot.add(disponibilidadeTextF, 0, 1);
+
+                goot.add(localizacaoLabel, 0, 4);
+                goot.add(localizacaoTextF, 0, 7);
+
+                goot.add(tipoLabel, 0, 8);
+                goot.add(tipoTextF, 0, 10);
+
+                goot.add(statusLabel, 0, 12);
+                goot.add(statusTextF, 0, 13);
                 
-                voot.add(disponibilidadeLabel, 0, 0);
-                voot.add(disponibilidadeTextF, 0, 1);
+                HBox botoees = new HBox();
 
-                voot.add(localizacaoLabel, 0, 4);
-                voot.add(localizacaoTextF, 0, 7);
+                Button vtCancelar = new Button("Cancelar");
+                Button vtPesquisar = new Button("Pesquisar");
 
-                voot.add(tipoLabel, 0, 8);
-                voot.add(tipoTextF, 0, 10);
-
-                voot.add(statusLabel, 0, 12);
-                voot.add(statusTextF, 0, 13);
+                botoees.getChildren().addAll(vtCancelar, vtPesquisar);
+                
+                goot.add(botoees, 0, 16, 6, 1);
+                
+                Label viatura1 = new Label("Viatura 1");
+                viatura1.setTextFill(Color.WHITE);
+                
+                viatura1.setFont(fcampos);
+                
+                Region r1 = new Region();
+                r1.setMinHeight(25);
+                
+                Label viatura2 = new Label("Viatura 2");
+                viatura2.setTextFill(Color.WHITE);
+                viatura2.setFont(fcampos);
+                
+                Label viatura3 = new Label("Viatura 3");
+                viatura3.setTextFill(Color.WHITE);
+                
+                
+                Button ver1 = new Button("Ver");
+                Button ver2 = new Button("Ver");
+                Button ver3 = new Button("Ver");
+                
+                
+                goot.add(viatura1, 0, 25);
+                goot.add(r1, 0, 26);
+                
+                
+                goot.add(viatura2, 0, 27);
+                goot.add(viatura3, 0, 27);
                 
 
-                Scene scene = new Scene(voot, 800, 600);
+                Scene scene = new Scene(goot, 800, 600);
                 tCadas.setScene(scene);
                 scene.getStylesheets().add("/css/style.css");
                 tCadas.setTitle("Sistema de teste do JavaFX");
                 tCadas.show();
 
-                VBox botoees = new VBox();
-
-                Button vtVoltar = new Button("Voltar");
-
-                botoees.getChildren().addAll(vtVoltar);
-
-                voot.add(botoees, 0, 16, 6, 1);
-
-                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
-                     @Override
-                        public void handle(MouseEvent event) {
-                            tCadas.close();
-                            
-                        }
-
-                 };
-                 vtVoltar.setOnMouseClicked(cCancelar);
+                
 
                 
+
+                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        tCadas.close();
+                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                        aviso.setHeaderText("Cancelado com sucesso");
+                        aviso.show();
+
+                    }
+
+                };
+                vtCancelar.setOnMouseClicked(cCancelar);
+
             }
         };
 
