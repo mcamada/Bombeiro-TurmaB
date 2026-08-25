@@ -169,8 +169,6 @@ public class App extends Application {
 
                         Font fonteTituloTelaOcorrencias = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
 
-                        
-
                         Label tituloCadastro = new Label("Cadastrar Ocorrência");
                         tituloCadastro.setId("tituloOcorrencias");
                         tituloCadastro.setFont(fonteTituloTelaOcorrencias);
@@ -184,19 +182,19 @@ public class App extends Application {
                         Label descricaoCadastroOcorrencias = new Label("Descrição");
                         Label equipeCadastroOcorrencias = new Label("Equipe");
                         Label tipoCadastroOcorrencias = new Label("Tipo");
-                        
+
                         TextField localOcorrencias = new TextField();
                         TextField dataOcorrencias = new TextField();
                         TextField horaOcorrencias = new TextField();
                         TextField descricaoOcorrencias = new TextField();
                         TextField equipeOcorrencias = new TextField();
                         TextField tipoOcorrencias = new TextField();
-                        
+
                         GridPane cadastroOcorrencias = new GridPane();
                         cadastroOcorrencias.setAlignment(Pos.CENTER);
                         cadastroOcorrencias.setHgap(12);
                         cadastroOcorrencias.setVgap(15);
-                        
+
                         cadastroOcorrencias.add(localCadastroOcorrencias, 0, 0);
                         cadastroOcorrencias.add(localOcorrencias, 1, 0);
                         cadastroOcorrencias.add(dataCadastroOcorrencias, 0, 1);
@@ -209,9 +207,22 @@ public class App extends Application {
                         cadastroOcorrencias.add(equipeOcorrencias, 1, 4);
                         cadastroOcorrencias.add(tipoCadastroOcorrencias, 0, 5);
                         cadastroOcorrencias.add(tipoOcorrencias, 1, 5);
+
+                        Button enviar = new Button("Enviar");
+
+                        EventHandler<MouseEvent> h = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                stage.close();
+                            }
+                        };
                         
+                        enviar.addEventHandler(MouseEvent.MOUSE_CLICKED, h);
+                        
+                        rootCadastrarOcorrencia.getChildren().add(tituloCadastro);
                         rootCadastrarOcorrencia.getChildren().add(cadastroOcorrencias);
-                        
+                        rootCadastrarOcorrencia.getChildren().add(enviar);
+
                         Scene sceneCadastroOcorrencias = new Scene(rootCadastrarOcorrencia, 800, 600);
                         sceneCadastroOcorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
 
