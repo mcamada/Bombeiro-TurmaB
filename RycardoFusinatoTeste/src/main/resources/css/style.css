@@ -1,8 +1,6 @@
 
-
-.root{
-    
-    -fx-background-color:royalblue;
+.root {
+    -fx-background-color: #0751AE;
 }
 
 .rotulo {
@@ -13,6 +11,7 @@
     -fx-padding: 5px 0 5px 0;
     -fx-min-width: 300px;
 }
+
 #btCadastrar {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
@@ -22,17 +21,86 @@
     -fx-padding: 8px 25px;
     -fx-background-radius: 5px;
 }
-/* =========================================================
-   CORES PRINCIPAIS
-   ========================================================= */
 
-.root {
-    -fx-background-color: #0751AE;
+.header {
+    -fx-background-color: #506EF6;
+
+    -fx-padding: 0 46px 0 46px;
+
+    -fx-pref-height: 98px;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-spacing: 20px;
+}
+
+.header .label {
+    -fx-text-fill: white;
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 30px;
+
+    -fx-font-weight: bold;
+}
+
+.header .button-bar {
+    -fx-hgrow: ALWAYS;
+
+    -fx-alignment: CENTER_RIGHT;
+    
+    -fx-translate-x: 1200px;
+
+    -fx-padding: 0;
+}
+
+.header .botao {
+
+    -fx-font-family: "Arial";
+
+    -fx-font-size: 19px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #111111;
+
+    -fx-padding: 8px 22px;
+
+    -fx-background-radius: 17px;
+
+    -fx-border-radius: 17px;
+
+    -fx-cursor: hand;
+}
+
+#btInicio {
+    -fx-background-color: #31B1F1;
+}
+
+#btCadastrar2 {
+    -fx-background-color: white;
+}
+
+#btConsultar {
+    -fx-background-color: #31B1F1;
+}
+
+.header .botao:hover {
+    -fx-opacity: 0.85;
 }
 
 
 /* =========================================================
-   BARRA SUPERIOR
+   BOTÃO PRESSIONADO
+   ========================================================= */
+
+.header .botao:pressed {
+    -fx-opacity: 0.7;
+}
+
+
+/* =========================================================
+   TELA DE CONSULTA
    ========================================================= */
 
 .top-bar {
@@ -45,7 +113,7 @@
 
 
 /* =========================================================
-   TÍTULO DA BARRA
+   TÍTULO DA TELA DE CONSULTA
    ========================================================= */
 
 .titulo-barra {
@@ -60,7 +128,7 @@
 
 
 /* =========================================================
-   MENU
+   MENU DA TELA DE CONSULTA
    ========================================================= */
 
 .botao-menu {
@@ -82,14 +150,10 @@
 }
 
 
-/* Hover */
-
 .botao-menu:hover {
     -fx-opacity: 0.85;
 }
 
-
-/* Quando o botão é pressionado */
 
 .botao-menu:pressed {
     -fx-opacity: 0.7;
@@ -97,7 +161,7 @@
 
 
 /* =========================================================
-   BOTÃO CONSULTAR
+   BOTÃO CONSULTAR - TELA DE CONSULTA
    ========================================================= */
 
 .botao-consultar {
@@ -134,17 +198,11 @@
    ========================================================= */
 
 .conteudo-principal {
-
     -fx-padding: 44px 0 0 0;
 }
 
 
-/* =========================================================
-   TÍTULO PRINCIPAL
-   ========================================================= */
-
 .titulo-principal {
-
     -fx-text-fill: white;
 
     -fx-font-family: "Arial";
@@ -156,23 +214,17 @@
 
 
 /* =========================================================
-   CONTAINER DA BUSCA
+   CAMPO DE BUSCA
    ========================================================= */
 
 .busca-container {
-
     -fx-pref-width: 740px;
 
     -fx-max-width: 740px;
 }
 
 
-/* =========================================================
-   CAMPO DE BUSCA
-   ========================================================= */
-
 .campo-busca {
-
     -fx-pref-height: 48px;
 
     -fx-background-color: white;
@@ -194,7 +246,6 @@
 
 
 .campo-busca:focused {
-
     -fx-border-color: #A020F0;
 
     -fx-background-color: white;
@@ -206,7 +257,6 @@
    ========================================================= */
 
 .lista-ocorrencias {
-
     -fx-padding: 0 0 50px 0;
 
     -fx-max-width: 635px;
@@ -218,7 +268,6 @@
    ========================================================= */
 
 .card-ocorrencia {
-
     -fx-background-color: #506EF6;
 
     -fx-background-radius: 15px;
@@ -231,12 +280,7 @@
 }
 
 
-/* =========================================================
-   TÍTULO DO CARD
-   ========================================================= */
-
 .card-titulo {
-
     -fx-text-fill: white;
 
     -fx-font-family: "Arial";
@@ -247,12 +291,7 @@
 }
 
 
-/* =========================================================
-   TEXTOS DO CARD
-   ========================================================= */
-
 .card-label {
-
     -fx-text-fill: white;
 
     -fx-font-family: "Arial";
@@ -262,11 +301,10 @@
 
 
 /* =========================================================
-   SCROLL PANE
+   SCROLL
    ========================================================= */
 
 .scroll-pane {
-
     -fx-background-color: transparent;
 
     -fx-border-color: transparent;
@@ -281,50 +319,33 @@
 }
 
 
-/* Remove fundo interno */
-
 .scroll-pane > .viewport {
-
     -fx-background-color: transparent;
 }
 
 
-/* =========================================================
-   BARRA DE ROLAGEM
-   ========================================================= */
-
 .scroll-pane .scroll-bar:vertical {
-
     -fx-background-color: transparent;
 
     -fx-pref-width: 18px;
 }
 
 
-/* Fundo da barra */
-
 .scroll-pane .scroll-bar:vertical .track {
-
     -fx-background-color: transparent;
 
     -fx-background-radius: 10px;
 }
 
 
-/* Botão da barra */
-
 .scroll-pane .scroll-bar:vertical .thumb {
-
     -fx-background-color: white;
 
     -fx-background-radius: 10px;
 }
 
 
-/* Hover */
-
 .scroll-pane .scroll-bar:vertical .thumb:hover {
-
     -fx-background-color: #eeeeee;
 }
 
@@ -333,7 +354,6 @@
 
 .scroll-pane .scroll-bar:vertical .increment-button,
 .scroll-pane .scroll-bar:vertical .decrement-button {
-
     -fx-background-color: transparent;
 
     -fx-padding: 0;
@@ -346,51 +366,58 @@
 
 @media screen and (max-width: 1000px) {
 
-    .top-bar {
+    .header {
+        -fx-padding: 0 25px 0 25px;
+    }
 
+    .header .label {
+        -fx-font-size: 24px;
+    }
+
+    .header .botao {
+        -fx-font-size: 16px;
+
+        -fx-padding: 7px 15px;
+    }
+
+    .top-bar {
         -fx-padding: 0 25px 0 25px;
     }
 
     .titulo-barra {
-
         -fx-font-size: 24px;
     }
 
     .botao-menu {
-
         -fx-font-size: 16px;
 
         -fx-padding: 7px 15px;
     }
 
     .botao-consultar {
-
         -fx-font-size: 16px;
 
         -fx-padding: 7px 15px;
     }
 
     .busca-container {
-
         -fx-pref-width: 80%;
 
         -fx-max-width: 80%;
     }
 
     .scroll-pane {
-
         -fx-pref-width: 80%;
 
         -fx-max-width: 80%;
     }
 
     .lista-ocorrencias {
-
         -fx-max-width: 100%;
     }
 
     .card-ocorrencia {
-
         -fx-max-width: 100%;
     }
 }
+
