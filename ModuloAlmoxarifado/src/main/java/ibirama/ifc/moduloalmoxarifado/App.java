@@ -132,6 +132,8 @@ public class App extends Application {
                         cadastroTela.close();
                     }
                 };
+                
+                btVoltar.setOnMouseClicked(cdstVoltar);
 
                 btSalve.setOnMouseClicked((new EventHandler<MouseEvent>() {
                     @Override
@@ -153,7 +155,6 @@ public class App extends Application {
 
                         };
 
-                        btVoltar.setOnMouseClicked(cdstVoltar);
                         itens.add(novoItem);
 
                         Alert aviso = new Alert(Alert.AlertType.INFORMATION);
@@ -416,6 +417,16 @@ public class App extends Application {
 
         Button btSalve = new Button("Atualizar Item");
         btSalve.setDisable(true);
+        Button btVoltarAtu = new Button("Atualizar Item");
+        
+        //Voltar
+                EventHandler<MouseEvent> cnstVoltarAtu = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent t) {
+                        consultaTela.show();
+                        atualizarTela.close();
+                    }
+                };
 
         btSalve.disableProperty().bind(
                 infName.textProperty().isEmpty()
@@ -428,7 +439,7 @@ public class App extends Application {
 
         cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria,
                 infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
-                infLocal, tMin, infMin, btSalve);
+                infLocal, tMin, infMin, btSalve, btVoltarAtu);
 
         Scene cadastroCena = new Scene(cRoot, 640, 480);
         atualizarTela.setTitle("Atualizar Item");
