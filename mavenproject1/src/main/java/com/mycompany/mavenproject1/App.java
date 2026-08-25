@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
@@ -24,7 +23,7 @@ public class App extends Application {
         janela.setTitle("Corpo de Bombeiros");
         janela.show();
     }
-
+//Tela de inicio
     private void mostrarInicio() {
 
         VBox root = new VBox();
@@ -37,7 +36,7 @@ public class App extends Application {
         content.setPadding(new Insets(30));
 
         HBox statsRow = new HBox(20);
-
+        //quadradinho que mostra ocorrencia , viaturas ,equipes e tals
         statsRow.getChildren().addAll(
                 createStatCard("Chamadas Ativas","2", "🔥"),
                 createStatCard("Equipes Disponíveis","6", "👥"),
@@ -46,7 +45,7 @@ public class App extends Application {
         );
 
         VBox emergenciesList = new VBox(15);
-
+        //card de emergencia feito pela funcao do emrgenci card (feito pra quando adicionar uma ocorrencia o inerir o texto e função criar automatico)
         emergenciesList.getChildren().addAll(
                 createEmergencyCard("#1334-987","🔥 Incêndio Residencial","Avenida principal R.15","Há 1 minuto","Ativa","#dc3545"),
                 createEmergencyCard("#1238-147","🔥 Resgate de Pessoas","Rua 15, 607","Há 19 minutos","Ativa","#dc3545"),
@@ -60,7 +59,7 @@ public class App extends Application {
         Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
     }
-
+//Tela de quando clica na correncia
     private void mostrarOcorrencia(String nomeOcorrencia) {
 
         VBox root = new VBox();
@@ -72,7 +71,7 @@ public class App extends Application {
         Button voltar = new Button("← Voltar");
         
         voltar.setStyle("-fx-background-color:#d31111;"+ "-fx-background-radius: 8;"+"-fx-font-size:25;"+"-fx-text-fill:white;" + "-fx-font-weigth:bold;");
-
+//event do botao de voltar
         voltar.setOnAction(e -> {
             mostrarInicio();
         });
@@ -91,6 +90,7 @@ public class App extends Application {
         tituloBox.setAlignment(Pos.CENTER);
 
         VBox bombeiros = new VBox(15);
+        //mema coisa de cards mas esse nao sao clicaveis
         bombeiros.getChildren().addAll(
                 createBombeiroCard("#JOAOSANTOS","🔥 João Santos","Cabo","Chegou há 1 minuto","No local","#ff0000"),
                 createBombeiroCard("#PEDROALBERTO","🔥 Pedro Alberto","Sargento","Chegou há 6 minutos","No local","#ff0000"),
@@ -111,6 +111,7 @@ public class App extends Application {
         Scene scene = new Scene(root,1860,1000);
         janela.setScene(scene);
     }
+//Tela do botao de cadastrar bombeiro 
     private void mostrarCadastro(){
         VBox root = new VBox();
 
@@ -129,7 +130,7 @@ public class App extends Application {
         Formulario.setVgap(15);
         Formulario.setHgap(10);
         
-        
+        //formulario do cadastro
         Label name = new Label("Nome:");
         Formulario.add(name, 0, 0);
         name.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;");
@@ -176,6 +177,7 @@ public class App extends Application {
 
         sla.getChildren().addAll(cadastrar);
         sla.setAlignment(Pos.CENTER);
+        //verificação
         cadastrar.setOnMouseClicked(e -> {
             
             if (TXpatente.getText().trim().isEmpty()){
@@ -221,6 +223,7 @@ public class App extends Application {
         
         
     }
+    //funcao que cria todos os cabeçalhos (pois sao iguais)
     private HBox createHeader() {
 
         HBox header = new HBox(15);
@@ -256,6 +259,7 @@ public class App extends Application {
 
         return header;
     }
+    //aquele card quadradinho que motra equipe e tals
     private VBox createStatCard(String tituloTexto,String valorTexto,String iconeTexto) {
 
         VBox card = new VBox(10);
@@ -289,6 +293,7 @@ public class App extends Application {
         card.getChildren().addAll(titulo,linha);
         return card;
     }
+    //card de emergencia (mesma coisa do de bombeiro , so muda o nome de varivel e tem o evento de abrir a ocorrencia
     private VBox createEmergencyCard(String idTexto,String tituloTexto,String enderecoTexto,String tempoTexto,String statusTexto,String statusCor) {
         VBox card = new VBox(5);
 
@@ -320,7 +325,7 @@ public class App extends Application {
         linhaTitulo.setRight(status);
 
         card.getChildren().addAll(id,linhaTitulo,endereco,tempo);
-
+//evento
         card.setOnMouseClicked(e -> {
             mostrarOcorrencia(tituloTexto
             );
@@ -328,7 +333,7 @@ public class App extends Application {
 
         return card;
     }
-
+//card de bombeiro (mesma coisa da emergencia, so muda o nome de varivel e tem nao o evento de click)
     private VBox createBombeiroCard(String usuarioTexto,String nomeTexto,String patenteTexto,String tempoTexto,String statusTexto,String statusCor) {
 
         VBox card = new VBox();
