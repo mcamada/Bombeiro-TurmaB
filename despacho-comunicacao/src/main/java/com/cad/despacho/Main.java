@@ -10,6 +10,7 @@ public class Main extends Application {
         launch(args);
     }
 
+    @Override
     public void start(Stage janela) {
 
         janela.setTitle("Sistema CAD - Despacho e Comunicacao");
