@@ -7,3 +7,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : aluno
 */
 
+.menu {
+    -fx-background-color: #333333;
+    -fx-padding: 5px;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #555555;
+}
+
+.menu-button:pressed {
+    -fx-background-color: #222222;
+}
+
+.boas-vindas {
+    -fx-background-color:#ff2177;
+}
