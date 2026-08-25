@@ -40,7 +40,8 @@ public class App extends Application {
         statsRow.getChildren().addAll(
                 createStatCard("Chamadas Ativas","2", "🔥"),
                 createStatCard("Equipes Disponíveis","6", "👥"),
-                createStatCard("Viaturas em uso","3", "🚚"),
+                createStatCard("Viaturas em uso","3", "🚒"),
+                //nao sei pq o emoji de atenção e bugado 
                 createStatCard("Emergências hoje","8", "⚠️")
         );
 
@@ -120,7 +121,7 @@ public class App extends Application {
         
           Button voltar = new Button("← Voltar");
         
-        voltar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
+        voltar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 30;"+"-fx-font-size:24px;"+"-fx-background-radius:16;");
         voltar.setOnAction(e -> {
             mostrarOcorrencia("Ocorrencia");
         });
@@ -160,7 +161,7 @@ public class App extends Application {
         Formulario.add(TXpassword, 1, 2);
         
         
-        Label patente = new Label("Patente");
+        Label patente = new Label("Patente:");
         patente.setStyle("-fx-background-color: white;"+ "-fx-padding: 15 30;"+ "-fx-background-radius: 8;"+ "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);"+"-fx-pref-width: 200px;"+"-fx-pref-height: 50px;"+"-fx-font-weight: bold;"
         );
         Formulario.add(patente, 0, 3);
@@ -215,10 +216,22 @@ public class App extends Application {
                 
         });
 
-        cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 10 20;");
-        root.getChildren().addAll(header,voltar,Formulario,sla);
+        cadastrar.setStyle("-fx-background-color: #d31111;"+ "-fx-text-fill: white;"+ "-fx-font-weight: bold;"+ "-fx-padding: 15 30;"+"-fx-background-radius:8;"+"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);");
+        //espaçamento
+        root.setSpacing(25); 
+        
+        VBox.setMargin(voltar, new Insets(0, 0, 0, 25)); 
+        VBox.setMargin(Formulario, new Insets(10, 0, 20, 0));
+        VBox.setMargin(sla, new Insets(8, 0, 85, 0));
+        HBox sla2 = new HBox(15);
+        sla2.setStyle("-fx-background-color: #d31111;"+ "-fx-padding: 75 30;");
+        sla2.setAlignment(Pos.CENTER_LEFT);
+        
+        
+        root.getChildren().addAll(header,voltar,Formulario,sla,sla2);
       
-        Scene scene = new Scene(root,1860,1000);
+        Scene scene = new Scene(root,930,800);
+        janela.setResizable(false);
         janela.setScene(scene);
         
         
