@@ -115,8 +115,7 @@ public void start(Stage stage) {
 
               // TÍTULO
       
-        Label titulo =
-                new Label("Cadastrar Viatura");
+        Label titulo = new Label("Cadastrar Viatura");
 
         titulo.setStyle("-fx-font-size: 24px;" +"-fx-font-weight: bold;");
 
@@ -351,8 +350,7 @@ public void start(Stage stage) {
         colunaTipo.setCellValueFactory(data ->data.getValue().tipoProperty());
 
 
-        ObservableList<String> tipos =
-                FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
+        ObservableList<String> tipos = FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
 
 
         colunaTipo.setCellFactory(ComboBoxTableCell.forTableColumn(tipos));
@@ -361,20 +359,16 @@ public void start(Stage stage) {
         colunaTipo.setOnEditCommit(event -> {event.getRowValue().setTipo(event.getNewValue());
 
         });
-
         // COLUNA STATUS
         
-
         TableColumn<Viatura, String> colunaStatus =  new TableColumn<>("Status");
 
         colunaStatus.setCellValueFactory(data -> data.getValue().statusProperty());
-
 
         ObservableList<String> status = FXCollections.observableArrayList("Disponível","Indisponível","Em manutenção");
 
         colunaStatus.setCellFactory(ComboBoxTableCell.forTableColumn(status)
         );
-
 
         colunaStatus.setOnEditCommit(event -> {event.getRowValue().setStatus(event.getNewValue());
 
@@ -479,24 +473,21 @@ public void start(Stage stage) {
 
         // LISTA
    
-        ListView<Viatura> listaViaturas =
-                new ListView<>();
+        ListView<Viatura> listaViaturas = new ListView<>();
 
         listaViaturas.setItems(
                 viaturas
         );
 
 
-        listaViaturas.setCellFactory(
-                listView ->
-                        new javafx.scene.control.ListCell<Viatura>() {
+        listaViaturas.setCellFactory(listView -> new javafx.scene.control.ListCell<Viatura>() {
 
-                            @Override
-                            protected void updateItem(Viatura viatura, boolean empty) {
+                @Override
+                protected void updateItem(Viatura viatura, boolean empty) {
 
-                                super.updateItem(viatura,empty);
-                                if (empty|| viatura == null) {
-                                    setText(null);
+            super.updateItem(viatura,empty);
+                if (empty|| viatura == null) {
+                     setText(null);
         } else {
         String nome = viatura.getNome();
         
@@ -512,7 +503,7 @@ public void start(Stage stage) {
 
                 // INSTRUÇÃO
        
-        Label instrucao =new Label("Clique em uma viatura para excluí-la.");
+        Label instrucao = new Label("Clique em uma viatura para excluí-la.");
 
         instrucao.setPadding(new Insets(10,0,10,0));
         // CLIQUE NA VIATURA
@@ -524,18 +515,18 @@ public void start(Stage stage) {
                return;
                     }
 
-         String nomeViatura =viaturaSelecionada.getNome();
+         String nomeViatura = viaturaSelecionada.getNome();
 
 
           if (nomeViatura == null|| nomeViatura.isEmpty()) 
                     {
-              nomeViatura ="Viatura sem nome";
+              nomeViatura = "Viatura sem nome";
                     }
 
                     // CONFIRMAÇÃO
             // Cancelar:
             // não faz nada.       
-          Alert confirmacao =new Alert(Alert.AlertType.CONFIRMATION);
+          Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
 
           confirmacao.setTitle("Excluir Viatura");
 
@@ -545,25 +536,20 @@ public void start(Stage stage) {
 
           confirmacao.setContentText("Viatura selecionada: "+ nomeViatura+ "\n\n"+ "Escolha \"Apagar\" "+ "para excluir ou " + "\"Cancelar\" para "+ "cancelar.");
 
-
           ButtonType btApagar = new ButtonType("Apagar");
 
           ButtonType btCancelar = new ButtonType("Cancelar");
                     
           confirmacao.getButtonTypes().setAll(btApagar, btCancelar);
                     
-          confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) {
-          viaturas.remove(viaturaSelecionada);
-                                        }
- 
+          confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) { viaturas.remove(viaturaSelecionada);
+         }
        }
     );
   }
 );
-
         // BOTÃO VOLTAR
-     
-
+  
         Button btVoltar = new Button("Voltar");
 
         btVoltar.setOnAction(e -> telaInicial());
@@ -588,7 +574,6 @@ public void start(Stage stage) {
   
     public static class Viatura {
              // INFORMAÇÕES MOSTRADAS NA CONSULTA
-    
         private final StringProperty nome;
         private final StringProperty localizacao;
         private final StringProperty tipo;
@@ -602,8 +587,8 @@ public void start(Stage stage) {
 
         public Viatura(String nome,String localizacao,String tipo,String status,String disponibilidade,String criterios,String placa,String modelo,String ano) {
 
-            this.nome =
-                    new SimpleStringProperty(nome);
+            this.nome = new SimpleStringProperty(nome);
+            
             this.localizacao = new SimpleStringProperty(localizacao);
 
             this.tipo = new SimpleStringProperty(tipo);
@@ -707,16 +692,13 @@ public void start(Stage stage) {
         public StringProperty modeloProperty() {
             return modelo;
         }
-
         public String getModelo() {
             return modelo.get();
         }
-
         public void setModelo(String valor) {
             modelo.set(valor);
         }
               // ANO
-       
         public StringProperty anoProperty() {
             return ano;
         }
@@ -728,7 +710,6 @@ public void start(Stage stage) {
         }
     }
        // MAIN
-   
     public static void main(String[] args) {
 
         launch();
