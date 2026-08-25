@@ -187,8 +187,8 @@
 }
 
 .botao-menu:hover {
-    -fx-background-color: #24272d;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #fc7272;
+    -fx-text-fill: #a62b2b;
 }
 
 .botao-menu-ativo {
