@@ -125,6 +125,17 @@ public class App extends Application {
                 botos.getChildren().addAll(ctConfirmar, ctCancelar);
 
                 boot.add(botos, 0, 8, 6, 1);
+                
+                EventHandler<MouseEvent> cCanelar = new EventHandler<MouseEvent>() {
+                     @Override
+                        public void handle(MouseEvent event) {
+                            tCadas.close();
+                            
+                        }
+
+                 };
+                 ctCancelar.setOnMouseClicked(cCanelar);
+
 
                 Scene scene = new Scene(boot, 800, 600);
                 tCadas.setScene(scene);
@@ -144,30 +155,36 @@ public class App extends Application {
                 Stage tCadas = new Stage();
                 GridPane voot = new GridPane();
 
-                TextField disponibilidade = new TextField();
-                TextField localizacao = new TextField();
-                TextField tipo = new TextField();
-                TextField status = new TextField();
+                TextField disponibilidadeTextF = new TextField();
+                TextField localizacaoTextF = new TextField();
+                TextField tipoTextF = new TextField();
+                TextField statusTextF = new TextField();
                 
                 
                 Label tVC = new Label("Consultar Viatura");
 
                 
+                Label disponibilidadeLabel = new Label("Disponibilidade");
+                disponibilidadeLabel.setTextFill(Color.WHITE);
+                Label localizacaoLabel = new Label("Localização");
+                localizacaoLabel.setTextFill(Color.WHITE);
+                Label tipoLabel = new Label("Tipo");
+                tipoLabel.setTextFill(Color.WHITE);
+                Label statusLabel = new Label("Status");
+                statusLabel.setTextFill(Color.WHITE);
                 
-                
-                
-                
-                voot.add(new Label("Identificação 2"), 0, 0);
-                voot.add(disponibilidade, 0, 1);
+                voot.add(disponibilidadeLabel, 0, 0);
+                voot.add(disponibilidadeTextF, 0, 1);
 
-                voot.add(new Label("Localização"), 0, 4);
-                voot.add(localizacao, 0, 7);
+                voot.add(localizacaoLabel, 0, 4);
+                voot.add(localizacaoTextF, 0, 7);
 
-                voot.add(new Label("tipo"), 0, 8);
-                voot.add(tipo, 0, 10);
+                voot.add(tipoLabel, 0, 8);
+                voot.add(tipoTextF, 0, 10);
 
-                voot.add(new Label("Status"), 0, 12);
-                voot.add(status, 0, 13);
+                voot.add(statusLabel, 0, 12);
+                voot.add(statusTextF, 0, 13);
+                
 
                 Scene scene = new Scene(voot, 800, 600);
                 tCadas.setScene(scene);
@@ -183,6 +200,17 @@ public class App extends Application {
 
                 voot.add(botoees, 0, 16, 6, 1);
 
+                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                     @Override
+                        public void handle(MouseEvent event) {
+                            tCadas.close();
+                            
+                        }
+
+                 };
+                 vtVoltar.setOnMouseClicked(cCancelar);
+
+                
             }
         };
 
