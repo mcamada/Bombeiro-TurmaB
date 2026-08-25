@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 
 
 /**
@@ -89,8 +90,11 @@ public class App extends Application {
         gpCampos.add(tfDescrição, 0, 7);
         gpCampos.add(tfEquipe, 0, 9);
         gpCampos.add(btCadastrar, 0, 11);
-        
+        gpCampos.setHalignment(btCadastrar, HPos.CENTER);
+
         gpCampos.setAlignment(Pos.CENTER);
+       
+
 
         root.setCenter(gpCampos);
 
@@ -111,6 +115,7 @@ public class App extends Application {
         painelBt.getButtons().addAll(btInicio, btCadastrar2, btConsultar);
 
         HBox header = new HBox();
+        header.getStyleClass().add("header");
         header.getChildren().addAll(new Label("Cadastrar Ocorrência"), painelBt);
         
         root.setTop(header);
@@ -152,22 +157,13 @@ public class App extends Application {
                 topBar.setLeft(tituloBarra);
                 topBar.setRight(menu);
 
-                // ==============================
-                // TÍTULO PRINCIPAL
-                // ==============================
-
                 Label titulo = new Label("Consulta de Ocorrência");
                 titulo.getStyleClass().add("titulo-principal");
-
-                // ==============================
-                // CAMPO DE BUSCA
-                // ==============================
 
                 TextField campoBusca = new TextField();
                 campoBusca.setPromptText("Buscar Ocorrências");
                 campoBusca.getStyleClass().add("campo-busca");
 
-                // Ícone da lupa
                 Circle circulo = new Circle(9);
                 circulo.setFill(Color.TRANSPARENT);
                 circulo.setStroke(Color.GRAY);
@@ -191,10 +187,6 @@ public class App extends Application {
                 );
 
                 campoBuscaContainer.getStyleClass().add("busca-container");
-
-                // ==============================
-                // LISTA DE OCORRÊNCIAS
-                // ==============================
 
                 VBox listaOcorrencias = new VBox(13);
                 listaOcorrencias.getStyleClass().add("lista-ocorrencias");
@@ -226,10 +218,6 @@ public class App extends Application {
                         )
                 );
 
-                // ==============================
-                // SCROLL
-                // ==============================
-
                 ScrollPane scrollPane = new ScrollPane(listaOcorrencias);
 
                 scrollPane.setFitToWidth(true);
@@ -242,10 +230,6 @@ public class App extends Application {
 
                 scrollPane.getStyleClass().add("scroll-pane");
 
-                // ==============================
-                // CONTEÚDO
-                // ==============================
-
                 VBox conteudo = new VBox(14);
 
                 conteudo.setAlignment(Pos.TOP_CENTER);
@@ -257,10 +241,6 @@ public class App extends Application {
                         scrollPane
                 );
 
-                // ==============================
-                // ROOT
-                // ==============================
-
                 BorderPane root = new BorderPane();
 
                 root.setTop(topBar);
@@ -268,13 +248,8 @@ public class App extends Application {
 
                 root.getStyleClass().add("root");
 
-                // ==============================
-                // CENA
-                // ==============================
-
                 Scene scene = new Scene(root, 1207, 688);
 
-                // Carrega o CSS
                 scene.getStylesheets().add(
                         getClass()
                                 .getResource("/application/style.css")
@@ -297,10 +272,6 @@ public class App extends Application {
         stage.show();
     }
 
-    // =============================================================
-    // BOTÃO
-    // =============================================================
-
     private Button criarBotao(String texto) {
 
         Button button = new Button(texto);
@@ -309,10 +280,6 @@ public class App extends Application {
 
         return button;
     }
-
-    // =============================================================
-    // CARD
-    // =============================================================
 
     private VBox criarCard(
             String titulo,
@@ -344,10 +311,6 @@ public class App extends Application {
 
         return card;
     }
-
-    // =============================================================
-    // LABEL DO CARD
-    // =============================================================
 
     private Label criarLabel(String texto) {
 
