@@ -80,7 +80,7 @@ public class App extends Application {
         stage.setScene(scene);
 
         //Segunda Tela
-        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
+        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { //tela login
             @Override
             public void handle(MouseEvent event) {
                 Stage ocorrencias = new Stage();
@@ -154,7 +154,7 @@ public class App extends Application {
                 rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
                 rootTelaOcorrencias.getChildren().add(telaOcorrencias);
 
-                Button botaoCadastrarOcorrencia = new Button("Cadastrar Ocorrência");
+                Button botaoCadastrarOcorrencia = new Button("Ocorrências");
                 rootTelaOcorrencias.getChildren().add(botaoCadastrarOcorrencia);
                 botaoCadastrarOcorrencia.setId("botaoEntrar");
 
@@ -162,28 +162,61 @@ public class App extends Application {
 
                 Ocorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
 
-                EventHandler<MouseEvent> e = new EventHandler<MouseEvent>() {
+                EventHandler<MouseEvent> e = new EventHandler<MouseEvent>() { //terceira tela
                     @Override
                     public void handle(MouseEvent event) {
                         Stage CadastrodeOcorrencias = new Stage();
 
                         Font fonteTituloTelaOcorrencias = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
 
-                        VBox rootCadastroOcorrencias = new VBox();
-                        rootCadastroOcorrencias.setAlignment(Pos.TOP_CENTER);
-
-                        Label tituloOcorrencias = new Label("Ocorrências");
-                        tituloOcorrencias.setId("tituloOcorrencias");
-                        tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
-
                         
 
-                        Scene Ocorrencias = new Scene(rootCadastroOcorrencias, 800, 600);
+                        Label tituloCadastro = new Label("Cadastrar Ocorrência");
+                        tituloCadastro.setId("tituloOcorrencias");
+                        tituloCadastro.setFont(fonteTituloTelaOcorrencias);
 
-                        Ocorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+                        VBox rootCadastrarOcorrencia = new VBox();
+                        rootCadastrarOcorrencia.setAlignment(Pos.TOP_CENTER);
+
+                        Label localCadastroOcorrencias = new Label("Local");
+                        Label dataCadastroOcorrencias = new Label("Data");
+                        Label horaCadastroOcorrencias = new Label("Hora");
+                        Label descricaoCadastroOcorrencias = new Label("Descrição");
+                        Label equipeCadastroOcorrencias = new Label("Equipe");
+                        Label tipoCadastroOcorrencias = new Label("Tipo");
+                        
+                        TextField localOcorrencias = new TextField();
+                        TextField dataOcorrencias = new TextField();
+                        TextField horaOcorrencias = new TextField();
+                        TextField descricaoOcorrencias = new TextField();
+                        TextField equipeOcorrencias = new TextField();
+                        TextField tipoOcorrencias = new TextField();
+                        
+                        GridPane cadastroOcorrencias = new GridPane();
+                        cadastroOcorrencias.setAlignment(Pos.CENTER);
+                        cadastroOcorrencias.setHgap(12);
+                        cadastroOcorrencias.setVgap(15);
+                        
+                        cadastroOcorrencias.add(localCadastroOcorrencias, 0, 0);
+                        cadastroOcorrencias.add(localOcorrencias, 1, 0);
+                        cadastroOcorrencias.add(dataCadastroOcorrencias, 0, 1);
+                        cadastroOcorrencias.add(dataOcorrencias, 1, 1);
+                        cadastroOcorrencias.add(horaCadastroOcorrencias, 0, 2);
+                        cadastroOcorrencias.add(horaOcorrencias, 1, 2);
+                        cadastroOcorrencias.add(descricaoCadastroOcorrencias, 0, 3);
+                        cadastroOcorrencias.add(descricaoOcorrencias, 1, 3);
+                        cadastroOcorrencias.add(equipeCadastroOcorrencias, 0, 4);
+                        cadastroOcorrencias.add(equipeOcorrencias, 1, 4);
+                        cadastroOcorrencias.add(tipoCadastroOcorrencias, 0, 5);
+                        cadastroOcorrencias.add(tipoOcorrencias, 1, 5);
+                        
+                        rootCadastrarOcorrencia.getChildren().add(cadastroOcorrencias);
+                        
+                        Scene sceneCadastroOcorrencias = new Scene(rootCadastrarOcorrencia, 800, 600);
+                        sceneCadastroOcorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
 
                         CadastrodeOcorrencias.setTitle("Cadastro de Ocorrencias");
-                        CadastrodeOcorrencias.setScene(Ocorrencias);
+                        CadastrodeOcorrencias.setScene(sceneCadastroOcorrencias);
                         CadastrodeOcorrencias.show();
                     }
                 };
