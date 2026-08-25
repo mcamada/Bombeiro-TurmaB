@@ -24,7 +24,9 @@
     -fx-background-radius: 5px;
     -fx-padding: 8px;
 }
-
+/*
+tetset
+*/
 .text-field:focused,
 .password-field:focused {
     -fx-border-color: #1565c0;
