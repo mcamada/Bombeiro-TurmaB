@@ -1,0 +1,136 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 de ago. de 2026, 13:16:43
+    Author     : aluno
+*/
+ /*ESTILO GERAL*/
+
+
+/*ESTILO GERAL*/
+.root {
+    -fx-background-color: #8B0000;
+    -fx-font-family: "Arial";
+}
+
+   /*TÍTULOS*/
+.label {
+    -fx-text-fill: white;
+}
+
+.titulo {
+    -fx-text-fill: #FFD700;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+   /*BOTÕES*/
+.button {
+    -fx-background-color: #C62828;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+
+    -fx-padding: 10px 20px;
+
+    -fx-cursor: hand;
+}
+
+/* Quando o mouse passa por cima*/ 
+.button:hover {
+    -fx-background-color: #E53935;
+}
+
+/* Quando o botão é pressionado*/ 
+.button:pressed {
+    -fx-background-color: #8B0000;
+}
+
+ /*CAMPOS DE TEXTO*/
+.text-field {
+    -fx-background-color: white;
+
+    -fx-border-color: #FFD700;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+
+    -fx-padding: 8px;
+}
+
+/*Campo selecionado*/
+.text-field:focused {
+    -fx-border-color: #FFA000;
+}
+
+   /*COMBOBOX*/
+.combo-box {
+    -fx-background-color: white;
+
+    -fx-border-color: #FFD700;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+  /*TABELA*/
+.table-view {
+    -fx-background-color: white;
+
+    -fx-border-color: #FFD700;
+    -fx-border-width: 2px;
+}
+
+/*Cabeçalho da tabela*/ 
+.table-view .column-header-background {
+    -fx-background-color: #C62828;
+}
+
+.table-view .column-header {
+    -fx-background-color: #C62828;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFD700;
+    -fx-font-weight: bold;
+}
+
+/*Linhas da tabela*/
+.table-row-cell {
+    -fx-background-color: white;
+}
+
+ /*Linha selecionada*/ 
+.table-row-cell:selected {
+    -fx-background-color: #FFD700;
+}
+
+/*Texto da tabela*/ 
+.table-cell {
+    -fx-text-fill: black;
+    -fx-padding: 8px;
+}
+
+   /*LISTA*/
+  .list-view {
+    -fx-background-color: white;
+
+    -fx-border-color: #FFD700;
+    -fx-border-width: 2px;
+}
+
+   /*CAIXAS DE BOTÕES*/
+.hbox {
+    -fx-spacing: 15px;
+}
+
+.vbox {
+    -fx-spacing: 15px;
+}

@@ -51,7 +51,8 @@ public void start(Stage stage) {
     private void telaInicial() {
 
         GridPane root = new GridPane();
-        Scene scene = new Scene(root, 800, 600);
+    Scene scene = new Scene(root, 800, 600);
+     scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
 
         Button btCadastrarVt = new Button("Cadastrar Vt");
         Button btConsultarVt = new Button("Consultar Vt");
@@ -59,6 +60,7 @@ public void start(Stage stage) {
         Button btCadastrarUs = new Button("Cadastrar Usuário");
 
         Label titulo = new Label("Gestão de Viaturas");
+        titulo.getStyleClass().add("titulo");
 
         // Gestão de Viaturas
         root.add(titulo, 1, 0);
@@ -116,8 +118,7 @@ public void start(Stage stage) {
               // TÍTULO
       
         Label titulo = new Label("Cadastrar Viatura");
-
-        titulo.setStyle("-fx-font-size: 24px;" +"-fx-font-weight: bold;");
+        titulo.getStyleClass().add("titulo");
 
         root.add(titulo, 0, 0, 2, 1);
 
@@ -288,7 +289,8 @@ public void start(Stage stage) {
         root.add(botoes,0,8,2,1);
                 // CENA
        
-        Scene scene = new Scene(root,650,550);
+        Scene scene = new Scene(root, 650, 550);
+        scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
 
         stage.setTitle("Cadastrar Viatura");
         stage.setScene(scene);
@@ -306,8 +308,7 @@ public void start(Stage stage) {
         // TÍTULO
        
         Label titulo = new Label("Consulta de Viaturas");
-
-        titulo.setStyle( "-fx-font-size: 24px;" +"-fx-font-weight: bold;");
+        titulo.getStyleClass().add("titulo");
 
         BorderPane.setAlignment(titulo,Pos.CENTER);
 
@@ -350,7 +351,8 @@ public void start(Stage stage) {
         colunaTipo.setCellValueFactory(data ->data.getValue().tipoProperty());
 
 
-        ObservableList<String> tipos = FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
+        ObservableList<String> tipos =
+                FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
 
 
         colunaTipo.setCellFactory(ComboBoxTableCell.forTableColumn(tipos));
@@ -359,16 +361,20 @@ public void start(Stage stage) {
         colunaTipo.setOnEditCommit(event -> {event.getRowValue().setTipo(event.getNewValue());
 
         });
+
         // COLUNA STATUS
         
+
         TableColumn<Viatura, String> colunaStatus =  new TableColumn<>("Status");
 
         colunaStatus.setCellValueFactory(data -> data.getValue().statusProperty());
+
 
         ObservableList<String> status = FXCollections.observableArrayList("Disponível","Indisponível","Em manutenção");
 
         colunaStatus.setCellFactory(ComboBoxTableCell.forTableColumn(status)
         );
+
 
         colunaStatus.setOnEditCommit(event -> {event.getRowValue().setStatus(event.getNewValue());
 
@@ -445,7 +451,8 @@ public void start(Stage stage) {
         BorderPane.setAlignment(tabela,Pos.CENTER);
 
         // CENA
-         Scene scene = new Scene(root,1000,600);
+         Scene scene = new Scene(root, 1000, 600);
+         scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
 
         stage.setTitle("Consultar Viaturas");
 
@@ -465,8 +472,7 @@ public void start(Stage stage) {
         // TÍTULO
        
         Label titulo = new Label("Excluir Viaturas");
-
-        titulo.setStyle("-fx-font-size: 24px;" + "-fx-font-weight: bold;");
+        titulo.getStyleClass().add("titulo");
 
         BorderPane.setAlignment(titulo,Pos.CENTER);
         root.setTop(titulo);
@@ -480,14 +486,16 @@ public void start(Stage stage) {
         );
 
 
-        listaViaturas.setCellFactory(listView -> new javafx.scene.control.ListCell<Viatura>() {
+        listaViaturas.setCellFactory(
+                listView ->
+                        new javafx.scene.control.ListCell<Viatura>() {
 
-                @Override
-                protected void updateItem(Viatura viatura, boolean empty) {
+                            @Override
+                            protected void updateItem(Viatura viatura, boolean empty) {
 
-            super.updateItem(viatura,empty);
-                if (empty|| viatura == null) {
-                     setText(null);
+                                super.updateItem(viatura,empty);
+                                if (empty|| viatura == null) {
+                                    setText(null);
         } else {
         String nome = viatura.getNome();
         
@@ -515,18 +523,18 @@ public void start(Stage stage) {
                return;
                     }
 
-         String nomeViatura = viaturaSelecionada.getNome();
+         String nomeViatura =viaturaSelecionada.getNome();
 
 
           if (nomeViatura == null|| nomeViatura.isEmpty()) 
                     {
-              nomeViatura = "Viatura sem nome";
+              nomeViatura ="Viatura sem nome";
                     }
 
                     // CONFIRMAÇÃO
             // Cancelar:
             // não faz nada.       
-          Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+          Alert confirmacao =new Alert(Alert.AlertType.CONFIRMATION);
 
           confirmacao.setTitle("Excluir Viatura");
 
@@ -536,20 +544,25 @@ public void start(Stage stage) {
 
           confirmacao.setContentText("Viatura selecionada: "+ nomeViatura+ "\n\n"+ "Escolha \"Apagar\" "+ "para excluir ou " + "\"Cancelar\" para "+ "cancelar.");
 
+
           ButtonType btApagar = new ButtonType("Apagar");
 
           ButtonType btCancelar = new ButtonType("Cancelar");
                     
           confirmacao.getButtonTypes().setAll(btApagar, btCancelar);
                     
-          confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) { viaturas.remove(viaturaSelecionada);
-         }
+          confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) {
+          viaturas.remove(viaturaSelecionada);
+                                        }
+ 
        }
     );
   }
 );
+
         // BOTÃO VOLTAR
-  
+     
+
         Button btVoltar = new Button("Voltar");
 
         btVoltar.setOnAction(e -> telaInicial());
@@ -565,7 +578,8 @@ public void start(Stage stage) {
         root.setBottom(botoes);
                 // CENA
         
-        Scene scene = new Scene(root,600,500);
+        Scene scene = new Scene(root, 600, 500);
+        scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
         stage.setTitle("Excluir Viaturas");
         stage.setScene(scene);
         stage.show();
@@ -574,6 +588,7 @@ public void start(Stage stage) {
   
     public static class Viatura {
              // INFORMAÇÕES MOSTRADAS NA CONSULTA
+    
         private final StringProperty nome;
         private final StringProperty localizacao;
         private final StringProperty tipo;
@@ -587,8 +602,8 @@ public void start(Stage stage) {
 
         public Viatura(String nome,String localizacao,String tipo,String status,String disponibilidade,String criterios,String placa,String modelo,String ano) {
 
-            this.nome = new SimpleStringProperty(nome);
-            
+            this.nome =
+                    new SimpleStringProperty(nome);
             this.localizacao = new SimpleStringProperty(localizacao);
 
             this.tipo = new SimpleStringProperty(tipo);
@@ -692,13 +707,16 @@ public void start(Stage stage) {
         public StringProperty modeloProperty() {
             return modelo;
         }
+
         public String getModelo() {
             return modelo.get();
         }
+
         public void setModelo(String valor) {
             modelo.set(valor);
         }
               // ANO
+       
         public StringProperty anoProperty() {
             return ano;
         }
@@ -715,4 +733,3 @@ public void start(Stage stage) {
         launch();
     }
 }
-
