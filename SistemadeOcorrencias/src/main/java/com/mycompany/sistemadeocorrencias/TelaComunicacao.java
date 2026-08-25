@@ -81,7 +81,7 @@ public class TelaComunicacao {
         Mensagem, txMensagem,
         Remetente, txRemetente,
         Destinatario, txDestinatario,
-        botoes,
+        botoes
         );
         
         VBox historico = new VBox (15);
@@ -104,17 +104,14 @@ public class TelaComunicacao {
         cabecalho.setStyle(
                 "-fx-background-color:#F4E9DD;" + "-fx-text-fill:#5B171F;" + "-fx-padding:10;" + "-fx-bacjkground-radius:20;" + "-fx-font-weight:bold;");
         
-        historico.getChildren().addAll(
-                tituloHistorico,
-                pesquisar,
-                cabecalho
-        );
+        historico.getChildren().addAll(tituloHistorico,pesquisar,cabecalho);
 
         HBox conteudo = new HBox(25);
 
         conteudo.getChildren().addAll(formulario, historico);
-                
-        BordePane root.setTop(topo);
+        
+        BorderPane root = new BorderPane();
+        
         root.setCenter(conteudo);
         Scene scene = new Scene(root, 1200, 700);
 
