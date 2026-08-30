@@ -25,29 +25,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 public class App extends Application {
     private Stage stage;
-
-       // LISTA PRINCIPAL DE VIATURAS
-
+    // LISTA PRINCIPAL DE VIATURAS
      private ObservableList<Viatura> viaturas = FXCollections.observableArrayList();
  @Override
 public void start(Stage stage) {
 
         this.stage = stage;
-
-               // VIATURAS INICIAIS
-    
+        // VIATURAS INICIAIS
         viaturas.add(new Viatura( "ABTR-01","Quartel","Viatura","Disponível","24 horas","CNH e documentação", "","","" ));
 
         viaturas.add(new Viatura("ASU-01","Posto de bombeiros","Viatura Administrativa","Em manutenção","Indisponível","Revisão do veículo","","",""));
 
         telaInicial();
     }
-
-       // TELA INICIAL
-  
+    // TELA INICIAL
     private void telaInicial() {
 
         GridPane root = new GridPane();
@@ -61,49 +54,35 @@ public void start(Stage stage) {
 
         Label titulo = new Label("Gestão de Viaturas");
         titulo.getStyleClass().add("titulo");
-
         // Gestão de Viaturas
         root.add(titulo, 1, 0);
         GridPane.setHalignment(titulo, HPos.CENTER);
-
         // Cadastrar Usuário
         root.add(btCadastrarUs, 2, 1);
         GridPane.setHalignment(btCadastrarUs, HPos.CENTER);
-
         // Botões de Viaturas
         root.add(btCadastrarVt, 0, 2);
         root.add(btConsultarVt, 1, 2);
         root.add(btExcluirVt, 2, 2);
-
         // Espaçamento
         root.setHgap(30);
         root.setVgap(20);
-
         // Alinhamento
         root.setAlignment(Pos.TOP_CENTER);
-
         // Distância do topo
         root.setPadding(new Insets(25, 20, 20, 20));
-
-              // BOTÃO CADASTRAR VIATURA
-      
+        // BOTÃO CADASTRAR VIATURA
         btCadastrarVt.setOnAction(e -> telaCadastrarViatura());
-
-              // BOTÃO CONSULTAR VIATURA
-
+            // BOTÃO CONSULTAR VIATURA
              btConsultarVt.setOnAction(e -> telaConsultarViaturas());
-
-          // BOTÃO EXCLUIR VIATURA
-       
+        // BOTÃO EXCLUIR VIATURA
         btExcluirVt.setOnAction(e -> telaExcluirViaturas());
 
         stage.setTitle("Gestão de Viaturas");
         stage.setScene(scene);
         stage.show();
     }
-
-       // TELA DE CADASTRO DE VIATURA
-
+    // TELA DE CADASTRO DE VIATURA
     private void telaCadastrarViatura() {
 
         GridPane root = new GridPane();
@@ -114,18 +93,14 @@ public void start(Stage stage) {
         root.setVgap(15);
 
         root.setAlignment(Pos.TOP_CENTER);
-
-              // TÍTULO
-      
+        // TÍTULO
         Label titulo = new Label("Cadastrar Viatura");
         titulo.getStyleClass().add("titulo");
 
         root.add(titulo, 0, 0, 2, 1);
 
         GridPane.setHalignment(titulo,HPos.CENTER);
-
-               // IDENTIFICAÇÃO
-  
+        // IDENTIFICAÇÃO
         Label labelIdentificacao = new Label("Identificação da Viatura:");
 
         TextField campoIdentificacao = new TextField();
@@ -135,9 +110,7 @@ public void start(Stage stage) {
         root.add(labelIdentificacao,0,1);
 
         root.add(campoIdentificacao,1,1);
-
-            // TIPO
-     
+        // TIPO
         Label labelTipo = new Label("Tipo da Viatura:");
 
         javafx.scene.control.ComboBox<String> campoTipo = new javafx.scene.control.ComboBox<>();
@@ -149,9 +122,7 @@ public void start(Stage stage) {
         root.add(labelTipo,0,2);
 
         root.add(campoTipo,1,2);
-
-               // PLACA
-   
+        // PLACA
         Label labelPlaca = new Label("Placa:");
 
         TextField campoPlaca = new TextField();
@@ -161,9 +132,7 @@ public void start(Stage stage) {
         root.add(labelPlaca,0,3);
 
         root.add(campoPlaca,1,3);
-      
         // MODELO
-       
         Label labelModelo = new Label("Modelo:");
 
         TextField campoModelo = new TextField();
@@ -173,9 +142,7 @@ public void start(Stage stage) {
         root.add(labelModelo,0,4);
 
         root.add(campoModelo,1,4);
-
-                // ANO DE FABRICAÇÃO
-
+        // ANO DE FABRICAÇÃO
         Label labelAno = new Label("Ano de fabricação:");
 
         TextField campoAno = new TextField();
@@ -185,9 +152,7 @@ public void start(Stage stage) {
         root.add(labelAno,0,5);
 
         root.add(campoAno,1,5);
-
-               // STATUS
-       
+        // STATUS
         Label labelStatus = new Label("Status:");
 
         javafx.scene.control.ComboBox<String> campoStatus = new javafx.scene.control.ComboBox<>();
@@ -200,7 +165,6 @@ public void start(Stage stage) {
 
         root.add(campoStatus,1, 6 );
         // BOTÃO CADASTRAR
-       
         Button btCadastrar = new Button("Cadastrar");
 
         btCadastrar.setOnAction(e -> {
@@ -216,9 +180,7 @@ public void start(Stage stage) {
             String ano = campoAno.getText().trim();
 
             String status = campoStatus.getValue();
-
-                      // VERIFICAÇÃO DOS CAMPOS
-        
+            // VERIFICAÇÃO DOS CAMPOS
             if (identificacao.isEmpty() || tipo == null || placa.isEmpty() || modelo.isEmpty() || ano.isEmpty() || status == null) {
 
                 Alert alerta = new Alert(Alert.AlertType.WARNING);
@@ -233,7 +195,6 @@ public void start(Stage stage) {
                 return;
             }
             // VERIFICA SE A PLACA JÁ ESTÁ CADASTRADA
-
                 for (Viatura viatura : viaturas) {
 
                 if (viatura.getPlaca().equalsIgnoreCase(placa)) {
@@ -249,18 +210,11 @@ public void start(Stage stage) {
                 return;
             }
             }
-
-
             // CRIA A NOVA VIATURA
-          
             Viatura novaViatura = new Viatura(identificacao,"",tipo,status,"","",placa,modelo,ano);
-
             // ADICIONA NA LISTA PRINCIPAL
-          
             viaturas.add(novaViatura);
-            
             // AVISO DE SUCESSO
-           
             Alert sucesso = new Alert(Alert.AlertType.INFORMATION);
 
             sucesso.setTitle("Cadastro realizado");
@@ -273,22 +227,17 @@ public void start(Stage stage) {
             // Volta para a tela inicial
             telaInicial();
         });
-
-               // BOTÃO CANCELAR
-      
+        // BOTÃO CANCELAR
         Button btCancelar = new Button("Cancelar");
 
         btCancelar.setOnAction(e -> telaInicial());
-
-                // BOTÕES
-     
+        // BOTÕES
         HBox botoes = new HBox(15,btCancelar,btCadastrar);
 
         botoes.setAlignment(Pos.CENTER);
 
         root.add(botoes,0,8,2,1);
-                // CENA
-       
+        // CENA
         Scene scene = new Scene(root, 650, 550);
         scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
 
@@ -296,32 +245,24 @@ public void start(Stage stage) {
         stage.setScene(scene);
         stage.show();
     }
-
         // TELA DE CONSULTA DE VIATURAS
-  
     private void telaConsultarViaturas() {
 
         BorderPane root = new BorderPane();
 
         root.setPadding(new Insets(20));
-
         // TÍTULO
-       
         Label titulo = new Label("Consulta de Viaturas");
         titulo.getStyleClass().add("titulo");
 
         BorderPane.setAlignment(titulo,Pos.CENTER);
 
         root.setTop(titulo);
-
-              // TABELA
-        
+        // TABELA
         TableView<Viatura> tabela = new TableView<>();
 
         tabela.setEditable(true);
-
-               // COLUNA NOME / IDENTIFICAÇÃO
-        
+        // COLUNA NOME / IDENTIFICAÇÃO
         TableColumn<Viatura, String> colunaNome = new TableColumn<>("Nome da Viatura");
 
         colunaNome.setCellValueFactory(data ->data.getValue().nomeProperty());
@@ -331,9 +272,7 @@ public void start(Stage stage) {
         colunaNome.setOnEditCommit(event -> {event.getRowValue().setNome(event.getNewValue());
 
         });
-       
         // COLUNA LOCALIZAÇÃO
-       
         TableColumn<Viatura, String> colunaLocalizacao = new TableColumn<>("Localização");
 
         colunaLocalizacao.setCellValueFactory(data ->data.getValue().localizacaoProperty());
@@ -343,9 +282,7 @@ public void start(Stage stage) {
         colunaLocalizacao.setOnEditCommit(event -> {event.getRowValue().setLocalizacao(event.getNewValue());
 
         });
-
-              // COLUNA TIPO
-       
+        // COLUNA TIPO
         TableColumn<Viatura, String> colunaTipo = new TableColumn<>("Tipo");
 
         colunaTipo.setCellValueFactory(data ->data.getValue().tipoProperty());
@@ -361,10 +298,7 @@ public void start(Stage stage) {
         colunaTipo.setOnEditCommit(event -> {event.getRowValue().setTipo(event.getNewValue());
 
         });
-
         // COLUNA STATUS
-        
-
         TableColumn<Viatura, String> colunaStatus =  new TableColumn<>("Status");
 
         colunaStatus.setCellValueFactory(data -> data.getValue().statusProperty());
@@ -379,9 +313,7 @@ public void start(Stage stage) {
         colunaStatus.setOnEditCommit(event -> {event.getRowValue().setStatus(event.getNewValue());
 
         });
-
         // COLUNA DISPONIBILIDADE
-       
         TableColumn<Viatura, String> colunaDisponibilidade = new TableColumn<>("Disponibilidade");
 
         colunaDisponibilidade.setCellValueFactory(data ->data.getValue().disponibilidadeProperty());
@@ -392,8 +324,6 @@ public void start(Stage stage) {
 
         });
         // COLUNA CRITÉRIOS
-       
-
         TableColumn<Viatura, String> colunaCriterios = new TableColumn<>("Critérios");
 
         colunaCriterios.setCellValueFactory(data ->data.getValue().criteriosProperty());
@@ -402,11 +332,8 @@ public void start(Stage stage) {
 
         colunaCriterios.setOnEditCommit(event -> {event.getRowValue().setCriterios(event.getNewValue());
         });
-
         // ADICIONANDO AS COLUNAS
-        
         tabela.getColumns().addAll(colunaNome,colunaLocalizacao,colunaTipo,colunaStatus,colunaDisponibilidade,colunaCriterios);
-
         // TAMANHO DAS COLUNAS
         colunaNome.setPrefWidth(160);
         colunaLocalizacao.setPrefWidth(150);
@@ -414,42 +341,30 @@ public void start(Stage stage) {
         colunaStatus.setPrefWidth(150);
         colunaDisponibilidade.setPrefWidth(150);
         colunaCriterios.setPrefWidth(180);
-
-              // USA A LISTA PRINCIPAL
-      
+        // USA A LISTA PRINCIPAL
         tabela.setItems(viaturas);
-
-            // BOTÃO ADICIONAR
-      
+        // BOTÃO ADICIONAR
         Button btAdicionar = new Button("Adicionar Viatura");
-
-            // Agora o cadastro oficial é feito
-            // pela tela Cadastrar Vt.
-
+        // Agora o cadastro oficial é feito
+        // pela tela Cadastrar Vt.
         btAdicionar.setOnAction(e -> {telaCadastrarViatura();
         });
-                // BOTÃO VOLTAR
-
+        // BOTÃO VOLTAR
                Button btVoltar = new Button("Voltar");
 
         btVoltar.setOnAction(e -> telaInicial());
-
-               // BOTÕES
- 
+        // BOTÕES
         HBox botoes = new HBox(15,btVoltar,btAdicionar);
 
         botoes.setAlignment(Pos.CENTER);
 
         botoes.setPadding(new Insets(20,0,0,0));
-
-
         // ORGANIZAÇÃO
         root.setCenter(tabela);
 
         root.setBottom(botoes);
 
         BorderPane.setAlignment(tabela,Pos.CENTER);
-
         // CENA
          Scene scene = new Scene(root, 1000, 600);
          scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
@@ -460,31 +375,24 @@ public void start(Stage stage) {
 
         stage.show();
     }
-
     // TELA DE EXCLUSÃO DE VIATURAS
-
     private void telaExcluirViaturas() {
 
         BorderPane root = new BorderPane();
 
         root.setPadding(new Insets(20));
-
         // TÍTULO
-       
         Label titulo = new Label("Excluir Viaturas");
         titulo.getStyleClass().add("titulo");
 
         BorderPane.setAlignment(titulo,Pos.CENTER);
         root.setTop(titulo);
-
         // LISTA
-   
         ListView<Viatura> listaViaturas = new ListView<>();
 
         listaViaturas.setItems(
                 viaturas
         );
-
 
         listaViaturas.setCellFactory(
                 listView ->
@@ -508,14 +416,11 @@ public void start(Stage stage) {
          }
         );
 
-
-                // INSTRUÇÃO
-       
+        // INSTRUÇÃO
         Label instrucao = new Label("Clique em uma viatura para excluí-la.");
 
         instrucao.setPadding(new Insets(10,0,10,0));
         // CLIQUE NA VIATURA
-        
         listaViaturas.setOnMouseClicked(event -> {Viatura viaturaSelecionada =listaViaturas.getSelectionModel().getSelectedItem();
 
 
@@ -530,8 +435,7 @@ public void start(Stage stage) {
                     {
               nomeViatura ="Viatura sem nome";
                     }
-
-                    // CONFIRMAÇÃO
+            // CONFIRMAÇÃO
             // Cancelar:
             // não faz nada.       
           Alert confirmacao =new Alert(Alert.AlertType.CONFIRMATION);
@@ -541,7 +445,6 @@ public void start(Stage stage) {
           confirmacao.setHeaderText(
           "Excluir esta viatura?"
                     );
-
           confirmacao.setContentText("Viatura selecionada: "+ nomeViatura+ "\n\n"+ "Escolha \"Apagar\" "+ "para excluir ou " + "\"Cancelar\" para "+ "cancelar.");
 
 
@@ -554,19 +457,15 @@ public void start(Stage stage) {
           confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) {
           viaturas.remove(viaturaSelecionada);
                                         }
- 
        }
     );
   }
 );
 
-        // BOTÃO VOLTAR
-     
-
+        // BOTÃO VOLTAr
         Button btVoltar = new Button("Voltar");
 
         btVoltar.setOnAction(e -> telaInicial());
-
         // CENTRO
         VBox centro = new VBox(10,instrucao,listaViaturas);
         centro.setAlignment(Pos.CENTER);
@@ -576,8 +475,7 @@ public void start(Stage stage) {
         botoes.setAlignment(Pos.CENTER);
         botoes.setPadding(new Insets(15,0,0,0));
         root.setBottom(botoes);
-                // CENA
-        
+        // CENA
         Scene scene = new Scene(root, 600, 500);
         scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
         stage.setTitle("Excluir Viaturas");
@@ -585,17 +483,15 @@ public void start(Stage stage) {
         stage.show();
     }
        // CLASSE VIATURA
-  
     public static class Viatura {
-             // INFORMAÇÕES MOSTRADAS NA CONSULTA
-    
+        // INFORMAÇÕES MOSTRADAS NA CONSULTA
         private final StringProperty nome;
         private final StringProperty localizacao;
         private final StringProperty tipo;
         private final StringProperty status;
         private final StringProperty disponibilidade;
         private final StringProperty criterios;
-                // INFORMAÇÕES DO CADASTRO
+        // INFORMAÇÕES DO CADASTRO
         private final StringProperty placa;
         private final StringProperty modelo;
         private final StringProperty ano;
@@ -620,8 +516,7 @@ public void start(Stage stage) {
 
             this.ano = new SimpleStringProperty(ano);
         }
-               // NOME / IDENTIFICAÇÃO
-    
+        // NOME / IDENTIFICAÇÃO
         public StringProperty nomeProperty() {
             return nome;
         }
@@ -633,8 +528,7 @@ public void start(Stage stage) {
         public void setNome(String valor) {
             nome.set(valor);
         }
-              // LOCALIZAÇÃO
-     
+        // LOCALIZAÇÃO
         public StringProperty localizacaoProperty() {
             return localizacao;
         }
@@ -646,8 +540,7 @@ public void start(Stage stage) {
         public void setLocalizacao(String valor) {
             localizacao.set(valor);
         }
-                // TIPO
-      
+        // TIPO
         public StringProperty tipoProperty() {
             return tipo;
         }
@@ -657,8 +550,7 @@ public void start(Stage stage) {
         public void setTipo(String valor) {
             tipo.set(valor);
         }
-               // STATUS
-      
+        // STATUS
         public StringProperty statusProperty() {
             return status;
         }
@@ -668,8 +560,7 @@ public void start(Stage stage) {
         public void setStatus(String valor) {
             status.set(valor);
         }
-              // DISPONIBILIDADE
-       
+        // DISPONIBILIDADE
         public StringProperty disponibilidadeProperty() {
             return disponibilidade;
         }
@@ -679,8 +570,7 @@ public void start(Stage stage) {
         public void setDisponibilidade(String valor) {
             disponibilidade.set(valor);
         }
-               // CRITÉRIOS
-       
+        // CRITÉRIOS
         public StringProperty criteriosProperty() {
             return criterios;
         }
@@ -691,8 +581,7 @@ public void start(Stage stage) {
         public void setCriterios(String valor) {
             criterios.set(valor);
         }
-       // PLACA
-       
+        // PLACA
         public StringProperty placaProperty() {
             return placa;
         }
@@ -702,8 +591,7 @@ public void start(Stage stage) {
         public void setPlaca(String valor) {
             placa.set(valor);
         }
-             // MODELO
-      
+        // MODELO
         public StringProperty modeloProperty() {
             return modelo;
         }
@@ -715,8 +603,7 @@ public void start(Stage stage) {
         public void setModelo(String valor) {
             modelo.set(valor);
         }
-              // ANO
-       
+        // ANO
         public StringProperty anoProperty() {
             return ano;
         }
