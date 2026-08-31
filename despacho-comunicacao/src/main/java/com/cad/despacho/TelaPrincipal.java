@@ -8,6 +8,7 @@ public class TelaPrincipal {
         BorderPane raiz = new BorderPane();
 
         MenuLateral menu = new MenuLateral();
+        raiz.setLeft(menu.criar());
 
         return raiz;
     }

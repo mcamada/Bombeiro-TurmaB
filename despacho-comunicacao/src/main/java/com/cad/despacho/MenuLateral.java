@@ -23,7 +23,7 @@ public class MenuLateral {
 
         Button itemNovaOcorrencia = new Button("Nova Ocorrencia");
         itemNovaOcorrencia.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+            
             public void handle(ActionEvent evento) {
                 Stage novaJanela = new Stage();
                 novaJanela.setTitle("Nova Ocorrencia");
@@ -34,7 +34,7 @@ public class MenuLateral {
 
         Button itemConsultar = new Button("Consultar Ocorrencias");
         itemConsultar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+         
             public void handle(ActionEvent evento) {
                 Stage novaJanela = new Stage();
                 novaJanela.setTitle("Consultar Ocorrencias");
@@ -45,7 +45,7 @@ public class MenuLateral {
 
         Button itemComunicacao = new Button("Comunicacao");
         itemComunicacao.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+          
             public void handle(ActionEvent evento) {
                 Stage novaJanela = new Stage();
                 novaJanela.setTitle("Comunicacao");
