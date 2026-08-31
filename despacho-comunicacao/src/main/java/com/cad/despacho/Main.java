@@ -7,7 +7,7 @@ public class Main extends Application {
    
     public void start(Stage janela) {
 
-        janela.setTitle("Sistema CAD - Despacho e Comunicacao");
+        janela.setTitle("Sistema CAD - Despacho e Comunicacao ");
 
         TelaLogin telaLogin = new TelaLogin();
         
@@ -17,3 +17,4 @@ public class Main extends Application {
         janela.show();
     }
 }
+
