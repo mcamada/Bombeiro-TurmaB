@@ -17,12 +17,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
-
+import javafx.stage.Modality;
 
 /**
  * JavaFX App
@@ -32,8 +31,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         BorderPane root = new BorderPane();
-        
-    
+
         GridPane gpCampos = new GridPane();
         gpCampos.getStyleClass().add("formulario");
         gpCampos.setVgap(5);
@@ -45,15 +43,15 @@ public class App extends Application {
         Label lbDataHora = new Label("Data e hora :");
         lbDataHora.setId("lbDataHora");
         lbDataHora.getStyleClass().add("rotulo");
-        
+
         Label lbLocal = new Label("Local :");
         lbLocal.setId("lbLocal");
         lbLocal.getStyleClass().add("rotulo");
-        
+
         Label lbDescrição = new Label("Descrição :");
         lbDescrição.setId("lbDescrição");
         lbDescrição.getStyleClass().add("rotulo");
-        
+
         Label lbEquipe = new Label("Equipe Envolvida :");
         lbEquipe.setId("lbEquipe");
         lbEquipe.getStyleClass().add("rotulo");
@@ -65,19 +63,19 @@ public class App extends Application {
         TextField tfDataHora = new TextField();
         tfDataHora.setId("tfDataHora");
         tfDataHora.getStyleClass().add("campo");
-        
+
         TextField tfLocal = new TextField();
         tfLocal.setId("tfLocal");
         tfLocal.getStyleClass().add("campo");
-        
+
         TextField tfDescrição = new TextField();
         tfDescrição.setId("tfDescrição");
         tfDescrição.getStyleClass().add("campo");
-        
+
         TextField tfEquipe = new TextField();
         tfEquipe.setId("tfEquipe");
         tfEquipe.getStyleClass().add("campo");
-        
+
         Button btCadastrar = new Button("Cadastrar");
         btCadastrar.setId("btCadastrar");
         btCadastrar.getStyleClass().add("botao");
@@ -96,31 +94,30 @@ public class App extends Application {
         gpCampos.setHalignment(btCadastrar, HPos.CENTER);
 
         gpCampos.setAlignment(Pos.CENTER);
-       
 
-//////////////
+        //////////////
         gpCampos.setAlignment(Pos.CENTER);
 
         gpCampos.setMaxSize(
-        javafx.scene.layout.Region.USE_PREF_SIZE,
-        javafx.scene.layout.Region.USE_PREF_SIZE
-);
+                javafx.scene.layout.Region.USE_PREF_SIZE,
+                javafx.scene.layout.Region.USE_PREF_SIZE
+        );
 
         StackPane painelCentral = new StackPane(gpCampos);
         painelCentral.setAlignment(Pos.CENTER);
 
         root.setCenter(painelCentral);
-//////////////
+        //////////////
         ButtonBar painelBt = new ButtonBar();
-        
+
         Button btInicio = new Button("Inicio");
         btInicio.setId("btInicio");
         btInicio.getStyleClass().add("botao");
-        
+
         Button btConsultar = new Button("Consultar");
         btConsultar.setId("btConsultar");
         btConsultar.getStyleClass().add("botao");
-        
+
         Button btCadastrar2 = new Button("Cadastrar");
         btCadastrar2.setId("btCadastrar2");
         btCadastrar2.getStyleClass().add("botao");
@@ -130,16 +127,17 @@ public class App extends Application {
         HBox header = new HBox();
         header.getStyleClass().add("header");
         header.getChildren().addAll(new Label("Cadastrar Ocorrência"), painelBt);
-        
+
         root.setTop(header);
-   
+
         Scene scene = new Scene(root, 640, 480);
-        
+
         stage.setScene(scene);
         scene.getStylesheets().add("/css/style.css");
         stage.setTitle("Sistema de Teste do JavaFx");
         stage.show();
-        }
+    }
+
     public static void main(String[] args) {
         launch();
     }
