@@ -16,10 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-family: "fantasy";
 }
 .button {
-    -fx-background-color: linear-gradient(to right,
-        #7e1ad8,
-        #992bff,
-        #d6abff);
+    -fx-background-color: linear-gradient(to right, #7e1ad8, #992bff, #d6abff);
     -fx-text-fill: #ffffff;
     -fx-font-family: "fantasy";
 }
@@ -37,10 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-radius: 5px;
 }
 .menu {
-    -fx-background-color: linear-gradient(to right,
-        #7e1ad8,
-        #992bff,
-        #d6abff);
+    -fx-background-color: linear-gradient(to right, #7e1ad8, #992bff, #d6abff);
     -fx-padding: 10px;
     -fx-spacing: 10px;
     -fx-alignment: center-left;
@@ -100,10 +94,7 @@ StackPane {
 }
 
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(to right,
-        #7e1ad8,
-        #992bff,
-        #d6abff);
+    -fx-background-color: linear-gradient(to right, #7e1ad8, #992bff, #d6abff);
 }
 
 .table-view .column-header {
@@ -199,10 +190,7 @@ StackPane {
 }
 
 .dialog-pane .header-panel {
-    -fx-background-color: linear-gradient(to right,
-        #7e1ad8,
-        #992bff,
-        #d6abff);
+    -fx-background-color: linear-gradient(to right, #7e1ad8, #992bff, #d6abff);
 }
 
 .dialog-pane .header-panel .label {
@@ -221,10 +209,7 @@ StackPane {
 }
 
 .dialog-pane .button {
-    -fx-background-color: linear-gradient(to right,
-        #7e1ad8,
-        #992bff,
-        #d6abff);
+    -fx-background-color: linear-gradient(to right, #7e1ad8, #992bff, #d6abff);
     -fx-text-fill: #ffffff;
     -fx-font-family: "fantasy";
 }
