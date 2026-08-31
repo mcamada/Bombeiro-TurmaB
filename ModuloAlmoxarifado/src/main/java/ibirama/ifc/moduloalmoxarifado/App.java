@@ -44,7 +44,7 @@ public class App extends Application {
     Atualizar Itens
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-     */
+    */
     
     private void atualizarItem(Item itemSelecionado, TableView<Item> tabela, Stage consultaTela) {
         Stage atualizarTela = new Stage();
@@ -90,7 +90,7 @@ public class App extends Application {
     Voltar para Tela Consulta
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-         */
+        */
         
         EventHandler<MouseEvent> cnstVoltarAtu = new EventHandler<MouseEvent>() {
             @Override
@@ -102,17 +102,9 @@ public class App extends Application {
 
         btVoltarAtu.setOnMouseClicked(cnstVoltarAtu);
 
-        btSalve.disableProperty().bind(
-                infName.textProperty().isEmpty()
-                        .or(infCategoria.textProperty().isEmpty())
-                        .or(infQuant.textProperty().isEmpty())
-                        .or(infUnidMedid.textProperty().isEmpty())
-                        .or(infLocal.textProperty().isEmpty())
-                        .or(infMin.textProperty().isEmpty()));
+        btSalve.disableProperty().bind(infName.textProperty().isEmpty().or(infCategoria.textProperty().isEmpty()).or(infQuant.textProperty().isEmpty()).or(infUnidMedid.textProperty().isEmpty()).or(infLocal.textProperty().isEmpty()).or(infMin.textProperty().isEmpty()));
 
-        cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria,
-                infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
-                infLocal, tMin, infMin, botoes);
+        cRoot.getChildren().addAll(txAtualizar, tName, infName, tCategoria, infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal, infLocal, tMin, infMin, botoes);
 
         Scene atualizarCena = new Scene(cRoot, 640, 480);
         var css = getClass().getResource("/css/style.css");
@@ -158,7 +150,7 @@ public class App extends Application {
     Tela Inicial
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-     */
+    */
     
     @Override
     public void start(Stage stage) {
@@ -196,7 +188,7 @@ public class App extends Application {
     Cadastrar Itens
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-         */
+        */
         
         EventHandler<MouseEvent> cadastrar = new EventHandler<MouseEvent>() {
             @Override
@@ -246,17 +238,9 @@ public class App extends Application {
 
                 boteosCadastro.getStyleClass().add("grupo-botoes");
 
-                btSalve.disableProperty().bind(
-                        infName.textProperty().isEmpty()
-                                .or(infCategoria.textProperty().isEmpty())
-                                .or(infQuant.textProperty().isEmpty())
-                                .or(infUnidMedid.textProperty().isEmpty())
-                                .or(infLocal.textProperty().isEmpty())
-                                .or(infMin.textProperty().isEmpty()));
+                btSalve.disableProperty().bind(infName.textProperty().isEmpty().or(infCategoria.textProperty().isEmpty()).or(infQuant.textProperty().isEmpty()).or(infUnidMedid.textProperty().isEmpty()).or(infLocal.textProperty().isEmpty()).or(infMin.textProperty().isEmpty()));
 
-                cRoot.getChildren().addAll(txCadastro, tName, infName, tCategoria,
-                        infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal,
-                        infLocal, tMin, infMin, boteosCadastro);
+                cRoot.getChildren().addAll(txCadastro, tName, infName, tCategoria, infCategoria, tQuant, infQuant, tUnidMedid, infUnidMedid, tLocal, infLocal, tMin, infMin, boteosCadastro);
 
                 Scene cadastroCena = new Scene(fundoFormulario, 640, 480);
                 var css = getClass().getResource("/css/style.css");
@@ -272,7 +256,7 @@ public class App extends Application {
     Voltar para Tela Inicial
 ---------------------------------------------------------------------------------------------------
 =================================================================================================
-                 */
+                */
                 
                 EventHandler<MouseEvent> cdstVoltar = new EventHandler<MouseEvent>() {
                     @Override
@@ -324,7 +308,7 @@ public class App extends Application {
     consultar Itens
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-         */
+        */
         
         EventHandler<MouseEvent> consultar = new EventHandler<MouseEvent>() {
             @Override
@@ -350,7 +334,7 @@ public class App extends Application {
     Excluir Itens Selecionados
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-                 */
+                */
                 
                 btExcluir.setDisable(true);
 
@@ -384,24 +368,12 @@ public class App extends Application {
                 TableColumn<Item, String> local = new TableColumn<>("Local no Estoque");
                 TableColumn<Item, Integer> min = new TableColumn<>("Nivel Minimo de Estoque");
 
-                nome.setCellValueFactory(
-                        celula -> new SimpleStringProperty(celula.getValue().nome)
-                );
-                categoria.setCellValueFactory(
-                        celula -> new SimpleStringProperty(celula.getValue().categoria)
-                );
-                quant.setCellValueFactory(
-                        celula -> new SimpleIntegerProperty(celula.getValue().quantidade).asObject()
-                );
-                unidMedid.setCellValueFactory(
-                        celula -> new SimpleStringProperty(celula.getValue().unidade)
-                );
-                local.setCellValueFactory(
-                        celula -> new SimpleStringProperty(celula.getValue().local)
-                );
-                min.setCellValueFactory(
-                        celula -> new SimpleIntegerProperty(celula.getValue().nivelMinimo).asObject()
-                );
+                nome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().nome));
+                categoria.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().categoria));
+                quant.setCellValueFactory(celula -> new SimpleIntegerProperty(celula.getValue().quantidade).asObject());
+                unidMedid.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().unidade));
+                local.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().local));
+                min.setCellValueFactory(celula -> new SimpleIntegerProperty(celula.getValue().nivelMinimo).asObject());
 
                 Tabela.setItems(itensFiltrados);
                 VBox.setVgrow(Tabela, Priority.ALWAYS);
@@ -450,8 +422,7 @@ public class App extends Application {
                     }
                 });
 
-                cRoot.getChildren()
-                        .addAll(txConsultar, botoes, Tabela);
+                cRoot.getChildren().addAll(txConsultar, botoes, Tabela);
 
                 Scene consultaCena = new Scene(cRoot, 640, 480);
                 var css = getClass().getResource("/css/style.css");
@@ -467,7 +438,7 @@ public class App extends Application {
     Voltar para Tela Inicial
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-                 */
+                */
                 
                 EventHandler<MouseEvent> cnstVoltar = new EventHandler<MouseEvent>() {
                     @Override
@@ -483,7 +454,7 @@ public class App extends Application {
     Filtrar Itens
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-                 */
+                */
                 
                 EventHandler<MouseEvent> filtar = new EventHandler<MouseEvent>() {
                     @Override
@@ -556,7 +527,7 @@ public class App extends Application {
     Voltar para Tela de Consulta
 ---------------------------------------------------------------------------------------------------
 ===================================================================================================
-                         */
+                        */
                         
                         btVoltarFiltro.setOnMouseClicked(event -> {
                             filtrarTela.close();
