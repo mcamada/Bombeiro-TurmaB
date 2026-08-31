@@ -52,7 +52,6 @@ public class App extends Application {
         campoSenha.setPromptText("Digite sua senha");
         campoSenha.setPrefWidth(280);
 
-        //GridPane
         GridPane campos = new GridPane();
         campos.setAlignment(Pos.CENTER);
         campos.setHgap(12);
@@ -72,7 +71,6 @@ public class App extends Application {
         root.getChildren().add(titulo);
         root.getChildren().add(campos);
 
-        //BOTÃO
         Button botaoEntrar = new Button("Entrar");
         root.getChildren().add(botaoEntrar);
         botaoEntrar.setId("botaoEntrar");
@@ -92,7 +90,6 @@ public class App extends Application {
         stage.setTitle("Sistema de Teste do JavaFX");
         stage.setScene(scene);
 
-        //segunda tela
         EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -110,7 +107,6 @@ public class App extends Application {
                 tituloOcorrencias.setId("tituloOcorrencias");
                 tituloOcorrencias.setFont(fonteTituloTelaOcorrencias);
 
-                //sub+titulos = subtitulos
                 Label local = new Label("Local");
                 local.setId("local");
                 Label data = new Label("Data");
@@ -124,7 +120,6 @@ public class App extends Application {
                 Label descricao = new Label("Descrição");
                 descricao.setId("descricao");
 
-                //coisas
                 Label localCoisa = new Label("Casa do Zanella");
                 local.setId("local");
                 Label dataCoisa = new Label("20/10/1981");
@@ -168,7 +163,7 @@ public class App extends Application {
 
                 Ocorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
 
-                EventHandler<MouseEvent> e = new EventHandler<MouseEvent>() { //terceira tela
+                EventHandler<MouseEvent> e = new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         Stage CadastrodeOcorrencias = new Stage();
@@ -277,7 +272,6 @@ public class App extends Application {
                 titulo.setFont(fonteTitulo);
                 Label espaco = new Label("         ");
 
-                //espaco 1
                 Label nome = new Label("Nome:");
                 Label nomeGuerra = new Label("Nome de Guerra:");
                 Label departamento = new Label("Departamento");
@@ -295,7 +289,6 @@ public class App extends Application {
                 TextField confirmarSenhaTexto = new TextField();
                 confirmarSenhaTexto.setId("camposUsuario");
 
-                //espaco 2
                 Label email = new Label("E-mail:");
                 Label cpf = new Label("CPF:");
                 Label rg = new Label("RG:");
@@ -352,7 +345,6 @@ public class App extends Application {
                 HBox botoes = new HBox();
                 botoes.setAlignment(Pos.CENTER);
 
-                //botao confirmar
                 Button confirmar = new Button("Confirmar");
                 confirmar.setId("botaoConfirmar");
 
@@ -395,7 +387,6 @@ public class App extends Application {
             }
         };
 
-        //Resto
         botaoEntrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
         novoUsuario.addEventHandler(MouseEvent.MOUSE_CLICKED, novoUsuarioo);
         stage.show();
@@ -405,4 +396,3 @@ public class App extends Application {
         launch(args);
     }
 }
-
