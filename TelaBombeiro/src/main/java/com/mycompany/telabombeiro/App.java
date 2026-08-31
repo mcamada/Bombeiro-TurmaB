@@ -2,19 +2,22 @@ package com.mycompany.telabombeiro;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -74,15 +77,28 @@ public class App extends Application {
         root.getChildren().add(botaoEntrar);
         botaoEntrar.setId("botaoEntrar");
 
+        Button novoUsuario = new Button("Novo Usuário");
+        root.getChildren().add(novoUsuario);
+        novoUsuario.setId("botaoEntrar");
+
+        HBox painelBt = new HBox();
+        painelBt.setAlignment(Pos.CENTER);
+        painelBt.getChildren().addAll(botaoEntrar, novoUsuario);
+
+        root.getChildren().add(painelBt);
+
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add("/css/style.css");
         stage.setTitle("Sistema de Teste do JavaFX");
         stage.setScene(scene);
 
-        //Segunda Tela
-        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { //tela login
+        //segunda tela
+        EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+
+                stage.close();
+
                 Stage ocorrencias = new Stage();
 
                 Font fonteTituloTelaOcorrencias = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
@@ -97,38 +113,28 @@ public class App extends Application {
                 //sub+titulos = subtitulos
                 Label local = new Label("Local");
                 local.setId("local");
-
                 Label data = new Label("Data");
                 data.setId("data");
-
                 Label hora = new Label("Hora");
                 hora.setId("hora");
-
                 Label equipe = new Label("Equipe");
                 equipe.setId("equipe");
-
                 Label tipo = new Label("Tipo");
                 tipo.setId("tipo");
-
                 Label descricao = new Label("Descrição");
                 descricao.setId("descricao");
 
                 //coisas
                 Label localCoisa = new Label("Casa do Zanella");
                 local.setId("local");
-
                 Label dataCoisa = new Label("20/10/1981");
                 data.setId("data");
-
-                Label horaCoisa = new Label("23:99");
+                Label horaCoisa = new Label("23:59");
                 hora.setId("hora");
-
                 Label equipeCoisa = new Label("Bazanella");
                 equipe.setId("equipe");
-
                 Label tipoCoisa = new Label("Muito tempo na hora H");
                 tipo.setId("tipo");
-
                 Label descricaoCoisa = new Label("Tempo muito passado");
                 descricao.setId("descricao");
 
@@ -154,9 +160,9 @@ public class App extends Application {
                 rootTelaOcorrencias.getChildren().add(tituloOcorrencias);
                 rootTelaOcorrencias.getChildren().add(telaOcorrencias);
 
-                Button botaoCadastrarOcorrencia = new Button("Ocorrências");
+                Button botaoCadastrarOcorrencia = new Button("Cadastrar Ocorrência");
                 rootTelaOcorrencias.getChildren().add(botaoCadastrarOcorrencia);
-                botaoCadastrarOcorrencia.setId("botaoEntrar");
+                botaoCadastrarOcorrencia.setId("botaoOcorrencia");
 
                 Scene Ocorrencias = new Scene(rootTelaOcorrencias, 800, 600);
 
@@ -208,20 +214,33 @@ public class App extends Application {
                         cadastroOcorrencias.add(tipoCadastroOcorrencias, 0, 5);
                         cadastroOcorrencias.add(tipoOcorrencias, 1, 5);
 
+                        HBox botoes = new HBox();
+                        botoes.setAlignment(Pos.CENTER);
+
                         Button enviar = new Button("Enviar");
+                        Button cancelar = new Button("Cancelar");
 
                         EventHandler<MouseEvent> h = new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
-                                stage.close();
+                                CadastrodeOcorrencias.close();
                             }
                         };
-                        
+
+                        EventHandler<MouseEvent> hh = new EventHandler<MouseEvent>() {
+                            public void handle(MouseEvent event) {
+                                CadastrodeOcorrencias.close();
+                            }
+                        };
+
+                        botoes.getChildren().addAll(enviar, cancelar);
+
                         enviar.addEventHandler(MouseEvent.MOUSE_CLICKED, h);
-                        
+                        cancelar.addEventHandler(MouseEvent.MOUSE_CLICKED, hh);
+
                         rootCadastrarOcorrencia.getChildren().add(tituloCadastro);
                         rootCadastrarOcorrencia.getChildren().add(cadastroOcorrencias);
-                        rootCadastrarOcorrencia.getChildren().add(enviar);
+                        rootCadastrarOcorrencia.getChildren().add(botoes);
 
                         Scene sceneCadastroOcorrencias = new Scene(rootCadastrarOcorrencia, 800, 600);
                         sceneCadastroOcorrencias.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
@@ -240,8 +259,145 @@ public class App extends Application {
             }
         };
 
+        EventHandler<MouseEvent> novoUsuarioo = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.close();
+                Stage novoUsuario = new Stage();
+                
+
+                Font fonteTitulo = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30);
+
+                VBox rootNovoUsuario = new VBox();
+                rootNovoUsuario.setId("root");
+                rootNovoUsuario.setAlignment(Pos.TOP_CENTER);
+
+                Label titulo = new Label("CADASTRO DO USUÁRIO");
+                titulo.setId("titulo");
+                titulo.setFont(fonteTitulo);
+                Label espaco = new Label("         ");
+
+                //espaco 1
+                Label nome = new Label("Nome:");
+                Label nomeGuerra = new Label("Nome de Guerra:");
+                Label departamento = new Label("Departamento");
+                Label senha = new Label("Senha:");
+                Label confirmarSenha = new Label("Confirmar Senha:");
+
+                TextField campoTexto = new TextField();
+                campoTexto.setId("camposUsuario");
+                TextField nomeGuerraTexto = new TextField();
+                nomeGuerraTexto.setId("camposUsuario");
+                TextField departamentoTexto = new TextField();
+                departamentoTexto.setId("camposUsuario");
+                TextField senhaTexto = new TextField();
+                senhaTexto.setId("camposUsuario");
+                TextField confirmarSenhaTexto = new TextField();
+                confirmarSenhaTexto.setId("camposUsuario");
+
+                //espaco 2
+                Label email = new Label("E-mail:");
+                Label cpf = new Label("CPF:");
+                Label rg = new Label("RG:");
+                Label cidade = new Label("Cidada:");
+                Label estado = new Label("Estado:");
+
+                TextField emailTexto = new TextField();
+                emailTexto.setId("camposUsuario");
+                TextField cpfTexto = new TextField();
+                cpfTexto.setId("camposUsuario");
+                TextField rgTexto = new TextField();
+                rgTexto.setId("camposUsuario");
+                TextField cidadeCampoTexto = new TextField();
+                cidadeCampoTexto.setId("camposUsuario");
+                TextField estadoTexto = new TextField();
+                estadoTexto.setId("camposUsuario");
+
+                SplitPane espacos = new SplitPane();
+                espacos.setOrientation(Orientation.HORIZONTAL);
+                espacos.setId("espacos");
+
+                GridPane espaco1 = new GridPane();
+                espaco1.setHgap(12);
+                espaco1.setVgap(15);
+
+                espaco1.add(nome, 0, 0);
+                espaco1.add(nomeGuerra, 0, 1);
+                espaco1.add(departamento, 0, 2);
+                espaco1.add(senha, 0, 3);
+                espaco1.add(confirmarSenha, 0, 4);
+
+                espaco1.add(campoTexto, 1, 0);
+                espaco1.add(nomeGuerraTexto, 1, 1);
+                espaco1.add(departamentoTexto, 1, 2);
+                espaco1.add(senhaTexto, 1, 3);
+                espaco1.add(confirmarSenhaTexto, 1, 4);
+
+                GridPane espaco2 = new GridPane();
+                espaco2.setHgap(12);
+                espaco2.setVgap(15);
+                
+                espaco2.add(email, 0, 0);
+                espaco2.add(cpf, 0, 1);
+                espaco2.add(rg, 0, 2);
+                espaco2.add(cidade, 0, 3);
+                espaco2.add(estado, 0, 4);
+
+                espaco2.add(emailTexto, 1, 0);
+                espaco2.add(cpfTexto, 1, 1);
+                espaco2.add(rgTexto, 1, 2);
+                espaco2.add(cidadeCampoTexto, 1, 3);
+                espaco2.add(estadoTexto, 1, 4);
+
+                HBox botoes = new HBox();
+                botoes.setAlignment(Pos.CENTER);
+
+                //botao confirmar
+                Button confirmar = new Button("Confirmar");
+                confirmar.setId("botaoConfirmar");
+
+                EventHandler<MouseEvent> eventoConfirmar = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        stage.show();
+                        novoUsuario.close();
+                    }
+                };
+
+                Button cancelar = new Button("Cancelar");
+                cancelar.setId("botaoCancelar");
+
+                EventHandler<MouseEvent> eventoCancelar = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        stage.show();
+                        novoUsuario.close();
+                    }
+                };
+
+                botoes.getChildren().addAll(confirmar, cancelar);
+
+                espacos.getItems().add(espaco1);
+                espacos.getItems().add(espaco2);
+
+                rootNovoUsuario.getChildren().add(titulo);
+                rootNovoUsuario.getChildren().add(espaco);
+                rootNovoUsuario.getChildren().add(espacos);
+                rootNovoUsuario.getChildren().add(botoes);
+
+                confirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, eventoConfirmar);
+                cancelar.addEventHandler(MouseEvent.MOUSE_CLICKED, eventoCancelar);
+
+                Scene cenarioCadastro = new Scene(rootNovoUsuario, 800, 600);
+                cenarioCadastro.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+                novoUsuario.setScene(cenarioCadastro);
+                novoUsuario.show();
+            }
+        };
+
         //Resto
         botaoEntrar.addEventHandler(MouseEvent.MOUSE_CLICKED, eh);
+        novoUsuario.addEventHandler(MouseEvent.MOUSE_CLICKED, novoUsuarioo);
         stage.show();
     }
 
@@ -249,3 +405,4 @@ public class App extends Application {
         launch(args);
     }
 }
+
