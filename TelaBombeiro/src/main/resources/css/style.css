@@ -1,36 +1,14 @@
-.root {
+.root{
     -fx-background-color: mediumturquoise;
-    -fx-padding: 40px;
 }
 
-#titulo {
+#titulo, #tituloOcorrencias {
     -fx-background-color: lightseagreen;
     -fx-text-fill: white;
     -fx-alignment: center;
     -fx-padding: 15px;
     -fx-background-radius: 8px;
 }
-
-.label {
-    -fx-text-fill: #333333;
-}
-
-.text-field,
-.password-field {
-    -fx-background-color: white;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 8px;
-}
-
-.text-field:focused,
-.password-field:focused {
-    -fx-border-color: #1565c0;
-    -fx-border-width: 2px;
-}
-
 
 #campoUsuario, #campoSenha {
     -fx-background-color: aquamarine;  
@@ -46,17 +24,30 @@
     -fx-font-weight: bold;
     -fx-background-color: lightseagreen;
     -fx-text-fill: white;
-}
-
-#tituloOcorrencias{
-    -fx-background-color: red;
-    -fx-text-fill: white;
-    -fx-alignment: center;
-    -fx-padding: 15px;
-    -fx-background-radius: 8px;
+    -fx-border-color: black;
 }
 
 #local, #data, #hora, #tipo, #equipe, #descricao {
     -fx-font-weight: bold;
     -fx-font-size: xx-large;
+    
 }
+
+#espacos {
+    -fx-background-color: mediumturquoise;
+}
+
+#botaoConfirmar, #botaoCancelar {
+    -fx-background-color: lightseagreen;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+}
+
+#camposUsuario {
+    -fx-background-color: mediumturquoise;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+}
+
