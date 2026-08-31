@@ -1,0 +1,239 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 31 de ago. de 2026, 08:02:13
+    Author     : aluno
+*/
+
+.root {
+    -fx-background-color: #1b1b1b;
+    -fx-font-family: "fantasy";
+}
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+}
+.button {
+    -fx-background-color: linear-gradient(to right,
+        #7e1ad8,
+        #992bff,
+        #d6abff);
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+}
+.button:pressed {
+    -fx-border-color: #e649ff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.text-field {
+    -fx-background-color: #1b1b1b;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+.menu {
+    -fx-background-color: linear-gradient(to right,
+        #7e1ad8,
+        #992bff,
+        #d6abff);
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+    -fx-position: fixed;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.menu-button:pressed {
+    -fx-background-color: #992bff;
+}
+
+.boas-vindas {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+.formulario {
+    -fx-background-color: #1b1b1b;
+    -fx-padding: 20px;
+}
+
+StackPane {
+    -fx-background-color: #992bff;
+}
+.borda-formulario {
+    -fx-background-color: #992bff;
+    -fx-padding: 3px;
+}
+
+.formulario {
+    -fx-background-color: #1b1b1b;
+    -fx-padding: 20px;
+}
+.titulos {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+.grupo-botoes {
+    -fx-spacing: 10px;
+}
+
+
+.table-view {
+    -fx-background-color: #1b1b1b;
+    -fx-border-color: #992bff;
+    -fx-border-width: 2px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right,
+        #7e1ad8,
+        #992bff,
+        #d6abff);
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1b1b1b;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: #1b1b1b;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #2d2d2d;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #992bff;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: #1b1b1b;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #992bff;
+}
+
+.table-view .check-box {
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .check-box .box {
+    -fx-background-color: #1b1b1b;
+    -fx-border-color: #992bff;
+    -fx-border-radius: 3px;
+}
+
+.table-view .check-box:selected .box {
+    -fx-background-color: #992bff;
+    -fx-border-color: #ffffff;
+}
+.list-view {
+    -fx-background-color: #1b1b1b;
+    -fx-border-color: #992bff;
+    -fx-border-width: 2px;
+}
+
+.list-cell {
+    -fx-background-color: #1b1b1b;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+    -fx-font-size: 14px;
+}
+
+.list-cell:hover {
+    -fx-background-color: #2d2d2d;
+}
+
+.list-cell:selected {
+    -fx-background-color: #992bff;
+    -fx-text-fill: #ffffff;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: #1b1b1b;
+}
+
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #992bff;
+}
+
+.dialog-pane {
+    -fx-background-color: #1b1b1b;
+    -fx-border-color: #992bff;
+    -fx-border-width: 2px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to right,
+        #7e1ad8,
+        #992bff,
+        #d6abff);
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content {
+    -fx-text-fill: #ffffff;
+}
+
+.dialog-pane .content .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+}
+
+.dialog-pane .button {
+    -fx-background-color: linear-gradient(to right,
+        #7e1ad8,
+        #992bff,
+        #d6abff);
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "fantasy";
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #e649ff;
+}
+
+.dialog-pane .button:pressed {
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+}

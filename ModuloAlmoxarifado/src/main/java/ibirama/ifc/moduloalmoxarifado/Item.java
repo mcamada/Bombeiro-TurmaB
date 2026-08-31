@@ -4,10 +4,6 @@
  */
 package ibirama.ifc.moduloalmoxarifado;
 
-/**
- *
- * @author aluno
- */
 public class Item {
 
     String nome;
@@ -37,5 +33,5 @@ public class Item {
     public void setSelecionado(boolean selecionado) {
         this.selecionado = selecionado;
     }
- 
+
 }
