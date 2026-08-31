@@ -38,14 +38,13 @@ public class App extends Application {
         ButtonBar painelBt = new ButtonBar();
         painelBt.getButtons().addAll(btCancelar, btConfirmar);
         root.getChildren().addAll(usuario, campoUsuario, senha, campoSenha, painelBt);
-        
-        Scene cena = new Scene (root, 800, 600);
-        stage.setTitle ("login");
+
+        Scene cena = new Scene(root, 800, 600);
+        stage.setTitle("login");
         stage.setScene(cena);
         stage.show();
-        
-       
 
+        /*CADASTRO*/
         EventHandler<MouseEvent> cadastro = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -55,21 +54,29 @@ public class App extends Application {
 
                 event.consume();
                 Stage cadastro = new Stage();
-                GridPane rootMenu = new GridPane();
+                GridPane rootCadastro = new GridPane();
 
-                rootMenu.add(new Label("Consulta"), 0, 0);
-                rootMenu.add(new Label("Atualização"), 0, 2);
-                rootMenu.add(new Label("Exclusão"), 2, 0);
-                rootMenu.add(new Label("Cadastro"), 2, 2);
+                rootCadastro.add(new Label("Consulta"), 0, 0);
+                rootCadastro.add(new Label("Atualização"), 0, 2);
+                rootCadastro.add(new Label("Exclusão"), 2, 0);
+                rootCadastro.add(new Label("Cadastro"), 2, 2);
+                rootCadastro.add(new Button("Cancelar"), 3, 3);
+                rootCadastro.add(new Button("Confirmar"), 3,4 );
 
-                EventHandler<ActionEvent> confirmarLogin;
+                Button btCancelarCadastro = new Button("Cancelar");
+                Button btConfirmarCadastro = new Button("Confimar");
+                ButtonBar painelBtCadastro = new ButtonBar();
+           
 
-                Scene cenadrato = new Scene(rootMenu, 800, 600);
-                cadastro.setScene(cenadrato);
-                cadastro.show();
+                rootCadastro.getChildren().addAll(painelBtCadastro);
+                Scene cenarioCadastro = new Scene(rootCadastro, 800, 600);
+                cadastro.setScene(cenarioCadastro);
+                cadastro.showAndWait();
             }
         };
+        btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, cadastro);
 
+        /*CONSULTA*/
         EventHandler<MouseEvent> consulta = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -90,64 +97,86 @@ public class App extends Application {
                 TextField campoQuantidadeDisponivel = new TextField();
                 Label localizacao = new Label("Localização");
                 TextField campoLocalizacao = new TextField();
-                Button btConsulta = new Button();
-                
-                rootConsulta.getChildren().addAll(item, campoItem, categoria, campoCategoria, quantDisponivel, campoQuantidadeDisponivel, localizacao, campoLocalizacao, btConsulta);
+
+                Button btCancelarConsulta = new Button("Cancelar");
+                Button btConfirmarConsulta = new Button("Confimar");
+                ButtonBar painelBtConsulta = new ButtonBar();
+                painelBtConsulta.getButtons().addAll(btCancelarConsulta, btConfirmarConsulta);
+
+                rootConsulta.getChildren().addAll(item, campoItem, categoria, campoCategoria, quantDisponivel, campoQuantidadeDisponivel, localizacao, campoLocalizacao, painelBtConsulta);
                 Scene cenarioConsulta = new Scene(rootConsulta, 800, 600);
                 consulta.setScene(cenarioConsulta);
-                consulta.show();
-
-                EventHandler<MouseEvent> atualizar = new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Todos os dados preenchidos");
-                        alert.show();
-
-                        event.consume();
-                        Stage atulizacao = new Stage();
-                        VBox rootAtualizacao = new VBox();
-
-                        Label quantidadeAR = new Label("Quantidade(ajuste ou reposição)");
-                        TextField campoQuantidadeAR = new TextField();
-                        Label localizacao = new Label("Localização");
-                        TextField campoLocalizacao = new TextField();
-                        Label nivelMinimo = new Label("Nivel minimo");
-                        TextField campoNivelMinimo = new TextField();
-                        Label descricao = new Label("Descrição");
-                        TextField campoDescricao = new TextField();
-
-                        Button btAtualizar = new Button("Atualizar");
-                    }
-                };
-
-                EventHandler<MouseEvent> he = new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Tem certeza que gostaria de excluir?");
-                        alert.show();
-                        Stage exclusao = new Stage();
-                        VBox rootExclusao = new VBox();
-
-                        Label excluirItem = new Label(("Qual item deseja excluir"));
-                        TextField exclusaoItem = new TextField();
-
-                        Button btCancelarExclusao = new Button("Cancelar");
-                        Button btConfirmarExclusao = new Button("Confirmar");
-
-                        event.consume();
-                        rootExclusao.getChildren().addAll(excluirItem, exclusaoItem, btCancelarExclusao, btConfirmarExclusao);
-
-                    }
-                };
+                consulta.showAndWait();
             }
-
         };
+        btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, consulta);
+        /*ATUALIZAR*/
+        EventHandler<MouseEvent> atualizar = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Todos os dados preenchidos");
+                alert.show();
+
+                event.consume();
+                Stage atualizacao = new Stage();
+                VBox rootAtualizacao = new VBox();
+
+                Label quantidadeAR = new Label("Quantidade(ajuste ou reposição)");
+                TextField campoQuantidadeAR = new TextField();
+                Label localizacao = new Label("Localização");
+                TextField campoLocalizacao = new TextField();
+                Label nivelMinimo = new Label("Nivel minimo");
+                TextField campoNivelMinimo = new TextField();
+                Label descricao = new Label("Descrição");
+                TextField campoDescricao = new TextField();
+
+                Button btCancelarAtualizacao = new Button("Cancelar");
+                Button btConfirmarAtualizacao = new Button("Confimar");
+                ButtonBar painelBtAtualizacao = new ButtonBar();
+                painelBtAtualizacao.getButtons().addAll(btCancelarAtualizacao, btConfirmarAtualizacao);
+
+                rootAtualizacao.getChildren().addAll(quantidadeAR, campoQuantidadeAR, localizacao, campoLocalizacao, nivelMinimo, campoNivelMinimo, descricao, campoDescricao, painelBtAtualizacao);
+                Scene cenarioAtualizacao = new Scene(rootAtualizacao, 800, 600);
+                atualizacao.setScene(cenarioAtualizacao);
+                atualizacao.showAndWait();
+            }
+        };
+        btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, atualizar);
+        /*EXCLUSAO*/
+
+        Label excluirItem = new Label(("Qual item deseja excluir"));
+        TextField exclusaoItem = new TextField();
+
+        EventHandler<MouseEvent> exclusao = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Tem certeza que gostaria de excluir?");
+                alert.show();
+                Stage exclusao = new Stage();
+                VBox rootExclusao = new VBox();
+
+                event.consume();
+
+                Button btCancelarExclusao = new Button("Cancelar");
+                Button btConfirmarExclusao = new Button("Confimar");
+                ButtonBar painelBtExclusao = new ButtonBar();
+                painelBtExclusao.getButtons().addAll(btCancelarExclusao, btConfirmarExclusao);
+
+                rootExclusao.getChildren().addAll(excluirItem, exclusaoItem, painelBtExclusao);
+                Scene cenarioExclusao = new Scene(rootExclusao, 800, 600);
+                exclusao.setScene(cenarioExclusao);
+                exclusao.showAndWait();
+            }
+        };
+        btConfirmar.addEventHandler(MouseEvent.MOUSE_CLICKED, exclusao);
 
     }
 
     public static void main(String[] args) {
         launch();
     }
+;
+
 }
