@@ -293,16 +293,22 @@ public class App extends Application {
                         EventHandler<MouseEvent> situacaoEVENT = new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 1");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
 
                                 HBox bvtoees = new HBox();
                                 Button tvVoltar = new Button("Voltar");
                                 bvtoees.getChildren().addAll(tvVoltar);
-                                poot.add(bvtoees, 0, 16, 6, 1);
+                                toot.add(bvtoees, 0, 16, 6, 1);
 
                                 EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
                                     @Override
                                     public void handle(MouseEvent event) {
-                                        tpVr.close();
+                                        aTua.close();
                                         Alert aviso = new Alert(Alert.AlertType.INFORMATION);
                                         aviso.setHeaderText("Voltado com sucesso");
                                         aviso.show();
@@ -311,7 +317,7 @@ public class App extends Application {
                                 };
                                 tvVoltar.setOnMouseClicked(hVoltar);
 
-                                Scene scene = new Scene(root, 800, 600);
+                                Scene scene = new Scene(toot, 800, 600);
                                 stage.setScene(scene);
 
                                 scene.getStylesheets().add("/css/style.css");
@@ -320,428 +326,719 @@ public class App extends Application {
 
                             }
                         };
-                    situacaoButton.setOnMouseClicked (situacaoEVENT);
+                        situacaoButton.setOnMouseClicked(situacaoEVENT);
 
-                    EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
+                        EventHandler<MouseEvent> dadosEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
 
-                            Stage tCadas = new Stage();
-                            GridPane boot = new GridPane();
+                                Label viat1 = new Label("Viatura 1");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
 
-                            TextField identificacaoText = new TextField();
-                            TextField tipoText = new TextField();
-                            TextField placaText = new TextField();
-                            TextField anodefabricacaoText = new TextField();
-                            TextField modeloText = new TextField();
-                            TextField statusInicialText = new TextField();
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
 
-                            Label tVC = new Label("Editar Viatura");
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
 
-                            Label identificacaoLabel = new Label("Identificação");
-                            identificacaoLabel.setTextFill(Color.WHITE);
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
 
-                            Label tipoLabel = new Label("Tipo");
-                            tipoLabel.setTextFill(Color.WHITE);
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
 
-                            Label placaLabel = new Label("Placa");
-                            placaLabel.setTextFill(Color.WHITE);
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
 
-                            Label anodefabricacaoLabel = new Label("Ano de Fabricação");
-                            anodefabricacaoLabel.setTextFill(Color.WHITE);
+                            }
+                        };
+                        dadosCadasButton.setOnMouseClicked(dadosEVENT);
 
-                            Label modeloLabel = new Label("Modelo");
-                            modeloLabel.setTextFill(Color.WHITE);
+                        EventHandler<MouseEvent> historicoEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
 
-                            Label statusInicialLabel = new Label("Status Iniciais");
-                            statusInicialLabel.setTextFill(Color.WHITE);
+                                Label viat1 = new Label("Viatura 1");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
 
-                            boot.add(identificacaoLabel, 0, 0);
-                            boot.add(identificacaoText, 0, 1);
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
 
-                            boot.add(tipoLabel, 3, 0);
-                            boot.add(tipoText, 3, 1);
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
 
-                            boot.add(placaLabel, 5, 0);
-                            boot.add(placaText, 5, 1);
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
 
-                            boot.add(anodefabricacaoLabel, 0, 4);
-                            boot.add(anodefabricacaoText, 0, 7);
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
 
-                            boot.add(modeloLabel, 3, 4);
-                            boot.add(modeloText, 3, 7);
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
 
-                            boot.add(statusInicialLabel, 5, 4);
-                            boot.add(statusInicialText, 5, 7);
+                            }
+                        };
+                        historicoButton.setOnMouseClicked(historicoEVENT);
 
-                            VBox botos = new VBox();
+                        EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
 
-                            Button ctConfirmar = new Button("Confirmar");
-                            Button ctCancelar = new Button("Cancelar");
+                                Stage tCadas = new Stage();
+                                GridPane boot = new GridPane();
 
-                            botos.getChildren().addAll(ctConfirmar, ctCancelar);
+                                TextField identificacaoText = new TextField();
+                                TextField tipoText = new TextField();
+                                TextField placaText = new TextField();
+                                TextField anodefabricacaoText = new TextField();
+                                TextField modeloText = new TextField();
+                                TextField statusInicialText = new TextField();
 
-                            boot.add(botos, 0, 8, 6, 1);
+                                Label tVC = new Label("Editar Viatura");
 
-                            EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    Alert aviso = new Alert(Alert.AlertType.INFORMATION);
-                                    aviso.setHeaderText("Cancelado com sucesso");
-                                    aviso.show();
+                                Label identificacaoLabel = new Label("Identificação");
+                                identificacaoLabel.setTextFill(Color.WHITE);
 
-                                    tCadas.close();
+                                Label tipoLabel = new Label("Tipo");
+                                tipoLabel.setTextFill(Color.WHITE);
 
-                                }
+                                Label placaLabel = new Label("Placa");
+                                placaLabel.setTextFill(Color.WHITE);
 
-                            };
+                                Label anodefabricacaoLabel = new Label("Ano de Fabricação");
+                                anodefabricacaoLabel.setTextFill(Color.WHITE);
 
-                            EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    tCadas.close();
-                                    Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
-                                    aviso.setHeaderText("Viatura atribuida com sucesso");
-                                    aviso.show();
+                                Label modeloLabel = new Label("Modelo");
+                                modeloLabel.setTextFill(Color.WHITE);
 
-                                }
+                                Label statusInicialLabel = new Label("Status Iniciais");
+                                statusInicialLabel.setTextFill(Color.WHITE);
 
-                            };
+                                boot.add(identificacaoLabel, 0, 0);
+                                boot.add(identificacaoText, 0, 1);
 
-                            ctCancelar.setOnMouseClicked(cCancelar);
-                            ctConfirmar.setOnMouseClicked(cConfirmar);
+                                boot.add(tipoLabel, 3, 0);
+                                boot.add(tipoText, 3, 1);
 
-                            Scene scene = new Scene(boot, 800, 600);
-                            tCadas.setScene(scene);
-                            scene.getStylesheets().add("/css/style.css");
-                            tCadas.setTitle("Sistema de teste do JavaFX");
-                            tCadas.show();
+                                boot.add(placaLabel, 5, 0);
+                                boot.add(placaText, 5, 1);
 
-                        }
-                    };
+                                boot.add(anodefabricacaoLabel, 0, 4);
+                                boot.add(anodefabricacaoText, 0, 7);
 
-                    editarButton.setOnMouseClicked (eDITARBOT);
+                                boot.add(modeloLabel, 3, 4);
+                                boot.add(modeloText, 3, 7);
 
-                    Scene scene = new Scene(poot, 800, 600);
+                                boot.add(statusInicialLabel, 5, 4);
+                                boot.add(statusInicialText, 5, 7);
 
-                    tpVr.setScene (scene);
+                                VBox botos = new VBox();
 
-                    scene.getStylesheets ()
+                                Button ctConfirmar = new Button("Confirmar");
+                                Button ctCancelar = new Button("Cancelar");
 
-                    .add("/css/style.css");
-                    tpVr.setTitle (
+                                botos.getChildren().addAll(ctConfirmar, ctCancelar);
 
-                    "Sistema de teste do JavaFX");
-                    tpVr.show ();
-                }
+                                boot.add(botos, 0, 8, 6, 1);
+
+                                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Cancelado com sucesso");
+                                        aviso.show();
+
+                                        tCadas.close();
+
+                                    }
+
+                                };
+
+                                EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        tCadas.close();
+                                        Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
+                                        aviso.setHeaderText("Viatura atribuida com sucesso");
+                                        aviso.show();
+
+                                    }
+
+                                };
+
+                                ctCancelar.setOnMouseClicked(cCancelar);
+                                ctConfirmar.setOnMouseClicked(cConfirmar);
+
+                                Scene scene = new Scene(boot, 800, 600);
+                                tCadas.setScene(scene);
+                                scene.getStylesheets().add("/css/style.css");
+                                tCadas.setTitle("Sistema de teste do JavaFX");
+                                tCadas.show();
+
+                            }
+                        };
+
+                        editarButton.setOnMouseClicked(eDITARBOT);
+
+                        Scene scene = new Scene(poot, 800, 600);
+
+                        tpVr.setScene(scene);
+
+                        scene.getStylesheets().add("/css/style.css");
+                        tpVr.setTitle("Sistema de teste do JavaFX");
+                        tpVr.show();
+                    }
+
+                };
+                ver1.setOnMouseClicked(ver1V);
+
+                EventHandler<MouseEvent> ver2V = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Stage tpVr = new Stage();
+                        GridPane poot = new GridPane();
+                        Label viat2 = new Label("Viatura 2");
+                        viat2.setTextFill(Color.WHITE);
+                        Button situacaoButton = new Button("Situação Atual");
+
+                        Button dadosCadasButton = new Button("Dados Cadastrais");
+
+                        Button historicoButton = new Button("Histórico de Manutenção");
+
+                        Button editarButton = new Button("Editar");
+
+                        Button excluirButton = new Button("Excluir");
+
+                        poot.add(viat2, 0, 0);
+
+                        poot.add(situacaoButton, 0, 1);
+
+                        poot.add(dadosCadasButton, 0, 2);
+
+                        poot.add(historicoButton, 0, 3);
+
+                        poot.add(editarButton, 0, 4);
+
+                        poot.add(excluirButton, 0, 5);
+
+                        EventHandler<MouseEvent> situacaoEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 2");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        situacaoButton.setOnMouseClicked(situacaoEVENT);
+
+                        EventHandler<MouseEvent> dadosEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 2");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        dadosCadasButton.setOnMouseClicked(dadosEVENT);
+
+                        EventHandler<MouseEvent> historicoEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 2");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        historicoButton.setOnMouseClicked(historicoEVENT);
+
+                        EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+
+                                Stage tCadas = new Stage();
+                                GridPane boot = new GridPane();
+
+                                TextField identificacaoText = new TextField();
+                                TextField tipoText = new TextField();
+                                TextField placaText = new TextField();
+                                TextField anodefabricacaoText = new TextField();
+                                TextField modeloText = new TextField();
+                                TextField statusInicialText = new TextField();
+
+                                Label tVC = new Label("Editar Viatura");
+
+                                Label identificacaoLabel = new Label("Identificação");
+                                identificacaoLabel.setTextFill(Color.WHITE);
+
+                                Label tipoLabel = new Label("Tipo");
+                                tipoLabel.setTextFill(Color.WHITE);
+
+                                Label placaLabel = new Label("Placa");
+                                placaLabel.setTextFill(Color.WHITE);
+
+                                Label anodefabricacaoLabel = new Label("Ano de Fabricação");
+                                anodefabricacaoLabel.setTextFill(Color.WHITE);
+
+                                Label modeloLabel = new Label("Modelo");
+                                modeloLabel.setTextFill(Color.WHITE);
+
+                                Label statusInicialLabel = new Label("Status Iniciais");
+                                statusInicialLabel.setTextFill(Color.WHITE);
+
+                                boot.add(identificacaoLabel, 0, 0);
+                                boot.add(identificacaoText, 0, 1);
+
+                                boot.add(tipoLabel, 3, 0);
+                                boot.add(tipoText, 3, 1);
+
+                                boot.add(placaLabel, 5, 0);
+                                boot.add(placaText, 5, 1);
+
+                                boot.add(anodefabricacaoLabel, 0, 4);
+                                boot.add(anodefabricacaoText, 0, 7);
+
+                                boot.add(modeloLabel, 3, 4);
+                                boot.add(modeloText, 3, 7);
+
+                                boot.add(statusInicialLabel, 5, 4);
+                                boot.add(statusInicialText, 5, 7);
+
+                                VBox botos = new VBox();
+
+                                Button ctConfirmar = new Button("Confirmar");
+                                Button ctCancelar = new Button("Cancelar");
+
+                                botos.getChildren().addAll(ctConfirmar, ctCancelar);
+
+                                boot.add(botos, 0, 8, 6, 1);
+
+                                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Cancelado com sucesso");
+                                        aviso.show();
+
+                                        tCadas.close();
+
+                                    }
+
+                                };
+
+                                EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        tCadas.close();
+                                        Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
+                                        aviso.setHeaderText("Viatura atribuida com sucesso");
+                                        aviso.show();
+
+                                    }
+
+                                };
+
+                                ctCancelar.setOnMouseClicked(cCancelar);
+                                ctConfirmar.setOnMouseClicked(cConfirmar);
+
+                                Scene scene = new Scene(boot, 800, 600);
+                                tCadas.setScene(scene);
+                                scene.getStylesheets().add("/css/style.css");
+                                tCadas.setTitle("Sistema de teste do JavaFX");
+                                tCadas.show();
+
+                            }
+                        };
+
+                        editarButton.setOnMouseClicked(eDITARBOT);
+
+                        Scene scene = new Scene(poot, 800, 600);
+                        tpVr.setScene(scene);
+                        scene.getStylesheets().add("/css/style.css");
+                        tpVr.setTitle("Sistema de teste do JavaFX");
+                        tpVr.show();
+                    }
+
+                };
+
+                ver2.setOnMouseClicked(ver2V);
+
+                EventHandler<MouseEvent> ver3V = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Stage tpVr = new Stage();
+                        GridPane poot = new GridPane();
+                        Label viat3 = new Label("Viatura 3");
+                        viat3.setTextFill(Color.WHITE);
+                        Button situacaoButton = new Button("Situação Atual");
+
+                        Button dadosCadasButton = new Button("Dados Cadastrais");
+
+                        Button historicoButton = new Button("Histórico de Manutenção");
+
+                        Button editarButton = new Button("Editar");
+
+                        Button excluirButton = new Button("Excluir");
+
+                        poot.add(viat3, 0, 0);
+
+                        poot.add(situacaoButton, 0, 1);
+
+                        poot.add(dadosCadasButton, 0, 2);
+
+                        poot.add(historicoButton, 0, 3);
+
+                        poot.add(editarButton, 0, 4);
+
+                        poot.add(excluirButton, 0, 5);
+
+                        EventHandler<MouseEvent> situacaoEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 3");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        situacaoButton.setOnMouseClicked(situacaoEVENT);
+
+                        EventHandler<MouseEvent> dadosEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 3");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        dadosCadasButton.setOnMouseClicked(dadosEVENT);
+
+                        EventHandler<MouseEvent> historicoEVENT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Stage aTua = new Stage();
+                                GridPane toot = new GridPane();
+
+                                Label viat1 = new Label("Viatura 3");
+                                viat1.setTextFill(Color.WHITE);
+                                toot.add(viat1, 0, 0);
+
+                                HBox bvtoees = new HBox();
+                                Button tvVoltar = new Button("Voltar");
+                                bvtoees.getChildren().addAll(tvVoltar);
+                                toot.add(bvtoees, 0, 16, 6, 1);
+
+                                EventHandler<MouseEvent> hVoltar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        aTua.close();
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Voltado com sucesso");
+                                        aviso.show();
+
+                                    }
+                                };
+                                tvVoltar.setOnMouseClicked(hVoltar);
+
+                                Scene scene = new Scene(toot, 800, 600);
+                                stage.setScene(scene);
+
+                                scene.getStylesheets().add("/css/style.css");
+                                stage.setTitle("Sistema de teste do JavaFX");
+                                stage.show();
+
+                            }
+                        };
+                        historicoButton.setOnMouseClicked(historicoEVENT);
+
+                        EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+
+                                Stage tCadas = new Stage();
+                                GridPane boot = new GridPane();
+
+                                TextField identificacaoText = new TextField();
+                                TextField tipoText = new TextField();
+                                TextField placaText = new TextField();
+                                TextField anodefabricacaoText = new TextField();
+                                TextField modeloText = new TextField();
+                                TextField statusInicialText = new TextField();
+
+                                Label tVC = new Label("Editar Viatura");
+
+                                Label identificacaoLabel = new Label("Identificação");
+                                identificacaoLabel.setTextFill(Color.WHITE);
+
+                                Label tipoLabel = new Label("Tipo");
+                                tipoLabel.setTextFill(Color.WHITE);
+
+                                Label placaLabel = new Label("Placa");
+                                placaLabel.setTextFill(Color.WHITE);
+
+                                Label anodefabricacaoLabel = new Label("Ano de Fabricação");
+                                anodefabricacaoLabel.setTextFill(Color.WHITE);
+
+                                Label modeloLabel = new Label("Modelo");
+                                modeloLabel.setTextFill(Color.WHITE);
+
+                                Label statusInicialLabel = new Label("Status Iniciais");
+                                statusInicialLabel.setTextFill(Color.WHITE);
+
+                                boot.add(identificacaoLabel, 0, 0);
+                                boot.add(identificacaoText, 0, 1);
+
+                                boot.add(tipoLabel, 3, 0);
+                                boot.add(tipoText, 3, 1);
+
+                                boot.add(placaLabel, 5, 0);
+                                boot.add(placaText, 5, 1);
+
+                                boot.add(anodefabricacaoLabel, 0, 4);
+                                boot.add(anodefabricacaoText, 0, 7);
+
+                                boot.add(modeloLabel, 3, 4);
+                                boot.add(modeloText, 3, 7);
+
+                                boot.add(statusInicialLabel, 5, 4);
+                                boot.add(statusInicialText, 5, 7);
+
+                                VBox botos = new VBox();
+
+                                Button ctConfirmar = new Button("Confirmar");
+                                Button ctCancelar = new Button("Cancelar");
+
+                                botos.getChildren().addAll(ctConfirmar, ctCancelar);
+
+                                boot.add(botos, 0, 8, 6, 1);
+
+                                EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        Alert aviso = new Alert(Alert.AlertType.INFORMATION);
+                                        aviso.setHeaderText("Cancelado com sucesso");
+                                        aviso.show();
+
+                                        tCadas.close();
+
+                                    }
+
+                                };
+
+                                EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent event) {
+                                        tCadas.close();
+                                        Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
+                                        aviso.setHeaderText("Viatura atribuida com sucesso");
+                                        aviso.show();
+
+                                    }
+
+                                };
+
+                                ctCancelar.setOnMouseClicked(cCancelar);
+                                ctConfirmar.setOnMouseClicked(cConfirmar);
+
+                                Scene scene = new Scene(boot, 800, 600);
+                                tCadas.setScene(scene);
+                                scene.getStylesheets().add("/css/style.css");
+                                tCadas.setTitle("Sistema de teste do JavaFX");
+                                tCadas.show();
+
+                            }
+                        };
+
+                        editarButton.setOnMouseClicked(eDITARBOT);
+
+                        Scene scene = new Scene(poot, 800, 600);
+                        tpVr.setScene(scene);
+                        scene.getStylesheets().add("/css/style.css");
+                        tpVr.setTitle("Sistema de teste do JavaFX");
+                        tpVr.show();
+                    }
+
+                };
+
+                ver3.setOnMouseClicked(ver3V);
 
             }
+        };
 
-            ;
-            ver1.setOnMouseClicked (ver1V);
+        btConsultar.setOnMouseClicked(consultarViatura);
 
-            EventHandler<MouseEvent> ver2V = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    Stage tpVr = new Stage();
-                    GridPane poot = new GridPane();
-                    Label viat2 = new Label("Viatura 2");
-                    viat2.setTextFill(Color.WHITE);
-                    Button situacaoButton = new Button("Situação Atual");
+        Scene scene = new Scene(root, 800, 600);
 
-                    Button dadosCadasButton = new Button("Dados Cadastrais");
+        stage.setScene(scene);
+        scene.getStylesheets().add("/css/style.css");
+        stage.setTitle("Sistema de teste do JavaFX");
+        stage.show();
 
-                    Button historicoButton = new Button("Histórico de Manutenção");
-
-                    Button editarButton = new Button("Editar");
-
-                    Button excluirButton = new Button("Excluir");
-
-                    poot.add(viat2, 0, 0);
-
-                    poot.add(situacaoButton, 0, 1);
-
-                    poot.add(dadosCadasButton, 0, 2);
-
-                    poot.add(historicoButton, 0, 3);
-
-                    poot.add(editarButton, 0, 4);
-
-                    poot.add(excluirButton, 0, 5);
-
-                    EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-
-                            Stage tCadas = new Stage();
-                            GridPane boot = new GridPane();
-
-                            TextField identificacaoText = new TextField();
-                            TextField tipoText = new TextField();
-                            TextField placaText = new TextField();
-                            TextField anodefabricacaoText = new TextField();
-                            TextField modeloText = new TextField();
-                            TextField statusInicialText = new TextField();
-
-                            Label tVC = new Label("Editar Viatura");
-
-                            Label identificacaoLabel = new Label("Identificação");
-                            identificacaoLabel.setTextFill(Color.WHITE);
-
-                            Label tipoLabel = new Label("Tipo");
-                            tipoLabel.setTextFill(Color.WHITE);
-
-                            Label placaLabel = new Label("Placa");
-                            placaLabel.setTextFill(Color.WHITE);
-
-                            Label anodefabricacaoLabel = new Label("Ano de Fabricação");
-                            anodefabricacaoLabel.setTextFill(Color.WHITE);
-
-                            Label modeloLabel = new Label("Modelo");
-                            modeloLabel.setTextFill(Color.WHITE);
-
-                            Label statusInicialLabel = new Label("Status Iniciais");
-                            statusInicialLabel.setTextFill(Color.WHITE);
-
-                            boot.add(identificacaoLabel, 0, 0);
-                            boot.add(identificacaoText, 0, 1);
-
-                            boot.add(tipoLabel, 3, 0);
-                            boot.add(tipoText, 3, 1);
-
-                            boot.add(placaLabel, 5, 0);
-                            boot.add(placaText, 5, 1);
-
-                            boot.add(anodefabricacaoLabel, 0, 4);
-                            boot.add(anodefabricacaoText, 0, 7);
-
-                            boot.add(modeloLabel, 3, 4);
-                            boot.add(modeloText, 3, 7);
-
-                            boot.add(statusInicialLabel, 5, 4);
-                            boot.add(statusInicialText, 5, 7);
-
-                            VBox botos = new VBox();
-
-                            Button ctConfirmar = new Button("Confirmar");
-                            Button ctCancelar = new Button("Cancelar");
-
-                            botos.getChildren().addAll(ctConfirmar, ctCancelar);
-
-                            boot.add(botos, 0, 8, 6, 1);
-
-                            EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    Alert aviso = new Alert(Alert.AlertType.INFORMATION);
-                                    aviso.setHeaderText("Cancelado com sucesso");
-                                    aviso.show();
-
-                                    tCadas.close();
-
-                                }
-
-                            };
-
-                            EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    tCadas.close();
-                                    Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
-                                    aviso.setHeaderText("Viatura atribuida com sucesso");
-                                    aviso.show();
-
-                                }
-
-                            };
-
-                            ctCancelar.setOnMouseClicked(cCancelar);
-                            ctConfirmar.setOnMouseClicked(cConfirmar);
-
-                            Scene scene = new Scene(boot, 800, 600);
-                            tCadas.setScene(scene);
-                            scene.getStylesheets().add("/css/style.css");
-                            tCadas.setTitle("Sistema de teste do JavaFX");
-                            tCadas.show();
-
-                        }
-                    };
-
-                    editarButton.setOnMouseClicked(eDITARBOT);
-
-                    Scene scene = new Scene(poot, 800, 600);
-                    tpVr.setScene(scene);
-                    scene.getStylesheets().add("/css/style.css");
-                    tpVr.setTitle("Sistema de teste do JavaFX");
-                    tpVr.show();
-                }
-
-            };
-
-            ver2.setOnMouseClicked (ver2V);
-
-            EventHandler<MouseEvent> ver3V = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    Stage tpVr = new Stage();
-                    GridPane poot = new GridPane();
-                    Label viat3 = new Label("Viatura 3");
-                    viat3.setTextFill(Color.WHITE);
-                    Button situacaoButton = new Button("Situação Atual");
-
-                    Button dadosCadasButton = new Button("Dados Cadastrais");
-
-                    Button historicoButton = new Button("Histórico de Manutenção");
-
-                    Button editarButton = new Button("Editar");
-
-                    Button excluirButton = new Button("Excluir");
-
-                    poot.add(viat3, 0, 0);
-
-                    poot.add(situacaoButton, 0, 1);
-
-                    poot.add(dadosCadasButton, 0, 2);
-
-                    poot.add(historicoButton, 0, 3);
-
-                    poot.add(editarButton, 0, 4);
-
-                    poot.add(excluirButton, 0, 5);
-
-                    EventHandler<MouseEvent> eDITARBOT = new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-
-                            Stage tCadas = new Stage();
-                            GridPane boot = new GridPane();
-
-                            TextField identificacaoText = new TextField();
-                            TextField tipoText = new TextField();
-                            TextField placaText = new TextField();
-                            TextField anodefabricacaoText = new TextField();
-                            TextField modeloText = new TextField();
-                            TextField statusInicialText = new TextField();
-
-                            Label tVC = new Label("Editar Viatura");
-
-                            Label identificacaoLabel = new Label("Identificação");
-                            identificacaoLabel.setTextFill(Color.WHITE);
-
-                            Label tipoLabel = new Label("Tipo");
-                            tipoLabel.setTextFill(Color.WHITE);
-
-                            Label placaLabel = new Label("Placa");
-                            placaLabel.setTextFill(Color.WHITE);
-
-                            Label anodefabricacaoLabel = new Label("Ano de Fabricação");
-                            anodefabricacaoLabel.setTextFill(Color.WHITE);
-
-                            Label modeloLabel = new Label("Modelo");
-                            modeloLabel.setTextFill(Color.WHITE);
-
-                            Label statusInicialLabel = new Label("Status Iniciais");
-                            statusInicialLabel.setTextFill(Color.WHITE);
-
-                            boot.add(identificacaoLabel, 0, 0);
-                            boot.add(identificacaoText, 0, 1);
-
-                            boot.add(tipoLabel, 3, 0);
-                            boot.add(tipoText, 3, 1);
-
-                            boot.add(placaLabel, 5, 0);
-                            boot.add(placaText, 5, 1);
-
-                            boot.add(anodefabricacaoLabel, 0, 4);
-                            boot.add(anodefabricacaoText, 0, 7);
-
-                            boot.add(modeloLabel, 3, 4);
-                            boot.add(modeloText, 3, 7);
-
-                            boot.add(statusInicialLabel, 5, 4);
-                            boot.add(statusInicialText, 5, 7);
-
-                            VBox botos = new VBox();
-
-                            Button ctConfirmar = new Button("Confirmar");
-                            Button ctCancelar = new Button("Cancelar");
-
-                            botos.getChildren().addAll(ctConfirmar, ctCancelar);
-
-                            boot.add(botos, 0, 8, 6, 1);
-
-                            EventHandler<MouseEvent> cCancelar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    Alert aviso = new Alert(Alert.AlertType.INFORMATION);
-                                    aviso.setHeaderText("Cancelado com sucesso");
-                                    aviso.show();
-
-                                    tCadas.close();
-
-                                }
-
-                            };
-
-                            EventHandler<MouseEvent> cConfirmar = new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    tCadas.close();
-                                    Alert aviso = new Alert(Alert.AlertType.CONFIRMATION);
-                                    aviso.setHeaderText("Viatura atribuida com sucesso");
-                                    aviso.show();
-
-                                }
-
-                            };
-
-                            ctCancelar.setOnMouseClicked(cCancelar);
-                            ctConfirmar.setOnMouseClicked(cConfirmar);
-
-                            Scene scene = new Scene(boot, 800, 600);
-                            tCadas.setScene(scene);
-                            scene.getStylesheets().add("/css/style.css");
-                            tCadas.setTitle("Sistema de teste do JavaFX");
-                            tCadas.show();
-
-                        }
-                    };
-
-                    editarButton.setOnMouseClicked(eDITARBOT);
-
-                    Scene scene = new Scene(poot, 800, 600);
-                    tpVr.setScene(scene);
-                    scene.getStylesheets().add("/css/style.css");
-                    tpVr.setTitle("Sistema de teste do JavaFX");
-                    tpVr.show();
-                }
-
-            };
-
-            ver3.setOnMouseClicked (ver3V);
-
-        }
     }
 
-    ;
-
-    btConsultar.setOnMouseClicked (consultarViatura);
-
-    Scene scene = new Scene(root, 800, 600);
-
-    stage.setScene (scene);
-
-    scene.getStylesheets ()
-
-    .add("/css/style.css");
-    stage.setTitle (
-
-    "Sistema de teste do JavaFX");
-    stage.show ();
-
-}
-
-public static void main(String[] args) {
+    public static void main(String[] args) {
         launch();
     }
 
