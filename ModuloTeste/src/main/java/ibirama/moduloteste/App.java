@@ -29,8 +29,8 @@ public class App extends Application {
     private Stage stage;
     // LISTA PRINCIPAL DE VIATURAS
      private ObservableList<Viatura> viaturas = FXCollections.observableArrayList();
- @Override
-public void start(Stage stage) {
+     @Override
+    public void start(Stage stage) {
 
         this.stage = stage;
         // VIATURAS INICIAIS
@@ -43,23 +43,19 @@ public void start(Stage stage) {
     // TELA INICIAL
     private void telaInicial() {
 
-        GridPane root = new GridPane();
+    GridPane root = new GridPane();
     Scene scene = new Scene(root, 800, 600);
-     scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
+    scene.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
 
         Button btCadastrarVt = new Button("Cadastrar Vt");
         Button btConsultarVt = new Button("Consultar Vt");
         Button btExcluirVt = new Button("Excluir Vt");
-        Button btCadastrarUs = new Button("Cadastrar Usuário");
 
         Label titulo = new Label("Gestão de Viaturas");
         titulo.getStyleClass().add("titulo");
         // Gestão de Viaturas
         root.add(titulo, 1, 0);
         GridPane.setHalignment(titulo, HPos.CENTER);
-        // Cadastrar Usuário
-        root.add(btCadastrarUs, 2, 1);
-        GridPane.setHalignment(btCadastrarUs, HPos.CENTER);
         // Botões de Viaturas
         root.add(btCadastrarVt, 0, 2);
         root.add(btConsultarVt, 1, 2);
@@ -73,8 +69,8 @@ public void start(Stage stage) {
         root.setPadding(new Insets(25, 20, 20, 20));
         // BOTÃO CADASTRAR VIATURA
         btCadastrarVt.setOnAction(e -> telaCadastrarViatura());
-            // BOTÃO CONSULTAR VIATURA
-             btConsultarVt.setOnAction(e -> telaConsultarViaturas());
+        // BOTÃO CONSULTAR VIATURA
+        btConsultarVt.setOnAction(e -> telaConsultarViaturas());
         // BOTÃO EXCLUIR VIATURA
         btExcluirVt.setOnAction(e -> telaExcluirViaturas());
 
@@ -168,29 +164,19 @@ public void start(Stage stage) {
         Button btCadastrar = new Button("Cadastrar");
 
         btCadastrar.setOnAction(e -> {
-
             String identificacao = campoIdentificacao.getText().trim();
-
             String tipo = campoTipo.getValue();
-
             String placa = campoPlaca.getText().trim();
-
             String modelo = campoModelo.getText().trim();
-
             String ano = campoAno.getText().trim();
-
             String status = campoStatus.getValue();
+            
             // VERIFICAÇÃO DOS CAMPOS
             if (identificacao.isEmpty() || tipo == null || placa.isEmpty() || modelo.isEmpty() || ano.isEmpty() || status == null) {
-
                 Alert alerta = new Alert(Alert.AlertType.WARNING);
-
                 alerta.setTitle("Cadastro de Viatura");
-
                 alerta.setHeaderText("Preencha todos os campos");
-
                 alerta.setContentText("Todos os campos devem ser preenchidos.");
-
                 alerta.showAndWait();
                 return;
             }
@@ -198,15 +184,11 @@ public void start(Stage stage) {
                 for (Viatura viatura : viaturas) {
 
                 if (viatura.getPlaca().equalsIgnoreCase(placa)) {
-
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
-
                 alerta.setTitle("Erro no cadastro");
                 alerta.setHeaderText("Placa já cadastrada");
                 alerta.setContentText("A placa " + placa + " já está cadastrada no sistema.");
-
                 alerta.showAndWait();
-
                 return;
             }
             }
@@ -218,11 +200,8 @@ public void start(Stage stage) {
             Alert sucesso = new Alert(Alert.AlertType.INFORMATION);
 
             sucesso.setTitle("Cadastro realizado");
-
             sucesso.setHeaderText("Viatura cadastrada com sucesso!");
-
             sucesso.setContentText("A viatura "+ identificacao+ " foi adicionada.");
-
             sucesso.showAndWait();
             // Volta para a tela inicial
             telaInicial();
@@ -287,13 +266,9 @@ public void start(Stage stage) {
 
         colunaTipo.setCellValueFactory(data ->data.getValue().tipoProperty());
 
-
-        ObservableList<String> tipos =
-                FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
-
+        ObservableList<String> tipos = FXCollections.observableArrayList("Combate a incêndio","Resgate","Ambulância","Transporte","Salvamento","Administrativo");
 
         colunaTipo.setCellFactory(ComboBoxTableCell.forTableColumn(tipos));
-
 
         colunaTipo.setOnEditCommit(event -> {event.getRowValue().setTipo(event.getNewValue());
 
@@ -306,8 +281,7 @@ public void start(Stage stage) {
 
         ObservableList<String> status = FXCollections.observableArrayList("Disponível","Indisponível","Em manutenção");
 
-        colunaStatus.setCellFactory(ComboBoxTableCell.forTableColumn(status)
-        );
+        colunaStatus.setCellFactory(ComboBoxTableCell.forTableColumn(status));
 
 
         colunaStatus.setOnEditCommit(event -> {event.getRowValue().setStatus(event.getNewValue());
@@ -390,26 +364,22 @@ public void start(Stage stage) {
         // LISTA
         ListView<Viatura> listaViaturas = new ListView<>();
 
-        listaViaturas.setItems(
-                viaturas
-        );
+        listaViaturas.setItems(viaturas);
 
-        listaViaturas.setCellFactory(
-                listView ->
-                        new javafx.scene.control.ListCell<Viatura>() {
+        listaViaturas.setCellFactory(listView ->new javafx.scene.control.ListCell<Viatura>() {
 
-                            @Override
-                            protected void updateItem(Viatura viatura, boolean empty) {
+            @Override
+            protected void updateItem(Viatura viatura, boolean empty) {
 
-                                super.updateItem(viatura,empty);
-                                if (empty|| viatura == null) {
-                                    setText(null);
+            super.updateItem(viatura,empty);
+            if (empty|| viatura == null) {
+            setText(null);
         } else {
         String nome = viatura.getNome();
         
         if (nome == null|| nome.isEmpty()) {
-                nome = "Viatura sem nome";
-                                    }
+            nome = "Viatura sem nome";
+        }
          setText(nome);
         }
         }
@@ -423,30 +393,23 @@ public void start(Stage stage) {
         // CLIQUE NA VIATURA
         listaViaturas.setOnMouseClicked(event -> {Viatura viaturaSelecionada =listaViaturas.getSelectionModel().getSelectedItem();
 
-
          if (viaturaSelecionada== null) {
                return;
                     }
 
-         String nomeViatura =viaturaSelecionada.getNome();
+         String nomeViatura = viaturaSelecionada.getNome();
 
-
-          if (nomeViatura == null|| nomeViatura.isEmpty()) 
-                    {
-              nomeViatura ="Viatura sem nome";
-                    }
+          if (nomeViatura == null|| nomeViatura.isEmpty()){
+              nomeViatura = "Viatura sem nome";
+          }
             // CONFIRMAÇÃO
-            // Cancelar:
-            // não faz nada.       
-          Alert confirmacao =new Alert(Alert.AlertType.CONFIRMATION);
+            // Cancelar:não faz nada.       
+          Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
 
           confirmacao.setTitle("Excluir Viatura");
 
-          confirmacao.setHeaderText(
-          "Excluir esta viatura?"
-                    );
+          confirmacao.setHeaderText("Excluir esta viatura?");
           confirmacao.setContentText("Viatura selecionada: "+ nomeViatura+ "\n\n"+ "Escolha \"Apagar\" "+ "para excluir ou " + "\"Cancelar\" para "+ "cancelar.");
-
 
           ButtonType btApagar = new ButtonType("Apagar");
 
@@ -456,7 +419,7 @@ public void start(Stage stage) {
                     
           confirmacao.showAndWait().ifPresent(resposta -> {if (resposta== btApagar) {
           viaturas.remove(viaturaSelecionada);
-                                        }
+         }
        }
     );
   }
@@ -498,8 +461,8 @@ public void start(Stage stage) {
 
         public Viatura(String nome,String localizacao,String tipo,String status,String disponibilidade,String criterios,String placa,String modelo,String ano) {
 
-            this.nome =
-                    new SimpleStringProperty(nome);
+            this.nome = new SimpleStringProperty(nome);
+
             this.localizacao = new SimpleStringProperty(localizacao);
 
             this.tipo = new SimpleStringProperty(tipo);
