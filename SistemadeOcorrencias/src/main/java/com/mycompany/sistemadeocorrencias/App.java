@@ -13,8 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
-
-    @Override
+ @Override
     public void start(Stage stage) {
 
         BorderPane root = new BorderPane();
@@ -31,7 +30,7 @@ public class App extends Application {
         Button btViaturas = new Button("Viatura");
         Button btLocalizacao = new Button("Localização");
         Button btEquipe = new Button("Equipe");
-        
+       
         btOcorencias.setOnAction(e -> {
             TelaOcorrencias tela = new TelaOcorrencias();
             tela.mostrar(stage);
@@ -48,7 +47,7 @@ public class App extends Application {
         });
 
         btViaturas.setOnAction(e -> {
-            TelaViatura tela = new TelaViatura();
+            TelaViatura tela = new TelaViatura(stage.getScene());
             tela.mostrar(stage);
         });
 
@@ -75,22 +74,22 @@ public class App extends Application {
 
 
         VBox login = new VBox(18);
-        
+       
         login.setAlignment(Pos.CENTER);
         login.setMaxWidth(650);
-        
+       
         login.setStyle( "-fx-background-color: #FE9DD;" + "-fx-border-color: #5B171F;" +"-fx-border-width: 9;" + "-fx-border-radius: 30;" +"-fx-background-radius: 30;" +"-fx-padding 40;");
                                        
         Label tituloLogin = new Label("SISTEMA DE DESPACHO E COMUNICAÇÃO");
-        
+       
         tituloLogin.setStyle("-fx-text-fill: #5B171F;" +"-fx-font-size: 21px;" +"-fx-font-weight: bold;");
         Label loginLabel = new Label("Login");
-        
+       
         loginLabel.setPrefWidth(500);
         loginLabel.setAlignment(Pos.CENTER);
-        
+       
         loginLabel.setStyle("-fx-background-color: #5B171F;" +"-fx-text-fill: white;" + "-fx-font-size: 20px;" +"-fx-background-radius: 20;" +"-fx-padding: 8;");
-        
+       
         TextField txtNome = new TextField();
         txtNome.setPromptText("Nome");
         txtNome.setPrefHeight(40);
@@ -104,32 +103,31 @@ public class App extends Application {
         Button btEntrar = new Button("Entrar");
         btEntrar.setPrefHeight(300);
         btEntrar.setPrefHeight(40);
-        
+       
         btEntrar.setStyle("-fx-background-color:#C9A5A5" +"-fx-text-fill: #5B171F;" +"-fx-font-size: 17px;" +"-fx-background-radius: 20;");
-        
+       
         login.getChildren().addAll(tituloLogin,txtNome,txtSenha,Lembrar,btEntrar);
-
         root.setLeft(menu);
         root.setCenter(login);
 
         root.setStyle("-fx-background-color: #C9A5A5;");
-        
+       
         btEntrar.setOnAction(e ->{
             TelaOcorrencias tela = new TelaOcorrencias();
             tela.mostrar(stage);
         });
-        
+       
         btComunicacao.setOnAction(e -> {
             TelaComunicacao tela = new TelaComunicacao();
             tela.mostrar(stage);
         });
-        
+       
         Scene scene = new Scene(root, 1200, 700);
-        
+       
         stage.setTitle("Sistema de Ocorrencias");
         stage.setScene(scene);
         stage.show();
-        
+       
     }
 
     public static void main(String[] args) {

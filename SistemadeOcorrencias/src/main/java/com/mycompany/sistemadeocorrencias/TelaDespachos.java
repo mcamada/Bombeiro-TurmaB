@@ -12,6 +12,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -47,16 +49,19 @@ public class TelaDespachos {
 
         titulo.setStyle("-fx-text-fill: white;" + "-fx-font-size: 50px;" + "-fx-font-family: 'Georgia'");
 
-        Button btNovo = new Button("+ Novo despacho");
+        Button btVoltar = new Button("Voltar ao início");
 
-        btNovo.setPrefWidth(220);
-        btNovo.setPrefHeight(50);
+        btVoltar.setPrefWidth(120);
+        btVoltar.setPrefHeight(40);
+        btVoltar.setStyle("-fx-background-color: #5B171F;"+"-fx-text-fill: white;"+"-fx-font-size: 15px;"+"-fx-background-radius: 20;");
+        btVoltar.setOnAction(e -> {App tela = new App();tela.start(stage);});
+       
+        topo.setAlignment(Pos.CENTER_LEFT);
 
-        btNovo.setStyle("-fx-background-color: #5B171F;" + "-fx-text-fill: white;" + "-fx-font-size: 17px;" + "-fx-background-radius: 25;");
+        Region espaco = new Region();
+        HBox.setHgrow(espaco, Priority.ALWAYS);
 
-        HBox.setMargin(btNovo, new Insets(10, 0, 0, 650));
-
-        topo.getChildren().addAll(titulo, btNovo);
+        topo.getChildren().addAll(titulo, espaco, btVoltar);
         VBox formulario = new VBox(7);
 
         formulario.setPrefWidth(430);
@@ -80,7 +85,6 @@ public class TelaDespachos {
         Label lblHora = new Label("Hora Despacho");
 
         TextField Data = new TextField();
-
         TextField Hora = new TextField();
 
         Data.setPrefWidth(180);
@@ -93,15 +97,9 @@ public class TelaDespachos {
 
         campoData.getChildren().addAll(lblData, Data);
 
-        campoHora.getChildren().addAll(
-                lblHora,
-                Hora
-        );
+        campoHora.getChildren().addAll(lblHora,Hora);
 
-        dataHora.getChildren().addAll(
-                campoData,
-                campoHora
-        );
+        dataHora.getChildren().addAll(campoData,campoHora);
         Label lblStatus = new Label("Status");
 
         TextField Status = new TextField();
@@ -121,7 +119,6 @@ public class TelaDespachos {
         Observacao.setPrefHeight(35);
 
         Button btLimpar = new Button("Limpar");
-
         Button btDespachar = new Button("Despachar");
 
         btLimpar.setPrefWidth(170);
@@ -131,9 +128,9 @@ public class TelaDespachos {
         btDespachar.setPrefHeight(40);
 
         btLimpar.setStyle("-fx-background-color: #D9BEBE;" + "-fx-text-fill: #5B171F;" + "-fx-font-size: 15px;" + "-fx-background-radius: 20;");
-
         btDespachar.setStyle("-fx-background-color: #D2AAAA;" + "-fx-text-fill: #5B171F;" + "-fx-font-size: 15px;" + "-fx-background-radius: 20;");
 
+       
         HBox botoes = new HBox(25);
 
         botoes.setAlignment(Pos.CENTER);
@@ -196,26 +193,84 @@ public class TelaDespachos {
         cabecalho.getChildren().addAll(id, ocorrencia, viatura, status, dataHoraLabel);
 
         historico = new VBox(5);
-
         historico.setPadding(new Insets(10));
-
         historico.setStyle("-fx-background-color: #5B171F;" + "-fx-background-radius: 25;");
-
         historico.setPrefHeight(300);
+       
+        int[] numero = {1};
 
-        CheckBox excluir = new CheckBox("Selecione o despacho que você deseja excluir");
+        btDespachar.setOnAction(e -> {
 
-        excluir.setStyle("-fx-text-fill: #5B171F;" + "-fx-font-size: 14px;");
+            Label novoId = new Label("" + numero[0]);
+            Label novaOcorrencia = new Label(Ocorrencia.getText());
+            Label novaViatura = new Label(Viatura.getText());
+            Label novoStatus = new Label(Status.getText());
+            Label novaDataHora = new Label(Data.getText() + " " + Hora.getText());
+
+            novoId.setPrefWidth(70);
+            novaOcorrencia.setPrefWidth(180);
+            novaViatura.setPrefWidth(150);
+            novoStatus.setPrefWidth(150);
+            novaDataHora.setPrefWidth(150);
+
+            novoId.setAlignment(Pos.CENTER);
+            novaOcorrencia.setAlignment(Pos.CENTER);
+            novaViatura.setAlignment(Pos.CENTER);
+            novoStatus.setAlignment(Pos.CENTER);
+            novaDataHora.setAlignment(Pos.CENTER);
+
+            novoId.setStyle("-fx-background-color: #F4E9DD;");
+            novaOcorrencia.setStyle("-fx-background-color: #F4E9DD;");
+            novaViatura.setStyle("-fx-background-color: #F4E9DD;");
+            novoStatus.setStyle("-fx-background-color: #F4E9DD;");
+            novaDataHora.setStyle("-fx-background-color: #F4E9DD;");
+
+            HBox novaLinha = new HBox();
+
+            novaLinha.setAlignment(Pos.CENTER);
+            novaLinha.getChildren().addAll(novoId,novaOcorrencia,novaViatura,novoStatus,novaDataHora);
+            historico.getChildren().add(novaLinha);
+
+            numero[0]++;
+        });
+
+        HBox excluir = new HBox(10);
+
+        TextField txtIdExcluir = new TextField();
+        txtIdExcluir.setPromptText("Digite o ID");
+        txtIdExcluir.setPrefWidth(150);
+        txtIdExcluir.setPrefHeight(35);
+
+        Button btSelecionar = new Button("Selecione para apagar");
+        btSelecionar.setPrefWidth(200);
+        btSelecionar.setPrefHeight(35);
+
+        btSelecionar.setStyle("-fx-background-color: #5B171F;"+ "-fx-text-fill: white;"+ "-fx-background-radius: 20;");
+
+        excluir.getChildren().addAll(txtIdExcluir, btSelecionar);
+
+        btSelecionar.setOnAction(e -> {
+
+            int idExcluir = Integer.parseInt(txtIdExcluir.getText());
+
+            for (javafx.scene.Node linha : historico.getChildren()) {
+
+                HBox linhaDespacho = (HBox) linha;
+
+                Label idLinha = (Label) linhaDespacho.getChildren().get(0);
+
+                if (idLinha.getText().equals(txtIdExcluir.getText())) {
+                    historico.getChildren().remove(linhaDespacho);
+                    break;
+                }
+            }
+
+            txtIdExcluir.clear();
+        });
 
         painelHistorico.getChildren().addAll(tituloHistoricoBox, txtPesquisar, cabecalho, historico, excluir);
-
-          btLimpar.setOnAction(e -> {
-            Ocorrencia.clear();
-            Status.clear();
-            Viatura.clear();
-            Observacao.clear();
-        });
-       
+        btLimpar.setOnAction(e -> {Ocorrencia.clear();Status.clear();Viatura.clear();Observacao.clear();Data.clear();Hora.clear();});
+          
         HBox conteudo = new HBox(25);
 
         conteudo.setAlignment(Pos.CENTER);
@@ -228,3 +283,4 @@ public class TelaDespachos {
         stage.show();
     }
 }
+
