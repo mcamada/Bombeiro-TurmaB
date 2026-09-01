@@ -1,17 +1,18 @@
 package com.mycompany.treinamento;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class App extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Corpo de Bombeiros - Treinamento e Capacitação");
+        Login login = new Login(stage);
+        Scene cena = login.criarTela();
 
-        Controller controller = new Controller(stage);
-        controller.mostrarInicio();
-
+        stage.setTitle("Treinamentos");
+        stage.setScene(cena);
         stage.show();
     }
 
